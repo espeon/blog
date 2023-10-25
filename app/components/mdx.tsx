@@ -1,24 +1,4 @@
 import { useMDXComponent } from "next-contentlayer/hooks";
-import Link from "next/link";
-
-/// internal link component, mostly to open in new page on click
-/// stolen from https://github.com/leerob/leerob.io/blob/main/app/components/mdx.tsx
-function InternalLink(props: { href: string; children: React.ReactNode }) {
-  let href = props.href;
-  if (href.startsWith('/')) {
-    return (
-      <Link href={href} {...props}>
-        {props.children}
-      </Link>
-    );
-  }
-
-  if (href.startsWith('#')) {
-    return <a {...props} />;
-  }
-
-  return <a target="_blank" rel="noopener noreferrer" {...props} />;
-}
 
 /// pretty next/image wrapper with rounded edges and an optional caption
 function PrettyImage({
@@ -47,7 +27,6 @@ function PrettyImage({
 }
 
 const components = {
-  a: InternalLink,
   Image: PrettyImage,
 };
 
