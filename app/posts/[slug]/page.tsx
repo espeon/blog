@@ -7,6 +7,34 @@ import { notFound } from "next/navigation";
 import { timeAgo } from "helpers/helpers";
 import MDX from "app/components/mdx";
 
+export async function generateMetadata({
+  params,
+}): Promise<any | undefined> {
+  const post = allPosts.find((post) => {
+    return post._raw.flattenedPath === params.slug;
+  });
+  if (!post) {
+    return;
+  }
+
+  const {
+    title,
+    datePublished,
+    summary: description,
+  } = post;
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'article',
+      publishedTime: datePublished,
+      url: `blog.natalie.sh/posts/${post._raw.flattenedPath}`,
+    },
+  };
+}
+
 export async function generateStaticParams() {
   return allPosts.map((post) => ({
     slug: post._raw.flattenedPath,
