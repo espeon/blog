@@ -1,4 +1,8 @@
 import './globals.css'
+import {IBM_Plex_Mono, Figtree} from "next/font/google"
+
+const mono = IBM_Plex_Mono({weight: "300", subsets: ["latin"]});
+const poly = Figtree({weight: "variable", subsets: ["latin"]})
 
 export default function RootLayout({
   children,
@@ -7,7 +11,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={`${mono} ${poly}`}>{children}</body>
     </html>
   )
 }
