@@ -1,0 +1,98 @@
+---
+title: "Making my new Next.js MDX blog"
+datePublished: "2023-10-25"
+summary: "An overview of how I made my blog in Next.js and MDX"
+---
+
+I recently decided to make a new blog, after having a dead link on my website for multiple years on end.
+
+I wanted it to be:
+
+1. Fast
+
+2. Simple and minimally designed
+
+3. Easy to manage, via CMS or other.
+
+## 1. Fast
+
+### The stack
+- NextJS
+- MDX
+- TailwindCSS
+- Contentlayer
+
+I decided to use Next.js, partially because I'm already familiar with it (due to that, I know it's fast in most situations), and partially because I've heard about MDX in Next.js, which I was curious about.
+
+I quite like Next.js, as you can tell.
+
+I also decided to use MDX over a traditional CMS like WordPress or Ghost because
+1. It's self contained, which is a pro versus something hosted elsewhere that can intermittently go down.
+2. I'm fairly comfortable with both Markdown (I use it for all my notes) and JSX (which is used in React).
+
+## 2. Simple
+
+TailwindCSS is the obvious choice here, due to it being a utility-first CSS framework, which means it's easy to make a simple design without having to write a lot of raw CSS.
+
+CSS is hard and I don't like dealing with it.
+
+Luckily, to get me writing even fewer styles, Tailwind also has a [typography plugin](https://tailwindcss.com/docs/typography-plugin) which has great looking defaults. All you need to do to use it is to
+
+```bash
+npm install @tailwindcss/typography
+```
+
+and 
+
+```js title="tailwind.config.js"
+module.exports = {
+    //...
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
+}
+```
+
+and \*tada*: I don't have to write styles for the main body of these blog posts.
+
+I kept everything else fairly simple and clean, with the other main point of interest being the font, which is neither Inter nor Montserrat.
+
+It is instead [Figtree](https://github.com/erikdkennedy/figtree) by Erik Kennedy, which I find fairly clean and its text readability on par with Inter. It looks very very good both as a header/title font (though I may change this eventually) and as a body font.
+
+## 3. Easy
+
+I ended up picking MDX for this, as I mentioned earlier, due to its familiarity to me despite me never using it. File routings are also a plus, as I can just make and edit a new file in the 'posts' folder and it'll be a new post.
+
+Instead of using a posts.json file with all my post metadata in that, I decided to pivot to a frontmatter-based system. I already have it included for SEO reasons, so I might as well use it for other metadata.
+Here's the one for this page, actually:
+```md
+---
+title: "Making my new Next.js MDX blog"
+datePublished: "2024-10-25"
+summary: "An overview of how I made my blog in Next.js and MDX"
+---
+```
+
+I then use Contentlayer to scan the directory, fetch the data, and return it as a json object. I then render the raw markdown using a helper tool in the Contentlayer library, and pass it to the MDX component to render
+like this: 
+
+```jsx
+export default function Page({ params }: { params: { slug: string } }) {
+  // Find the post for the current page.
+  const post = allPosts.find((post) => {
+    console.log(post._raw.flattenedPath);
+    return post._raw.flattenedPath === params.slug;
+  });
+// ...
+  return (
+    <div className={`mx-auto max-w-prose py-8`}>
+      {/*...*/}
+      <MDX code={post.body.code} />
+    </div>
+  );
+}
+```
+I've got a few components as well that I use when rendering to make things like photos look nice.
+
+## Conclusion
+It was quite fun making this, and it only took me like two days! Most of the issues was working out MDX issues and certain packages (like `remark-gfm`) having compat issues with Contentlayer.

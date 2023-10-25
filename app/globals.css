@@ -1,43 +1,13 @@
-:root {
-  --max-width: 1100px;
-  --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
-    'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
-    'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+@import url(https://fonts.bunny.net/css?family=figtree:300,300i,400,400i,500,500i|ibm-plex-mono:300i,300);
 
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --primary-glow: conic-gradient(
-    from 180deg at 50% 50%,
-    #16abff33 0deg,
-    #0885ff33 55deg,
-    #54d6ff33 120deg,
-    #0071ff33 160deg,
-    transparent 360deg
-  );
-  --secondary-glow: radial-gradient(
-    rgba(255, 255, 255, 1),
-    rgba(255, 255, 255, 0)
-  );
-
-  --tile-start-rgb: 239, 245, 249;
-  --tile-end-rgb: 228, 232, 233;
-  --tile-border: conic-gradient(
-    #00000080,
-    #00000040,
-    #00000030,
-    #00000020,
-    #00000010,
-    #00000010,
-    #00000080
-  );
-
-  --callout-rgb: 238, 240, 241;
-  --callout-border-rgb: 172, 175, 176;
-  --card-rgb: 180, 185, 188;
-  --card-border-rgb: 131, 134, 135;
+@layer base {
+  html {
+    font-family: "Figtree", "Inter", system-ui, sans-serif;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -105,4 +75,107 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+.prose blockquote {
+  @apply ml-2 border-l-[1px] font-extralight border-slate-500 not-italic;
+}
+
+.prose a {
+  @apply dark:text-purple-300 text-blue-700 hover:text-purple-500 transition-all dark:decoration-slate-700 decoration-slate-300 decoration-1 underline-offset-2;
+}
+
+.prose p,
+.prose li {
+  @apply dark:text-gray-300 text-gray-700 font-light mt-0;
+}
+
+.prose strong {
+  @apply font-medium;
+}
+
+.prose blockquote strong {
+  @apply font-semibold;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  @apply font-medium mb-4;
+}
+
+.prose pre {
+  @apply border border-neutral-800 bg-neutral-900;
+  text-wrap: balance;
+}
+
+.prose code {
+  @apply px-1 py-0.5 border border-neutral-100 dark:border-neutral-800 rounded-lg;
+}
+
+.prose pre code {
+  border: initial;
+}
+
+pre {
+  --tw-shadow-color: #0e1d1dc0;
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color),
+    0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+
+  
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+table {
+  display: block;
+  max-width: fit-content;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.prose > :first-child {
+  /* Override removing top margin, causing layout shift */
+  margin-top: 1.25em !important;
+  margin-bottom: 1.25em !important;
+}
+
+[data-rehype-pretty-code-fragment] code {
+  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-2 text-sm text-black;
+  font-family: "IBM Plex Mono", "Consolas", "Courier New", Courier, monospace;
+  counter-reset: line;
+  box-decoration-break: clone;
+}
+[data-rehype-pretty-code-fragment] .line {
+  @apply py-2;
+}
+[data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 1rem;
+  margin-right: 1rem;
+  text-align: right;
+  color: gray;
+}
+data-highlighted-line {
+  @apply bg-slate-500 bg-opacity-10;
+}
+[data-rehype-pretty-code-fragment] .line-highlighted span {
+  @apply relative;
+}
+[data-rehype-pretty-code-fragment] .word--highlighted {
+  @apply rounded-md bg-slate-500 bg-opacity-10 p-1;
+}
+[data-rehype-pretty-code-title] {
+  @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
+}
+[data-rehype-pretty-code-title] + pre {
+  @apply mt-0 rounded-t-none border-t-0;
 }
