@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { compareDesc, format, parseISO } from 'date-fns'
 import { allPosts, Post } from 'contentlayer/generated'
 import { timeAgo } from "helpers/helpers";
-import { useMDXComponent } from "next-contentlayer/hooks";
 
 const REASONABLE_LENGTH = 160
 
