@@ -10,6 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-figtree)'],
+        mono: ['var(--font-ibm-plex-mono)'],
+      },
       typography: {
         DEFAULT: {
           css: {

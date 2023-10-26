@@ -3,12 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html {
-    font-family: "Figtree", "Inter", system-ui, sans-serif;
-  }
-}
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -147,7 +141,6 @@ table {
 
 [data-rehype-pretty-code-fragment] code {
   @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-2 text-sm text-black;
-  font-family: "IBM Plex Mono", "Consolas", "Courier New", Courier, monospace;
   counter-reset: line;
   box-decoration-break: clone;
 }
