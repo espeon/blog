@@ -4,8 +4,8 @@ import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { notFound } from "next/navigation";
-import { timeAgo } from "helpers/helpers";
 import MDX from "app/components/mdx";
+import TimeAgo from "app/components/timeago";
 
 export async function generateMetadata({
   params,
@@ -59,7 +59,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       <Header />
       <h1 className="text-3xl mb-2 max-w-md">{post.title}</h1>
       <div className="text-sm mb-8 dark:text-gray-100 text-gray-800">
-        {format(parseISO(post.datePublished), 'MMM. dd, yyyy')} <span className="dark:text-gray-400 text-gray-700">({timeAgo(post.datePublished)})</span>
+        {format(parseISO(post.datePublished), 'MMM. dd, yyyy')} <span className="dark:text-gray-400 text-gray-700"><TimeAgo date={post.datePublished} /></span>
       </div>
       <MDX code={post.body.code} />
     </div>

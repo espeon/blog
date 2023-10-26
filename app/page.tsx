@@ -4,7 +4,7 @@ import Header from "./components/header";
 import Link from 'next/link'
 import { compareDesc, format, parseISO } from 'date-fns'
 import { allPosts, Post } from 'contentlayer/generated'
-import { timeAgo } from "helpers/helpers";
+import TimeAgo from "./components/timeago";
 
 const REASONABLE_LENGTH = 160
 
@@ -40,7 +40,7 @@ function PostCard(post: Post) {
         </Link>
       </h2>
       <div className="text-sm mb-2 dark:text-gray-100 text-gray-800">
-        {format(parseISO(post.datePublished), 'MMM. dd, yyyy')} <span className="dark:text-gray-400 text-gray-700">({timeAgo(post.datePublished)})</span>
+        {format(parseISO(post.datePublished), 'MMM. dd, yyyy')} <span className="dark:text-gray-400 text-gray-700"><TimeAgo date={post.datePublished} /></span>
       </div>
       <div className="text-sm mb-2"> {post.summary} </div>
       <div className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0" dangerouslySetInnerHTML={{ __html: firstParagraph }} />
