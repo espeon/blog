@@ -5,6 +5,7 @@ import {
   motion,
   useAnimation,
 } from "framer-motion";
+import dynamic from "next/dynamic";
 import {
   DetailedHTMLProps,
   HTMLAttributes,
@@ -37,8 +38,7 @@ function useDimensions(ref) {
 }
 
 const BounceText = ({ text }) => {
-  const componentRef =
-    useRef<DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>>();
+  const componentRef = useRef<HTMLDivElement>();
   const { width, coverWidth, offsetWidth, height } =
     useDimensions(componentRef);
   // Create a custom animation controller
@@ -92,4 +92,8 @@ const BounceText = ({ text }) => {
   );
 };
 
-export default BounceText;
+const BounceTextDynamic = dynamic(() => Promise.resolve(BounceText), {
+    ssr: false,
+    });
+
+export default BounceTextDynamic;

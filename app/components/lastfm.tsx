@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import BounceText from './bouncetext';
+import dynamic from 'next/dynamic';
 
 interface Track {
   name: string;
@@ -46,4 +47,8 @@ useEffect(() => {
   );
 };
 
-export default LastFm;
+const LastFmDynamic = dynamic(() => Promise.resolve(LastFm), {
+    ssr: false,
+    });
+
+export default LastFmDynamic;
