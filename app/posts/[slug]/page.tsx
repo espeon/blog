@@ -7,9 +7,7 @@ import { notFound } from "next/navigation";
 import MDX from "app/components/mdx";
 import TimeAgo from "app/components/timeago";
 
-export async function generateMetadata({
-  params,
-}): Promise<any | undefined> {
+export async function generateMetadata({ params }): Promise<any | undefined> {
   const post = allPosts.find((post) => {
     return post._raw.flattenedPath === params.slug;
   });
@@ -17,18 +15,14 @@ export async function generateMetadata({
     return;
   }
 
-  const {
-    title,
-    datePublished,
-    summary: description,
-  } = post;
+  const { title, datePublished, summary: description } = post;
   return {
     title,
     description,
     openGraph: {
       title,
       description,
-      type: 'article',
+      type: "article",
       publishedTime: datePublished,
       url: `blog.natalie.sh/posts/${post._raw.flattenedPath}`,
     },
@@ -59,7 +53,11 @@ export default function Page({ params }: { params: { slug: string } }) {
       <Header />
       <h1 className="text-3xl mb-2 max-w-md">{post.title}</h1>
       <div className="text-sm mb-8 dark:text-gray-100 text-gray-800">
-        {format(parseISO(post.datePublished), 'MMM. dd, yyyy')} <span className="dark:text-gray-400 text-gray-700"><TimeAgo date={post.datePublished} /></span>
+        {format(parseISO(post.datePublished), "MMM. dd, yyyy")}
+        <span className="dark:text-gray-400 text-gray-700">
+          {" "}
+          - <TimeAgo date={post.datePublished} />
+        </span>
       </div>
       <MDX code={post.body.code} />
     </div>

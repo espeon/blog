@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  @apply dark:bg-black bg-slate-200 dark:text-slate-300 text-black;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -40,13 +44,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-  height: 100%;
 }
 
 body {
