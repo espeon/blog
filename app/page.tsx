@@ -15,6 +15,7 @@ export default function Page() {
           round
           alt="My GitHub profile image"
           src="https://pcdn.nat.vg/crop?width=256&height=256&url=https://avatars.githubusercontent.com/u/22222885"
+          height="11rem"
         />
       </div>
       <h3 className="text-5xl text-gray-900 font-thick dark:text-gray-100 duration-300">

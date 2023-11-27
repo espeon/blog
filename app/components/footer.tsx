@@ -4,6 +4,7 @@ import { PiMusicNoteSimpleFill } from "react-icons/pi";
 import LastFm from "./lastfm";
 
 export default function Footer(props) {
+
   return (
     <main
       className={`min-w-full max-w-prose flex flex-row pb-4 items-baseline ${
@@ -22,6 +23,7 @@ export default function Footer(props) {
         <LastFm />
         </div>
       </Link>
+
       <ColorToggle />
     </main>
   );

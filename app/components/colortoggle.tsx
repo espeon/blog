@@ -5,7 +5,7 @@ import { IoMdMoon, IoMdSunny } from "react-icons/io";
 const other = (theme) => {
   if (theme === "dark") {
     return "light";
-  } else if (theme === "light") {
+  } else {
     return "dark";
   }
 };
