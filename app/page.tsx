@@ -10,7 +10,7 @@ import BounceText from "./components/bouncetext";
 export default function Page() {
   return (
     <div className="max-w-max x-8 py-5 sm:px-6 xl:pt-64 md:pt-32">
-      <div className="w-44 pb-4">
+      <div className="w-44 mb-4 h-[11rem]">
         <PrettyImage
           round
           alt="My GitHub profile image"
@@ -18,9 +18,9 @@ export default function Page() {
           height="11rem"
         />
       </div>
-      <h3 className="text-5xl text-gray-900 font-thick dark:text-gray-100 duration-300">
+      <h3 className="text-5xl text-gray-900 font-thick dark:text-gray-50 duration-75">
         hey,👋🏼 i'm{" "}
-        <span className="bg-gradient-to-tr dark:from-purple-400 dark:via-pink-400 dark:to-slate-500 from-purple-600 via-slate-600 to-pink-600 text-transparent bg-clip-text">
+        <span className="bg-gradient-to-tr dark:from-orange-300 dark:via-slate-200 dark:to-pink-500 from-orange-700 via-slate-500 to-pink-700 text-transparent bg-clip-text duration-150">
           natalie
         </span>
         .
@@ -42,7 +42,6 @@ export default function Page() {
           .
         </h4>
       </div>
-      <BounceText text="scroll down" />
       <h4 className="text-2xl font-extralight">
         you can also find me here:
         <IconRow />

@@ -22,9 +22,9 @@ const MyDisc = () => {
                 <FaChevronUp
                   className={`${
                     open
-                      ? "transform rotate-180 w-8 h-5 mt-1 opacity-60"
-                      : " w-0 h-5 opacity-0"
-                  } text-white transition-opacity duration-300`}
+                      ? "transform rotate-180 w-8 h-5 opacity-60 pt-2"
+                      : " w-0 h-5 rotate-180 opacity-0"
+                  } dark:text-white text-gray-700 transition-opacity duration-300`}
                 />
               </div>
               <span className={`text-lg opacity-${open ? 60 : 75}`}>
@@ -34,13 +34,13 @@ const MyDisc = () => {
                 </span>
               </span>
             </Disclosure.Button>
-            <div className="-mt-3 pt-2 text-base font-extralight min-w-full">
+            <div className="-mt-3 pt-2 text-base font-extralight min-w-full mb-16">
               <div
                 className={`transition-all duration-300 pb-2 ${
                   open ? "visible opacity-100 translate-y-3" : "h-0 opacity-0 select-none"
                 }`}
               >
-                weirdddd... anyways, continuing.{" "}
+                sure. well,{" "}
               </div>
               <div
                 className={`transition-all pb-2 ${
@@ -69,7 +69,7 @@ const MyDisc = () => {
               <div
                 className={`transition-all pb-2 ${
                   open
-                    ? "visible opacity-100 translate-y-3 delay-[1200ms] duration-300"
+                    ? "visible opacity-100 translate-y-3 delay-[1100ms] duration-300"
                     : "h-0 opacity-0 delay-0 duration-0 select-none"
                 }`}
               >
@@ -79,7 +79,7 @@ const MyDisc = () => {
               <div
                 className={`transition-all pb-2 ${
                   open
-                    ? "visible opacity-100 translate-y-3 delay-[1300ms] duration-300"
+                    ? "visible opacity-100 translate-y-3 delay-[1150ms] duration-300"
                     : "h-0 opacity-0 delay-0 duration-0 select-none"
                 }`}
               >
@@ -90,7 +90,7 @@ const MyDisc = () => {
               <div
                 className={`transition-all pb-2 ${
                   open
-                    ? "visible opacity-100 translate-y-3 delay-[1400ms] duration-300"
+                    ? "visible opacity-100 translate-y-3 delay-[1200ms] duration-300"
                     : "h-0 opacity-0 delay-0 duration-0 select-none"
                 }`}
               >

@@ -32,15 +32,14 @@ function useDimensions(ref) {
       height: ref.current?.offsetHeight ?? 0, // 0 is default height
       offsetWidth: ref.current?.scrollWidth ?? 0, // 0 is default width
       coverWidth: ref.current?.scrollWidth - ref.current?.offsetWidth ?? 0, // 0 is default width
-    })
+    })   
   );
   return useMemo(() => JSON.parse(dimensions), [dimensions]);
 }
 
 const BounceText = ({ text }) => {
   const componentRef = useRef<HTMLDivElement>();
-  const { width, coverWidth, offsetWidth, height } =
-    useDimensions(componentRef);
+  const { width, coverWidth, offsetWidth, height } = useDimensions(componentRef);
   // Create a custom animation controller
   const controls = useAnimation();
 
@@ -48,7 +47,7 @@ const BounceText = ({ text }) => {
   const sequence = async () => {
     console.log("widthToCover", coverWidth > 0);
     if (coverWidth > 0) {
-      console.log("set to scroll");
+      console.log("set to scroll -", [0, -coverWidth - 5]);
       await controls.start({
         x: [0, -coverWidth - 5],
         transition: {
@@ -72,9 +71,9 @@ const BounceText = ({ text }) => {
 
   // Start the animation sequence on mount
   useEffect(() => {
+    console.log("resized", width, " - ", text);
     sequence();
-    console.log("resized", width, coverWidth);
-  }, [width, height, offsetWidth]);
+  }, [width, text]);
 
   return (
     <div>
