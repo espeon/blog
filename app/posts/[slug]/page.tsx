@@ -25,6 +25,13 @@ export async function generateMetadata({ params }): Promise<any | undefined> {
       type: "article",
       publishedTime: datePublished,
       url: `blog.natalie.sh/posts/${post._raw.flattenedPath}`,
+      images: [
+        {
+          url: `https://ogimage-workers.kanbaru.workers.dev/?title=${title}&liner=${description}`,
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
   };
 }

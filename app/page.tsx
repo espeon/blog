@@ -9,7 +9,7 @@ import BounceText from "./components/bouncetext";
 
 export default function Page() {
   return (
-    <div className="max-w-max x-8 py-5 sm:px-6 xl:pt-64 md:pt-32">
+    <div className="max-w-max x-8 py-5 sm:px-6 xl:pt-64 md:pt-32 min-w-max">
       <div className="w-44 mb-4 h-[11rem]">
         <PrettyImage
           round

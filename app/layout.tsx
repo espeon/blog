@@ -28,12 +28,14 @@ export default function RootLayout({
     >
       <body>
         <Providers>
-          <div className="dark:bg-black bg-slate-200 dark:text-slate-300 text-black transition-all delay-100 w-[99vw] min-h-screen flex justify-center">
-            <div className="flex flex-col max-w-prose w-screen duration-300">
+          <div className="dark:bg-black bg-slate-200 dark:text-slate-300 text-black transition-all min-h-screen flex justify-center">
+            <div className="flex flex-col max-w-prose w-screen">
               <div className="w-full flex-grow">
                 {children}
               </div>
-              <Footer />
+              <div className="w-full">
+                <Footer />
+              </div>
             </div>
           </div>
         </Providers>

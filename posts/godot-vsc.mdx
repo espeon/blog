@@ -1,0 +1,61 @@
+---
+title: "Godot and VSCode: How to integrate them together"
+datePublished: "2024-03-12"
+summary: "Supercharge your game dev workflow by using VSCode instead of Godot's text editor"
+---
+
+When I was beginning with Godot, it was fairly daunting. Especially the text editor. 
+It didn't come with a lot of specific features I expect on modern text editors (pseudo IDEs lol). 
+After some time struggling with its internal editor, I finally decided to research ways to use VSCode instead.
+
+I love intellisense. It's the best. so good. and actual LSPs, oh my god.
+
+Anyways.
+
+This is the result of my research.
+
+### What?
+There are a few steps.
+1. Install Godot, and have it in your path
+2. Install VSCode and the godot-tools plugin
+3. Configure the plugin
+
+Easy, right? Let’s dive deeper into it, just in case.
+
+### Installing Godot
+This step is really important. You need to install Godot to use it, and you want to have it **in your path** to be able to use godot-tools easily.
+
+On MacOS:
+
+```sh
+brew install godot # or godot-mono
+```
+
+On Windows, if you have Scoop
+
+```sh
+scoop install godot # or godot-mono
+```
+
+I have a Mac, so the Windows instruction could be wrong, or there could be a better way to do it. Let me know either way (open an issue or PR)
+
+Either way, if you can run `godot --help` afterwards, you're good to go.
+
+You’ll want to set these options in your Editor settings at
+Text Editor > External
+
+Exec Path: Your VSCode executable - on MacOS it’s probably `/Applications/Visual Studio Code.app/Contents/MacOS/Electron`
+
+Exec Flags: `{project} --goto {file}:{line}:{col}`
+
+
+### Installing VSCode
+You probably have it, but if you don’t this should help: https://code.visualstudio.com
+
+The plugin you’ll need is godot-tools, found here: https://marketplace.visualstudio.com/items?itemName=geequlim.godot-tools
+
+It should auto-detect your Godot install given you have it in your path, and when you click on an item in Godot, it should automatically open your project and file in VSCode.
+
+### Configuring godot-tools
+You probably don’t need to. Though, if you didn’t follow step 1, you will need to change your editor path - it will prompt you in the bottom right corner.
+
