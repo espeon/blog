@@ -59,8 +59,37 @@ It should auto-detect your Godot install given you have it in your path, and whe
 ### Configuring godot-tools
 You probably don’t need to. Though, if you didn’t follow step 1, you will need to change your editor path - it will prompt you in the bottom right corner.
 
+### Configuring VSCode
+This is optional, but I find having a launch.json in your game dir to be useful, in case you need to launch your game from VSCode.
+
+In your `.vscode/launch.json` (make it if it's not there) add:
+
+```json
+{
+    "version": "2.0.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "godot",
+            "request": "launch",
+            "project": "${workspaceRoot}",
+            "scene": "main",
+        },
+        {
+            "name": "Launch Current Scene",
+            "type": "godot",
+            "request": "launch",
+            "scene": "current"
+        }
+    ]
+}
+```
+
+Note that the Launch Current Scene will launch the current scene *based on what file you're currently in*. So, if you have a `text.gd` file or whatever and it's connected to a `text.tscn` scene, it will launch the scene.
+
 ## After
 You’ll have intellisense, syntax highlighting, and more in VSCode. You can optionally use AI based tools like GitHub Copilot, and other VSCode extensions with your code without weird workarounds.
 
 #### Sources
 I got a large portion of this from [this reddit post by u/Elohssa](https://www.reddit.com/r/godot/comments/16ve6y3/how_to_get_vscode_working_nicely_with_godot_and/) and [this blog post by Morris Morrison](https://morrismorrison.blog/enhancing-your-workflow-setting-up-visual-studio-code-with-godot-and-net).
+Also, the [godot-tools github repo](https://github.com/godotengine/godot-vscode-plugin#godot-tools) helped a lot. 
