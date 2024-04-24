@@ -18,9 +18,9 @@ export default function Page() {
           height="11rem"
         />
       </div>
-      <h3 className="text-5xl text-gray-900 font-thick dark:text-gray-50 duration-75">
+      <h3 className="text-5xl text-gray-900 font-thick dark:text-gray-50 duration-75 ">
         hey,👋🏼 i'm{" "}
-        <span className="bg-gradient-to-tr dark:from-orange-300 dark:via-slate-200 dark:to-pink-500 from-orange-700 via-slate-500 to-pink-700 text-transparent bg-clip-text duration-150">
+        <span className="text-transparent bg-gradient-to-r from-purple-700 to-pink-500 bg-clip-text duration-150">
           natalie
         </span>
         .

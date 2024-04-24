@@ -63,7 +63,7 @@ function PostCard(post: Post) {
 }
 
 export default function Home() {
-  const posts = allPosts.sort((a, b) =>
+  const posts = allPosts.filter((post) => post.public).sort((a, b) =>
     compareDesc(new Date(a.datePublished), new Date(b.datePublished))
   );
 

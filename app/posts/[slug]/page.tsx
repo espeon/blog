@@ -6,6 +6,8 @@ import { useMDXComponent } from "next-contentlayer/hooks";
 import { notFound } from "next/navigation";
 import MDX from "app/components/mdx";
 import TimeAgo from "app/components/timeago";
+import { PiEyeClosed, PiWarning } from "react-icons/pi";
+import { NotPublicHover } from "app/components/notPublicHover";
 
 export async function generateMetadata({ params }): Promise<any | undefined> {
   const post = allPosts.find((post) => {
@@ -54,11 +56,10 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   // Parse the MDX file via the useMDXComponent hook.
   const MDXContent = useMDXComponent(post.body.code);
-
   return (
     <div className={`mx-auto w-full max-w-prose py-8`}>
       <Header />
-      <h1 className="text-3xl mb-2 max-w-md">{post.title}</h1>
+      <h1 className="text-3xl mb-2 max-w-md inline">{post.title}{post.public ? "" : <NotPublicHover/>}</h1>
       <div className="text-sm mb-8 dark:text-gray-100 text-gray-800">
         {format(parseISO(post.datePublished), "MMM. dd, yyyy")}
         <span className="dark:text-gray-400 text-gray-700">
