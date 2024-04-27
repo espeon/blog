@@ -1,0 +1,2569 @@
+---
+title: "The Complete SwiftUI Documentation You’ve Been Waiting For"
+datePublished: "2024-04-21"
+summary: "Go beyond Apple’s docs. Code examples, suggested best practices, and explanations of all the Views, controls, layouts, and more!"
+public: false
+---
+
+#### Copied from https://betterprogramming.pub/the-complete-swiftui-documentation-youve-been-waiting-for-fdfe7241add9. 
+I can't handle medium, sorry.
+
+## The Complete SwiftUI Documentation You’ve Been Waiting For
+
+
+
+### Go beyond Apple’s docs. Code examples, suggested best practices, and explanations of all the Views, controls, layouts, and more!
+
+
+
+*This article is best viewed on Chrome due to limitations with linking to sections on Medium.*
+
+
+
+![Photo by [Susan Yin](https://unsplash.com/@syinq?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)](https://cdn-images-1.medium.com/max/8790/1*ImJ9zJLX4s7_fKx8g7FjfQ.jpeg)
+
+
+
+[Apple’s SwiftUI documentation](https://developer.apple.com/documentation/swiftui) covers a lot of the basics of SwiftUI. But what about those gaps that still exist? We all know that the documentation is likely to be updated massively when WWDC comes in June 2020, but we can’t wait that long!
+
+
+
+Here is everything I’ve learned about every page of SwiftUI’s existing documentation. I won’t repeat what Apple has provided, but I’ll try to add what they don’t say. I’ll use the same categories for the sake of consistency, and definitely not because I’m too lazy to think of my own.
+
+
+
+Each category title will link directly to Apple’s version.
+
+
+
+I don’t expect anyone to read this entire post. If you do, I admire your dedication! I guess the Better Programming editors have to look it over, and I’m very grateful to them.
+
+
+
+What I recommend is that although you may not need all of this now, you may need it in the future, so it would probably help to bookmark it and come back to it later when you have gaps in your knowledge.
+
+
+
+I have gaps in my knowledge too, which is why I promise to update this post as often as I can. If there are areas you think I should clarify or cover in more detail, let me know!
+
+
+
+## Table of Contents
+
+
+
+  VIEWS AND CONTROLS
+
+  - [SwiftUI 2 changes](https://medium.com/better-programming/swiftui-views-and-controls-the-swift-2-documentation-youve-been-waiting-for-dfa32cba24f3)
+
+  - [The View protocol](#the-view-protocol)
+
+  - [Text](#text)
+
+  - [Text ViewModifiers](#text-viewmodifiers)
+
+  - [Standard text modifiers](#standard-text-modifiers)
+
+  - [TextField](#textfield)
+
+  - [TextField ViewModifiers](#textfield-viewmodifiers)
+
+  - [SecureTextField](#securetextfield)
+
+  - [SecureTextField ViewModifiers](#securetextfield-viewmodifiers)
+
+  - [Font](#font)
+
+  - [Image](#image)
+
+  - [SF Symbols](#sf-symbols)
+
+  - [Button](#button)
+
+  - [ButtonStyle](#buttonstyle)
+
+  - [NavigationView and NavigationLink](#navigationview-and-navigationlink)
+
+  - [EditButton](#editbutton)
+
+  - [MenuButton](#menubutton)
+
+  - [PasteButton](#pastebutton)
+
+  - [Toggle](#toggle)
+
+  - [Creating a custom ToggleStyle](#creating-a-custom-togglestyle)
+
+  - [Picker](#picker)
+
+  - [DatePicker](#datepicker)
+
+  - [Slider](#slider)
+
+  - [Stepper](#stepper)
+
+
+
+  VIEW LAYOUT AND PRESENTATION
+
+  - [HStack, VStack, and ZStack](#hstack-vstack-and-zstack)
+
+  - [List, ScrollView, ForEach, and DynamicViewContent](#list-scrollview-foreach-and-dynamicviewcontent)
+
+  - [Identifiable](#identifiable)
+
+  - [Axis](#axis)
+
+  - [Form](#form)
+
+  - [Group](#group)
+
+  - [GroupBox](#groupbox)
+
+  - [Section](#section)
+
+  - [Spacer](#spacer)
+
+  - [Divider](#divider)
+
+  - [TabView](#tabview)
+
+  - [VSplitView and HSplitView](#vsplitview-and-hsplitview)
+
+  - [Alert](#alert)
+
+  - [ActionSheet](#actionsheet)
+
+  - [EmptyView](#emptyview)
+
+  - [EquatableView](#equatableview)
+
+  - [AnyView](#anyview)
+
+  - [TupleView](#tupleview)
+
+
+
+  DRAWING AND ANIMATION
+
+  - [Animation](#animation)
+
+  - [Animatable and AnimatableData](#animatable-and-animatabledata)
+
+  - [AnimatablePair](#animatablepair)
+
+  - [EmptyAnimatableData](#emptyanimatabledata)
+
+  - [AnimatableModifier](#animatablemodifier)
+
+  - [withAnimation (Implicit Animation)](#withanimation-implicit-animation)
+
+  - [AnyTransition](#anytransition)
+
+  - [InsettableShape](#insettableshape)
+
+  - [FillStyle](#fillstyle)
+
+  - [ShapeStyle](#shapestyle)
+
+  - [GeometryEffect](#geometryeffect)
+
+  - [Angle](#angle)
+
+  - [Edge and EdgeInsets](#edges-and-edgeinsets)
+
+  - [Rectangle, RoundedRectangle, Circle, Ellipse, and Capsule](#rectangle-roundedrectangle-circle-ellipse-and-capsule)
+
+  - [Path](#path)
+
+  - [ScaledShape, RotatedShape, and OffsetShape](#scaledshape-rotatedshape-and-offsetshape)
+
+  - [TransformedShape](#transformedshape)
+
+  - [Color](#color)
+
+  - [ImagePaint](#imagepaint)
+
+  - [Gradients (Linear/Angular/Radial)](#gradients-linearangularradial)
+
+  - [GeometryReader and GeometryProxy](#geometryreader-and-geometryproxy)
+
+  - [CoordinateSpace](#coordinatespace)
+
+
+
+  FRAMEWORK INTEGRATION
+
+  - [UIHostingController](#uihostingcontroller)
+
+  - [UIViewRepresentable](#uiviewrepresentable)
+
+  - [UIViewControllerRepresentable](#uiviewcontrollerrepresentable)
+
+  - [DigitalCrownRotationalSensitivity](#digitalcrownrotationalsensitivity)
+
+
+
+  STATE AND DATA FLOW
+
+  - [State](#state)
+
+  - [Binding](#bindine)
+
+  - [ObservedObject](#observedobject)
+
+  - [EnvironmentObject](#environmentobject)
+
+  - [FetchRequest and FetchedResults](#fetchrequest-and-fetchedresults)
+
+  - [DynamicProperty](#dynamicproperty)
+
+  - [Environment](#environment)
+
+  - [PreferenceKey](#preferencekey)
+
+  - [LocalizedStringKey](#localizedstringkey)
+
+
+
+  GESTURES
+
+  - [Gestures](#gestures)
+
+
+
+  PREVIEWS
+
+  - [The PreviewProvider protocol](#the-previewprovider-protocol)
+
+
+
+## [Views and Controls](https://developer.apple.com/documentation/swiftui/views_and_controls)
+
+
+
+See also: [SwiftUI 2 changes](https://medium.com/better-programming/swiftui-views-and-controls-the-swift-2-documentation-youve-been-waiting-for-dfa32cba24f3)
+
+
+
+### The View protocol
+
+
+
+If you aren’t already aware, SwiftUI uses the View protocol to create reusable interface elements. Views are value types, which means they use a Struct instead of a Class definition.
+
+
+
+What does this actually mean in practice?
+
+
+
+Structs do not allow inheritance. Although your structs conform to the View protocol, they do not inherit from a base class called View that Apple has provided.
+
+
+
+This makes it different from [UIView](https://developer.apple.com/documentation/uikit/uiview), from which almost everything in UIKit inherits. A UIView basically cannot be seen without being assigned a frame and being added as a subview of a UIViewController subclass.
+
+
+
+If you create a new Xcode project that uses SwiftUI instead of Storyboard as the basis of its user interface, you’ll automatically be given an example of a SwiftUI View called ContentView.
+
+
+
+You’ll notice that inside the ContentView struct, there is a variable called body. This is the sole requirement of the View protocol, and it makes use of the some keyword which is brand new to Swift 5.1.
+
+
+
+You can rely on a [Stack Overflow thread](https://stackoverflow.com/questions/56433665/what-is-the-some-keyword-in-swiftui) to explain what this keyword means, better than I ever could:
+
+> “You can think of this as being a "reverse" generic placeholder. Unlike a regular generic placeholder which is satisfied by the caller… An opaque result type is an implicit generic placeholder satisfied by the implementation… The main thing to take away from this is that a function returning some P is one that returns a value of a specific single concrete type that conforms to P.”
+
+
+
+Let’s get started looking at the example views that Apple provides that conform to the View protocol.
+
+
+
+### Text
+
+
+
+See also: [Text (Updated in 2.0)](https://medium.com/better-programming/swiftui-views-and-controls-the-swift-2-documentation-youve-been-waiting-for-dfa32cba24f3#ab2f)
+
+
+
+That example project that you get when creating a SwiftUI Xcode project includes probably the most simple building block for a view, and it’s called Text.
+
+
+
+In most cases, you’ll be passing a String to the constructor of this, and that will be the content it displays.
+
+
+
+Here are some examples of all the initializers for Text:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/3de8fe2271d254f215d13a9f4c2f3fab" frameborder=0></iframe>
+
+
+
+Note that the last initializer, the one that takes a LocalizedStringKey, tableName, bundle, and comment, requires a separate file that uses the .strings file extension.
+
+
+
+As is mentioned in [Apple’s documentation for this initializer](https://developer.apple.com/documentation/swiftui/text/3065754-init), the only required parameter is the string for the key. I gave a verbose example mostly so that you can see what these other parameters require.
+
+
+
+The default of tableName is Localizable, the standard name for a strings file. I deliberately named mine Local to show why I would need this parameter.
+
+
+
+The bundle is the main bundle by default, so passing Bundle.main is redundant in this case.
+
+
+
+The comment should give contextual information, but in this example, I’ve just given it the string Comment.
+
+
+
+The Texts here are embedded in a VStack because the body variable’s opaque result type has to be set to one type. In other words, it can’t be set to several items because this could involve several types.
+
+
+
+Although VStack can contain up to ten views inside it, each of these can be a VStack, HStack, or Group and each can have ten types inside it.
+
+
+
+Scroll down to [HStack, VStack, and ZStack](#978e) for more details on these.
+
+
+
+### Text ViewModifiers
+
+
+
+Text, like all Views, can be modified by structs that conform to the ViewModifier protocol.
+
+
+
+Let’s see an example of a custom modifier so you can see what’s happening under the surface with these:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/e63fb4a120871ee959120a490e280859" frameborder=0></iframe>
+
+
+
+As you can see, it would be possible to add .modifier(YourModifier()) to call a ViewModifier, but it makes a lot more sense to use a View extension and give a clean call site.
+
+
+
+This is the way the standard modifiers look, so making a View extension will make your modifiers look much more like the default ones.
+
+
+
+It will be difficult to create a ViewModifier that is easier to write than the defaults without this, as starting your modifier with the word “modifier” and calling its constructor adds unnecessary complexity.
+
+
+
+### Standard text modifiers
+
+
+
+![All the sizes and weights of the default font](https://cdn-images-1.medium.com/max/2000/1*njuArl4UWz3pwLyyeERRUQ.png)
+
+
+
+In this example, I put a red border around the VStack that holds the font alignments. This was to show that the boundaries of this VStack are limited because the Texts inside have a fixed maximum size.
+
+
+
+Without this, alignment for the Texts has no effect, as the VStack container will expand to accommodate the Texts inside.
+
+
+
+To align to a leading (left)or trailing (right) edge, we need to define where that leading or trailing edge is going to be. This can also be achieved by fixing the width of the VStack itself.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/136f01bb1b878f6afd289b7eb1879d2e" frameborder=0></iframe>
+
+
+
+![](https://cdn-images-1.medium.com/max/2000/1*5AX1Z8rImCB5LppN1ynK3A.png)
+
+
+
+Notice how this example has created extensions on Text instead of View. This is because you can only guarantee that the received type will be a Text in this case.
+
+
+
+It is impossible to do the equivalent to greenStrikethrough or redUnderline by creating a ViewModifier or View extension because these take a generic View that may not be a Text.
+
+
+
+Now that you know this, you can make your own custom functions that customize Text, without the intermediary step of creating ViewModifiers I mentioned above.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/b8bd4e526c994cb4838fb30e2e7e9df7" frameborder=0></iframe>
+
+
+
+### TextField
+
+
+
+If you want a user to enter text, you’ll need a binding to store that data. This first example uses a State variable, which stores the string locally in the SwiftUI struct and doesn’t actually save it anywhere you can use it or store it permanently.
+
+
+
+If you want to hold onto your data and be able to give it a computed value, you’ll need an ObservableObject. This essentially gives you a regular Swift file to store your data in, which will get pretty useful once you start adding controls that can modify data values.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/a1b1d7cfd06b9fc8281f30d0f0cec000" frameborder=0></iframe>
+
+
+
+You don’t need to provide a didSet closure for the string value that you saved, I’m just providing an example to show when didSet runs. My DataModel class is a normal Swift class, so its didSet closure runs and prints the new value of the string.
+
+
+
+However, since SwiftUI views are value types that are created dynamically, the didSet callback does not print anything to the console when you modify the local State variable.
+
+
+
+Did you notice how some of the later initializers use a Float instead of a String?
+
+
+
+These initializers will take any type, but be careful to pass in one of the provided [Formatter](https://developer.apple.com/documentation/foundation/formatter) classes, or make one yourself.
+
+
+
+In my example, I use NumberFormatter, which will not let you input any character that isn’t a number. This makes it easy for me to save my Float without worrying that the app will crash because I can’t convert a string of letters into the Float that stores the TextField’s value.
+
+
+
+The other initializers also have two closures, the first of which is onEditingChanged.
+
+
+
+[Apple’s documentation on this TextField initializer](https://developer.apple.com/documentation/swiftui/textfield/3338359-init) doesn’t mention what the bool inside the closure indicates, but testing seems to show that it relates to the TextField being given focus.
+
+
+
+Have you ever called [resignFirstResponder](https://developer.apple.com/documentation/uikit/uiresponder/1621097-resignfirstresponder) on a UITextField in UIKit?
+
+
+
+This essentially dismisses the keyboard because the UITextField no longer needs focus. Even if you could bring the keyboard back at some point, text would not be inserted into that UITextField unless you made it the first responder again.
+
+
+
+That all relates to UIResponder, an abstract interface from which UIView, UIViewController, and basically everything else in UIKit inherits.
+
+
+
+We don’t know how SwiftUI events are handled to the same extent, but I’m using the phrase *first responder* as it should be familiar to anyone who has used UITextField.
+
+
+
+The bool in onEditingChanged can be called fieldActive or anything else you want that makes it clear to you.
+
+
+
+The important thing is that when you start to edit a TextField, onEditingChanged is called with a bool that is set to true. When you press the keyboard’s return key, the onCommit block is called, after which onEditingChanged is called with a bool that is set to false.
+
+
+
+### TextField ViewModifiers
+
+
+
+For a more detailed explanation of what ViewModifiers are, see [Text ViewModifiers](#137d).
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/3b390e1e7ab676468516b1f5caf19c64" frameborder=0></iframe>
+
+
+
+You cannot currently change the foreground color of the placeholder text in a TextField. At the time that I’m writing this, you cannot use any keyboard type for a TextField other than the default when displaying TextFields in a List.
+
+
+
+I found that trying to display TextFields in a List caused them to overlap each other too. Here are all of the keyboard types which seem to work pretty well when presented in a VStack:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/be366d98f7bb51b832ddc2c1636df1f1" frameborder=0></iframe>
+
+
+
+### SecureTextField
+
+
+
+Essentially the same as TextField above with the added benefit of hiding the characters you enter, which is useful for passwords. As with TextField above, you can choose a variety of keyboard types, of which only numberPad is shown here.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/e00758209d2c935f243631b7672c4653" frameborder=0></iframe>
+
+
+
+### SecureTextField ViewModifiers
+
+
+
+For a more detailed explanation of ViewModifiers, see [Text ViewModifiers](#137d).
+
+
+
+Similar to TextField, you can change the foreground or background colors, add a border, and use different TextFieldStyles, but you cannot change the foreground color of the placeholder text at this time.
+
+
+
+### Font
+
+
+
+I can’t expand much on what Apple’s documentation says about Font, so I’ve provided a simple way to use custom fonts in the same way as Apple’s standard fonts:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/2efe657520b8942082c535775a588086" frameborder=0></iframe>
+
+
+
+Notice how I’ve made extensions for both Font and View. You don’t have to use extensions, as you can see when I use Font.custom directly. All of these methods result in the same Text, so it’s just a matter of which code you find to be the cleanest.
+
+
+
+The absolute easiest to write is the View extension, which doesn’t require you to pass anything into the function.
+
+
+
+The Font extension is more consistent with the way standard Apple fonts are assigned, for example, .font(.headline).
+
+
+
+### Image
+
+
+
+See also: [Image (Updated in SwiftUI 2.0)](https://medium.com/better-programming/swiftui-views-and-controls-the-swift-2-documentation-youve-been-waiting-for-dfa32cba24f3#fd7f)
+
+
+
+[Images](https://developer.apple.com/documentation/swiftui/image) in SwiftUI are much easier than in UIKit. Instead of needing to create a UIImage(named: “Your file name”) and assigning it to yourUIImageView.image, Image is about as easy to create as Text.
+
+
+
+Just pass it a String and it’ll set it to a file with that name. If you launch your app and it doesn’t have a file with that name, you’ll get a useful console message saying:
+
+
+
+  No image named ‘Your file name’ found in asset catalog for main bundle. 
+
+
+
+If you find images not turning up in your app, you may want to search for this in the console.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/d37afcef47f06ca24804d520f7d46759" frameborder=0></iframe>
+
+
+
+**Image is not resizable by default**
+
+
+
+You must call the .resizable() modifier on your Image before making changes to its size in subsequent modifiers.
+
+
+
+The scaledToFit modifier will lock the aspect ratio of your image and scale it to the maximum size it can be without being too large for the screen.
+
+
+
+The scaledToFill modifier also scales your image, but it does not lock the aspect ratio and, subsequently, is likely to stretch or shrink your image to fit the available space.
+
+
+
+### SF Symbols
+
+
+
+If you aren’t familiar with them, [SF Symbols](https://developer.apple.com/design/human-interface-guidelines/sf-symbols/overview/) is a library of over 1500 symbols that Apple provides in nine weights from ultralight to black.
+
+
+
+To use these in your images, simply label the String you pass into your Image as systemName. It’s probably worth downloading the [SF Symbols Mac app](https://developer.apple.com/design/downloads/SF-Symbols.dmg) so that you can find out what the system name is for the symbols you want to use.
+
+
+
+Using SF Symbols gives your app a consistent look that will probably be taking over the iOS ecosystem in the coming years due to the flexibility and accessibility of these free symbols.
+
+
+
+### Button
+
+
+
+See also: [Button (Updated in 2.0)](https://medium.com/better-programming/swiftui-views-and-controls-the-swift-2-documentation-youve-been-waiting-for-dfa32cba24f3#4777)
+
+
+
+A [Button](https://developer.apple.com/documentation/swiftui/button) has no appearance of its own. In other words, you will need to give your Button a Label, which itself is any concrete type that conforms to View.
+
+
+
+The most obvious example of this is a Text that will give information on what your button will do. At the time that I’m writing this, the only thing Apple specifies in the documentation (other than how to create and style them) is that buttons are triggered differently depending on your operating system.
+
+
+
+On iOS, you tap on it, on tvOS, you press enter when the button is selected, and in a macOS app with or without Catalyst, which Apple doesn’t mention, you click with a mouse or trackpad.
+
+
+
+The constructor requires that you give an action. This can be an empty set of curly braces, but it has to be there in this form at the very least.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/3b7ddf30d1e854f4263d24b5961e2d9d" frameborder=0></iframe>
+
+
+
+As well as specifying your functionality in the curly braces, which can get verbose pretty fast, you can also specify the name of a function *without curly braces and without the () call operator. *This is not binding the action to a variable, which means that you do not need the $ operator that you’ll find on controls that take a binding such as a Toggle.
+
+
+
+### ButtonStyle
+
+
+
+Some controls allow you to choose existing styles, such as those that conform to ButtonStyle in this case. That also means that you can create your own custom styles for a Button, details of how to do that can be found on [SwiftUI Lab’s Custom Styling tutorial](https://swiftui-lab.com/custom-styling/).
+
+
+
+As you might see in the comment I made on that post, SliderStyle does not currently exist (although it is documented on Apple’s website). Let’s go through the existing styles for buttons and see them in action.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/7f6c458c512afecee6322fdf883d1d6f" frameborder=0></iframe>
+
+
+
+Note that some are only available on MacOS.
+
+
+
+### NavigationView and NavigationLink
+
+
+
+See also: [NavigationView (Updated in 2.0)](https://medium.com/better-programming/view-layout-and-presentation-in-swiftui-705b7d81f03#3320)
+
+
+
+Embedding your Views in a NavigationView allows you to set a navigation title and link to other Views. Similarly to Button, a NavigationLink requires a Label which is basically any struct that conforms to the View protocol.
+
+
+
+In most cases, this will probably be a Text or Image, but it can also be any custom view that you create.
+
+
+
+The View that is the destination of your link slides in from the right on an iPhone, and each successive NavigationLink slides in the same way. When returning to the initial View, you can swipe from the left edge or use the back button in the top-left of the navigation bar.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/2265a9f431146c13ce283b3a4c7ed638" frameborder=0></iframe>
+
+
+
+This example is from my watch app Dog HQ that shows a scrolling list of full-sized dog photos, each of which links to a zoomed-in version.
+
+
+
+This is why I need to pass the index to the constructor of my zoomed-in DogView, so that I know which dog I want to be the destination.
+
+
+
+Combining a List, which scrolls vertically and expands to any size I want, with a ForEach allows me to create 50 rows and pass that index into the closure with a name I specify.
+
+
+
+The iteration for the ForEach could be a sequence that has a maximum of the number of items in an array, or the array could be passed into the constructor for a List and accessed inside the closure with a name you specify.
+
+
+
+Obviously, I’m just scratching the surface with this array. The array could contain complex types, such as a custom class that has a string property called imageName, a number value, or perhaps even an instance of another class, which you can access using the dot syntax.
+
+
+
+The navigation bar at the top of the screen can contain a leading and trailing button. The main use for this seems to be adding an EditButton, which is described in detail below.
+
+
+
+### EditButton
+
+
+
+An edit button is pretty useful when you have a List of items and you want to make it possible to delete some of them. Tapping it takes you into edit mode (unsurprisingly), showing a red circle with a horizontal line through it on each row.
+
+
+
+Tapping *Edit* will slide the row to the left, revealing a delete button on the right end that acts as a final confirmation.
+
+
+
+You still need to implement a function that will handle deleting the data from the list, otherwise, your changes will only be visual and your data won’t actually be deleted in the way you expect.
+
+
+
+For more information on using EditButton, see [List, ScrollView, ForEach, and DynamicViewContent](#c810).
+
+
+
+### MenuButton
+
+
+
+![Four menuButtonStyle options are currently available](https://cdn-images-1.medium.com/max/3176/1*p1vREzJj2wY4bvFHIzXwUw.png)
+
+
+
+MenuButton is only available on macOS apps, so I’ve provided a Mac app example that uses all of the standard .menuButtonStyle options.
+
+
+
+From left to right, these styles are BorderlessButtonMenuButtonStyle, BorderlessPullDownMenuButtonStyle, and PullDownMenuButtonStyle.
+
+
+
+If the one on the far right looks a lot like the one next to it, it’s because it uses DefaultMenuButtonStyle.
+
+
+
+Since the default MenuButton has the appearance of PullDownMenuButtonStyle, these look exactly the same.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/906c942b90bf36c05557ef34316e50f9" frameborder=0></iframe>
+
+
+
+### PasteButton
+
+
+
+See also: [PasteButton (Updated in 2.0)](https://medium.com/better-programming/swiftui-views-and-controls-the-swift-2-documentation-youve-been-waiting-for-dfa32cba24f3#ec57)
+
+
+
+This control allows you to paste information on MacOS, but it is not available on iOS. It can take a variety of data types, which are expressed as UTI types.
+
+
+
+I’ve included a function in my example that lets you find the UTI string for any type, which will probably help you when implementing this button. Once you have decided what type identifiers you need, you will need to handle the data that you get from the NSItemProvider.
+
+
+
+I’ve shown an example where I only paste the first item in the array, but hopefully it makes it clear how you could handle other data types and multiple items.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/89ca4baf364e3a91c01e54bf60a60db5" frameborder=0></iframe>
+
+
+
+Here’s a list of the types that conform to [NSItemProviderWriting](https://developer.apple.com/documentation/foundation/nsitemproviderwriting), and can therefore be used for pasting with the PasteButton:
+
+
+
+* [CNContact](https://developer.apple.com/documentation/contacts/cncontact)
+
+
+
+* [CNMutableContact](https://developer.apple.com/documentation/contacts/cnmutablecontact)
+
+
+
+* [CSLocalizedString](https://developer.apple.com/documentation/corespotlight/cslocalizedstring)
+
+
+
+* [MKMapItem](https://developer.apple.com/documentation/mapkit/mkmapitem)
+
+
+
+* [NSAttributedString](https://developer.apple.com/documentation/foundation/nsattributedstring)
+
+
+
+* [NSMutableString](https://developer.apple.com/documentation/foundation/nsmutablestring)
+
+
+
+* [NSString](https://developer.apple.com/documentation/foundation/nsstring)
+
+
+
+* [NSTextStorage](https://developer.apple.com/documentation/uikit/nstextstorage)
+
+
+
+* [NSURL](https://developer.apple.com/documentation/foundation/nsurl)
+
+
+
+* [NSUserActivity](https://developer.apple.com/documentation/foundation/nsuseractivity)
+
+
+
+* [UIColor](https://developer.apple.com/documentation/uikit/uicolor)
+
+
+
+* [UIImage](https://developer.apple.com/documentation/uikit/uiimage)
+
+
+
+You can also conform to this protocol with your own custom types, allowing you to paste custom types of data.
+
+
+
+### Toggle
+
+
+
+See also: [Toggle (Updated in 2.0)](https://medium.com/better-programming/swiftui-views-and-controls-the-swift-2-documentation-youve-been-waiting-for-dfa32cba24f3#e003)
+
+
+
+Toggle is the SwiftUI equivalent of UISwitch in UIKit. Instead of having an IBAction function that links your Swift code to a UISwitch on a Storyboard and runs when its value changes, SwiftUI uses bindings.
+
+
+
+Without marking a variable as State (within the struct) or Published (in an outside class conforming to ObservableObject), SwiftUI will not redraw the contents of the View when the value changes.
+
+
+
+This is an essential part of the binding process, especially marking outside code as Published, as this is the only way that SwiftUI will even be aware of that variable’s existence.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/7f528ec908246e3e499ff6c37fd8a3bf" frameborder=0></iframe>
+
+
+
+### Creating a custom ToggleStyle
+
+
+
+I noticed that the initializer for Toggle can take a struct called [ToggleStyleConfiguration](https://developer.apple.com/documentation/swiftui/togglestyleconfiguration), and I spent a while trying to figure out how to construct this myself.
+
+
+
+What I found, with a lot of help from [SwiftUI Lab’s excellent tutorial on custom styling](https://swiftui-lab.com/custom-styling/), was that the protocol ToggleStyle provides the ability to make your own custom styles.
+
+
+
+Part of the way it allows you to do this is the following line:
+
+
+
+  typealias [ToggleStyle](https://developer.apple.com/documentation/swiftui/togglestyle).Configuration = [ToggleStyleConfiguration](https://developer.apple.com/documentation/swiftui/togglestyleconfiguration)
+
+
+
+This syntax perplexed me at first.
+
+
+
+Using a typealias here is just a way of referring to the struct with a more succinct local name. This is probably so that the makeBody function, seen below, can have the same declaration signature as the similar protocols ButtonStyle, PickerStyle, and TextFieldStyle:
+
+
+
+  func makeBody(configuration: Self.Configuration) -> some View
+
+
+
+I didn’t want to create a custom visual appearance for the Toggle here, as this is already covered pretty well by [SwiftUI Lab’s tutorial](https://swiftui-lab.com/custom-styling/).
+
+
+
+Instead, I decided I would change how the label is treated by completely ignoring the label that is passed in and giving two dynamic labels that change based on the toggle’s isOn state:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/b9caf6193e61967af5f1cd556351af44" frameborder=0></iframe>
+
+
+
+There are two examples here, but they look exactly the same. One uses the rather verbose form using the .toggleStyle modifier, just as the standard ToggleStyles do.
+
+
+
+The other uses an extension on Toggle that returns this verbose form, providing a clean call site but becoming inconsistent with the way the standard ToggleStyles look.
+
+
+
+It’s up to you which of these you prefer. It goes without saying that you do not need to have local variables in the MyToggleStyle struct, a lack of which would remove the need to pass values into the constructor.
+
+
+
+I only did this to show how you can pass custom values in, but you cannot change the signature of the makeBody function.
+
+
+
+In other words, makeBody can only take a Self.Configuration parameter. By constructing a struct with uninitialized variables, we have another way to pass values alongside the isOn binding and Label from the Toggle constructor.
+
+
+
+MyToggleStyle does not make use of configuration.label, which is the value of Text(“This label will never be seen”) we added. It isn’t necessary to add this label, as a Toggle can be constructed without it, but it was worth pointing out how a custom ToggleStyle can hide whatever it wants.
+
+
+
+Since makeBody returns some View, you can return whatever you want. You could return a Text, Button, Image, or even a VStack, although I have no idea why you’d want to do that.
+
+
+
+### Picker
+
+
+
+![](https://cdn-images-1.medium.com/max/4512/1*2SUSX_fuhaAu8QQgJ40u_g.png)
+
+
+
+As was mentioned in the [Hacking With Swift tutorial on Pickers](https://www.hackingwithswift.com/quick-start/swiftui/pickers-in-forms), the default behavior of a Picker inside a Form is to take you to another where you can choose an option.
+
+
+
+On iOS you must put the Form inside a NavigationView, otherwise, this navigation will not occur. Outside of a Form, the DefaultPickerStyle will be WheelPickerStyle.
+
+
+
+I have also included SegmentedPickerStyle which has a similar appearance to UISegmentedControl in UIKit.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/a03bdbb77aaac1e2971a593fa758bad9" frameborder=0></iframe>
+
+
+
+### DatePicker
+
+
+
+See also: [DatePicker (Updated in 2.0)](https://medium.com/better-programming/swiftui-views-and-controls-the-swift-2-documentation-youve-been-waiting-for-dfa32cba24f3#9756)
+
+
+
+![](https://cdn-images-1.medium.com/max/3436/1*0It5uQqPxp4uCrMoc94fEg.png)
+
+
+
+DatePicker is similar to Picker, but doesn’t have all the same styles. When used inside a Form, the DatePicker only takes up a single line.
+
+
+
+As you can see in the screenshot above, the default DatePicker in a Form has a label and the current date. Tapping it will cause a DatePicker to slide out underneath.
+
+
+
+The DatePicker that slides out is exactly the same as the WheelDatePickerStyle, which is why it looks like it is displayed now when actually I just have a WheelDatePickerStyle underneath it.
+
+
+
+I added a Picker that you can use to try out different date formats, just to show how you could change the format of a DatePicker at runtime.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/f651953e2ed2387c617a5ed71439e268" frameborder=0></iframe>
+
+
+
+### Slider
+
+
+
+A slider allows you to swipe the thumb, a white circle, between a minimum and maximum value. This is similar to UISlider in UIKit. When you create it you have to set a closed range so that SwiftUI knows what the minimum and maximum values will be.
+
+
+
+The step can be set to any amount, potentially saving you from needing to convert a long Float to an Int if you don’t need your value to be a decimal.
+
+
+
+This also helps you to increase or decrease the amount of accuracy that the slider position is recorded in, potentially making it easier to make calculations by excluding decimal places past the step amount you specify.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/9e7ab6f4e269a52069b3b4da00b8c17e" frameborder=0></iframe>
+
+
+
+### Stepper
+
+
+
+A Stepper in SwiftUI is basically identical to a UIStepper in UIKit. It consists of a connected minus and plus button.
+
+
+
+Not all of the initializers require you to set a binding variable to store the value. Many of them take closures that are called when you decrement, increment, or edit the value of the Stepper.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/399972873ce57389eb40a64bca463cc6" frameborder=0></iframe>
+
+
+
+## [View Layout and Presentation](https://developer.apple.com/documentation/swiftui/view_layout_and_presentation)
+
+
+
+![VStacks are vertical, HStacks are horizontal, and ZStacks are layered stacks of up to ten views](https://cdn-images-1.medium.com/max/2634/1*cuvW37xaxtfq78soOTT9Sw.png)
+
+
+
+### HStack, VStack, and ZStack
+
+
+
+Although they are always written vertically, these stacks arrange their children in different directions.
+
+
+
+VStack is a useful starting point for any app, as you can quickly fill a phone screen with up to ten children (and all of their descendants).
+
+
+
+HStack will use the available horizontal space to layout its children which might not allow a lot of space on a portrait-oriented phone screen. This is useful when you want to put a Text label next to a control, such as in a List (see below).
+
+
+
+### List, ScrollView, ForEach, and DynamicViewContent
+
+
+
+See also: [List (Updated in 2.0)](https://medium.com/better-programming/view-layout-and-presentation-in-swiftui-705b7d81f03#51f2)
+
+See also: [ForEach & DynamicViewContent (Updated in 2.0)](https://medium.com/better-programming/view-layout-and-presentation-in-swiftui-705b7d81f03#c1f5)
+
+
+
+As was mentioned in the example for NavigationLink, a List is a scrolling view that will grow vertically to accommodate a dynamic number of rows. Similar to UITableView in UIKit, but without any of the work.
+
+
+
+You can either add static data to the List in much the same way as a VStack, placing one View on top of another, or you can use a ForEach.
+
+
+
+ForEach lets you loop through a collection such as an array and display a vast amount of data in a standardized way each time.
+
+
+
+ScrollView enables scrolling on whichever VStack or HStack is embedded inside it. The default ScrollView scrolls vertically, even if the direct child of the ScrollView is an HStack.
+
+
+
+This means that you have to use ScrollView(.horizontal) if you intend to override this behavior. You can still use them with a ForEach as you would a List, but the extra layer of a VStack or HStack makes this a more complicated way.
+
+
+
+VStacks, of course, do not have rows that have a similar appearance to UITableView cells in UIKit. A List that is made up of Text, for instance, will just pile those Texts on top of one another without dividers.
+
+
+
+It would be possible to make a custom View that imitates these rows, or gives your rows a totally different appearance.
+
+
+
+But it’s probably best to use List unless you need horizontal scrolling.
+
+
+
+List would also support custom rows and it has other features that a ScrollView with a VStack lacks.
+
+
+
+When an EditButton has been added to a View that contains a List, you can rearrange or delete items in the List.
+
+
+
+If you don’t have a method that gets called in this situation, the row of your List will disappear, but you will still have the data behind it unaffected. Next time you start the app after swiping to delete a row, that row will return because the underlying data has not been modified.
+
+
+
+In [Hacking With Swift’s onDelete tutorial](https://www.hackingwithswift.com/books/ios-swiftui/deleting-items-using-ondelete), you can see how the .onDelete modifier works. This gives you the ability to pass in a method that will run when the user swipes to delete an item in your List.
+
+
+
+DynamicViewContent is the return type for the .onDelete modifier, but all it means is that the ForEach content needs to be updated.
+
+
+
+ForEach is another View struct, which means it can be changed dynamically itself when the underlying data changes.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/ccdd1554c6c08288468650b55d59fb7b" frameborder=0></iframe>
+
+
+
+As you can see in my example, .onMove is pretty similar to .onDelete. The real problems occur when you try to use .onInsert, which I couldn’t get working.
+
+
+
+The way I expected it to work is in the insert() function, and this method may start working in future versions of SwiftUI.
+
+
+
+For some reason, .onInsert takes an array of [UTType](https://developer.apple.com/documentation/mobilecoreservices/uttype) identifiers in the form of strings. These specify the types that we expect to be inserted into the ForEach’s underlying data, which in this case is NSString.
+
+
+
+As an example of how to create a UTI type identifier, I created an NSItemProvider from the string and printed it. This outputs the UTI type string for NSString, and this is what I quoted in my onInsert call.
+
+
+
+Even so, the method I provided called *inserted()* is never called. This seems to indicate that the functionality of .onInsert has not been added. I only tried it inside a List and a VStack, so maybe it works somewhere.
+
+
+
+Let me know if you got onInsert to work, as there are no examples of it anywhere online.
+
+
+
+### Identifiable
+
+
+
+ForEach loops in SwiftUI require that each item in an array is Identifiable, meaning that each member has its own unique identifier.
+
+
+
+In the following example, I start with an array of strings. Since String conforms to the Hashable protocol, it is not necessary for a unique identifier to be provided, as \.self provides the hashValue.
+
+
+
+Conforming to this protocol in my custom classes would require me to provide a hash(into:) function that combines the essential components into an integer hashValue that uniquely identifies each instance.
+
+
+
+I would also be required to overload the == operator which compared the same properties that I combined in the hash(into:) function.
+
+
+
+Learn more about [the Hashable protocol in Apple’s documentation](https://developer.apple.com/documentation/swift/hashable).
+
+
+
+When I create myUnhashableType, I do not conform to the Hashable protocol.
+
+
+
+As a result, using an ID of \.self does not work, as can be seen in the comment above the second ForEach. This creates an error that prevents compilation, unless this ForEach is commented out or removed.
+
+
+
+However, the myIdentifiableType has a much easier way of being identified in the loop. The Identifiable protocol only requires that a variable by the name of ID exists, and is unique to each instance.
+
+
+
+To do this, I simply use UUID, which generates a Universally Unique Identifier each time a new instance is created.
+
+
+
+This even lets me avoid the need to specify an identifier in the ForEach, because conforming to Identifiable tells the ForEach exactly what it needs to identify each instance.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/b1310825a012ccb4a6213d96d6b2cfa7" frameborder=0></iframe>
+
+
+
+### Axis
+
+
+
+This is simply an enum containing the cases .horizontal and .vertical. It is used to represent the two directions that content can be arranged in.
+
+
+
+A ScrollView, for instance, has a property called axes which is an Axis.Set. This essentially means that you can change axes to contain either .horizontal, .vertical, or both. This changes the directions in which you can scroll.
+
+
+
+### Form
+
+
+
+Form gives you an interface not unlike that of the iOS Settings menu. You can separate parts of the interface into Sections, and controls have a much more pleasant appearance than they would have in a List.
+
+
+
+### Group
+
+
+
+[Group (Updated in 2.0)](https://medium.com/better-programming/view-layout-and-presentation-in-swiftui-705b7d81f03#7373)
+
+
+
+[Apple describes this as simply](https://developer.apple.com/documentation/swiftui/group):
+
+> # “An affordance for grouping view content.”
+
+
+
+Instead of having an impact on the layout like a VStack or HStack would do, a Group does not change the layout at all. Instead, it allows you to treat up to ten children as if it were one child. For instance, a VStack can only have ten children, which limits you to ten Views.
+
+
+
+But if all of those ten children are Groups, each of those groups can have ten children, leading to a total of 100 Views being displayed by one VStack.
+
+
+
+The fact that they are treated as one View also allows you to apply modifiers such as .foregroundColor(.red) or .frame(width: 300) to an entire group, instead of having to set this for each View or place the Views in a layout such as a VStack.
+
+
+
+### GroupBox
+
+
+
+[Groupbox (Updated in 2.0)](https://medium.com/better-programming/view-layout-and-presentation-in-swiftui-705b7d81f03#6348)
+
+
+
+GroupBox is a container for Views with an optional label, and is only available on macOS.
+
+
+
+### Section
+
+
+
+![](https://cdn-images-1.medium.com/max/2000/1*3879acxQJOHdxqXmaj57qQ.png)
+
+
+
+The screenshot above shows a Form that is divided into three Sections.
+
+
+
+As you can see, the Form has gaps between the three Sections, which can be seen as thinner rows that show a darker background color.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/e1a718ac549d2310312b78c8c6a4c0f6" frameborder=0></iframe>
+
+
+
+### Spacer
+
+
+
+![](https://cdn-images-1.medium.com/max/4416/1*0iV9gBxyUO_laQP0f-kiFw.png)
+
+
+
+In the screenshot above, I’ve shown the similarities and differences between Rectangle and Spacer.
+
+
+
+When rectangleShown is true, the Texts in the HStack are pushed to the sides and the Texts in the VStack are pushed to the top and bottom. The Rectangle is essentially resizing the height of its parent HStack’s height to occupy all available vertical space.
+
+
+
+If you set rectangleShown to false, the Rectangle will disappear but the Texts will not move.
+
+
+
+This is because a Spacer with a maximum size of infinity acts the same way as a Rectangle. It has the ability to increase the size of its parent to occupy all available space.
+
+
+
+But change spacerMaxSize to false and the Spacer will shrink down to the height of the Texts, which are otherwise the basis of the HStack’s height.
+
+
+
+The Texts in the HStack are still pushed to the sides because the HStack itself has a maxWidth of infinity by default.
+
+
+
+In summary, Spacers only grow to the size of their parent by default, and won’t increase the size of their parent unless they are given a maximum size of infinity.
+
+
+
+Views like Rectangles have an infinite maximum size by default and will increase the size of their parent unless they are given a maximum size equal to that of their parent.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/568e59d38eb70f6b6e9f43bccfb5e0ef" frameborder=0></iframe>
+
+
+
+### Divider
+
+
+
+![](https://cdn-images-1.medium.com/max/3180/1*XmUnkBglbNqYJBAFJZ6a8w.png)
+
+
+
+A Divider puts a line between Views in a layout. In a VStack, they are horizontal lines, while in an HStack, they are vertical lines.
+
+
+
+Setting .background(Color.red) on the Dividers would give you red dividers. Otherwise, they are set to the default based on the color scheme currently selected.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/4e2687db8e9a631a47267f57f322990c" frameborder=0></iframe>
+
+
+
+### TabView
+
+
+
+See also: [TabView (Updated in 2.0)](https://medium.com/better-programming/view-layout-and-presentation-in-swiftui-705b7d81f03#5eb5)
+
+
+
+![](https://cdn-images-1.medium.com/max/4606/1*Tzj2kbJbDBJJNFlMc3Y_ZQ.png)
+
+
+
+The screenshot above comes from implementing [Apple’s TabView example](https://developer.apple.com/documentation/swiftui/tabview).
+
+
+
+There isn’t a lot I can add to that.
+
+
+
+### VSplitView and HSplitView
+
+
+
+These versions of VStack and HStack allow the user to drag the dividers to change the size of each split area.
+
+
+
+Unsurprisingly, VSplitView lays its children out vertically while HSplitView does so horizontally. This is only available on macOS, so you cannot use this in iOS or tvOS projects.
+
+
+
+### Alert
+
+
+
+Alerts are pretty easy to create but they don’t conform to the View protocol as you might expect. You cannot place a value of type Alert in a VStack or anywhere else you think it might be shown.
+
+
+
+Below, I’ve provided an example of the three main scenarios for creating alerts. Note that I’ve added actions for the first two alerts, but this is not required. You could have an action on either alert button, both, or neither, it’s up to you.
+
+
+
+In alert1, you want a default action, in this case called “OK”, that confirms you want an action to happen. This prints “you did something” to the console.
+
+
+
+The button next to it is a cancel button, created here using the default Alert.Button.cancel which automatically provides the expected text and takes no action when it is pressed.
+
+
+
+alert2 is very similar, printing “You tried to delete something” to the console when it is pressed. The difference here is that the button is of the type Alert.Button.destructive, which means that the button will be red to indicate an action that makes a permanent and potentially negative change.
+
+
+
+alert3 is the simplest kind of alert, where you can have a title and optional message but only one button that dismisses the Alert.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/860d25ef962529cd59d419456eeeeb7e" frameborder=0></iframe>
+
+
+
+### ActionSheet
+
+
+
+As they work in the exact same way, I’ve replicated the example for Alerts above with ActionSheets.
+
+
+
+The major difference is that they take an array of buttons, meaning there’s no limit to how many buttons you can add. This is in contrast to Alert, which only has the option of one or two buttons.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/6cf0cb11cd346db9cdd1846f34e6ed2b" frameborder=0></iframe>
+
+
+
+### EmptyView
+
+
+
+EmptyView has a fairly descriptive name. It is an invisible View that takes up no space.
+
+
+
+The example I give below draws a specific contrast between EmptyView and Spacer. Spacer can be given a specific frame size and will fill that space, while EmptyView will just ignore a frame modifier.
+
+
+
+Spacer will fill all available space by default, which is why I have to limit it to a height of 20 for this example.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/85395da2786795436df22d0264d9411e" frameborder=0></iframe>
+
+
+
+Perhaps one of the most useful aspects of EmptyView is that it can be returned as the body of any View struct. This means you can create an empty View without getting errors because the body is empty.
+
+
+
+### EquatableView
+
+
+
+SwiftUI Lab has [a great tutorial on EquatableView](https://swiftui-lab.com/equatableview/) that explains it better than I can.
+
+
+
+### AnyView
+
+
+
+Since View is a protocol, you cannot make an instance of View itself. This means you cannot create an array of type [View], but you can make one of [AnyView].
+
+
+
+Below is an example of an array of type [AnyView] and how you might display its contents using a ForEach. You cannot pass the array itself into the constructor of the ForEach, as AnyView does not conform to Hashable which is required for that.
+
+
+
+Instead, I’ve created a sequence that goes from the first index to the last, and used this index as a subscript for the array inside.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/6fdbafcba7500ebd532c9da796bd1219" frameborder=0></iframe>
+
+
+
+I’ve also provided a Button that shuffles the array, just to show you that the underlying type of an AnyView does not matter. What was previously a Text can become an Image, and AnyView just redraws the content.
+
+
+
+### TupleView
+
+
+
+If you aren’t familiar with it, [here’s an explanation of tuple from the Swift language documentation](https://docs.swift.org/swift-book/ReferenceManual/Types.html):
+
+> “A compound type is a type without a name, defined in the Swift language itself. There are two compound types: function types and tuple types.
+
+> A compound type may contain named types and other compound types. For example, the tuple type (Int, (Int, Int)) contains two elements. The first is the named type Int, and the second is another compound type (Int, Int).”
+
+
+
+In many ways, a tuple is like a struct with no body inside curly braces. If a struct has properties that are not initialized with a default value, you are forced to initialize these in brackets when you create it.
+
+
+
+Tuples don’t have initializers though, so those brackets are assigned to a tuple with the equals sign. Unlike initializing struct properties, labels are optional.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/0ba290d5cd13aadb7213b6cd9268fa5f" frameborder=0></iframe>
+
+
+
+I provided a second example that creates a new kind of tuple twoTexts, with labels for the two values that must match the original twoTexts if they are used.
+
+
+
+I didn’t add myTwoTexts to the body of ContentView, mainly to draw attention to the fact that TupleView does not require the use of a VStack despite the fact that it displays content from several Views.
+
+
+
+You cannot create an array that mixes types this way. You can create an array of Text or Image, but not of View because it has protocol requirements. Creating an array of mixed types is inferred, as you cannot cast from Any to View, Text, or Image.
+
+
+
+There is a way to create an array of mixed types, and it is through the use of AnyView.
+
+
+
+Scroll up to AnyView above for a mixed array example using that.
+
+
+
+Unlike most of my examples, I’ve provided ContentView_Previews for my TupleView to show how it looks. I used a fixed size because we are working with small Views, and it makes it easier to see that a TupleView displays every View in a separate preview.
+
+
+
+With normal Views, you would need to create a Group and specify which Views you wanted to be in separate previews. For more on previews, see what I wrote about [the PreviewProvider protocol](#8932) near the end of this post.
+
+
+
+## [Drawing and Animation](https://developer.apple.com/documentation/swiftui/drawing_and_animation)
+
+
+
+### Animation
+
+
+
+Here’s an example that uses the default types of Animation. To use them, simply make changes to your Views and use the .animation(.spring()) modifier to add an animation.
+
+
+
+If you want to be specific about what changes you want to perform, see [withAnimation](#0817). If you make a custom shape with custom properties, you will need to specify them as animatableData (see below).
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/2fc7d0d1f4efa575d0afbe5c0518156d" frameborder=0></iframe>
+
+
+
+### Animatable and AnimatableData
+
+
+
+Animatable is a protocol for telling SwiftUI how to animate your custom Shape.
+
+
+
+Without explicitly declaring that a struct conforms to the protocol, you can conform by declaring a property called animatableData that tells SwiftUI what you can animate.
+
+
+
+In my example, I’ve created a Square shape, as Rectangle already exists but Square doesn’t.
+
+
+
+Conforming to Shape requires that your shape has a function called path(in:) which basically takes the frame rectangle of your shape and requires you to generate a Path that SwiftUI can use to draw the shape.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/b3d7dc2e76d4e3612df4b5884b1692e6" frameborder=0></iframe>
+
+
+
+All I do is decide which length is shorter, the width or the height. On an iPhone in portrait mode, this is the width.
+
+
+
+When I draw the path, I make the shape equal to this shorter length in both directions, instead of using rect.maxX or rect.maxY to stretch the square into the provided rectangular space.
+
+
+
+In the Y-direction, I also apply an offset so that the square can be moved up or down from its starting position in the center of the screen.
+
+
+
+![](https://cdn-images-1.medium.com/max/2000/1*MQbqAFlYz8J_uqplDYIHkw.gif)
+
+
+
+The important part is that I provide a variable called animatableData, with a getter and setter that provides access to the offset variable.
+
+
+
+The Steppers have a step of 25, meaning they move the Square by 25 every time the number changes. Why is this important? This is a big enough change that it would be a jarring movement if there was no animation.
+
+
+
+Try disabling the animation and you’ll see what I mean.
+
+
+
+If you’re confused about my use of a GeometryReader, you can find my [definition for that in this post](#fa47).
+
+
+
+### AnimatablePair
+
+
+
+AnimatablePair relates to the Animatable protocol mentioned above, so I won’t repeat the basics here. AnimatablePair allows you to condense two animatableData into one value. It’s really that simple.
+
+
+
+Here’s a version of the example from Animatable above that allows the Square to have both an xOffset and a yOffset:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/956d678489be920c84bfb9156510c8d5" frameborder=0></iframe>
+
+
+
+### EmptyAnimatableData
+
+
+
+In the AnimatablePair and AnimatableData examples above, I explicitly informed SwiftUI of what properties I expected to animate in my custom shape.
+
+
+
+Since Shape itself conforms to the Animatable protocol, the default implementation is inherited. All the default implementation does is create an animatableData property that is set to a type of EmptyAnimatableData.
+
+
+
+This allows children of Shape to conform to the Animatable protocol without actually setting their animatableData.
+
+
+
+If they want to override this value, they can, as I did in the examples above.
+
+
+
+### AnimatableModifier
+
+
+
+AnimatableModifier allows you to produce a modified view that has an animation.
+
+
+
+I’ve produced a version of the example from the section above on the Animatable protocol that uses the AnimatableModifier protocol instead. In the existing example, I had a stepper that moved a square up and down by 25 each time, animating it as it goes.
+
+
+
+In this new version, I am using a blue Rectangle that fills the entire screen, and apply the AnimatableSquare modifier.
+
+
+
+Note that I use a View extension to avoid using the awkward .modifier(SquareAnimatable(offset: offset)) syntax usually required for custom modifiers.
+
+
+
+The SquareAnimatable modifier adds a red Square as an overlay to any View. That overlay takes its offset value from the View that creates it, meaning the parent View can change that value and SquareAnimatable will move the square and animate the change.
+
+
+
+The Square shape in this example is actually declared inside the scope of the SquareAnimatable modifier, which means that the parent View with the Stepper passing it an offset value has no idea how to even make the Square that it’s controlling!
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/391e900805e642e76df2cc27086a1051" frameborder=0></iframe>
+
+
+
+When I originally did this, I passed it the offset through as a @Binding.
+
+
+
+Don’t do this!
+
+
+
+The setter in the animatableData tries to set the value that was passed through, and you get a runtime warning that says:
+
+
+
+  Modifying state during view update, this will cause undefined behavior
+
+
+
+[Hacking With Swift](https://www.hackingwithswift.com/quick-start/swiftui/how-to-fix-modifying-state-during-view-update-this-will-cause-undefined-behavior) explains why State variables are not supposed to be changed in the body of a View.
+
+
+
+Essentially, the problem is that we are trying to change that initial @State property called *offset* while the View is in the middle of being created. It wouldn’t be a problem if it was a Button.
+
+
+
+### withAnimation (Implicit animation)
+
+
+
+![](https://cdn-images-1.medium.com/max/2000/1*aqfuzT8HSPagTjJ81kqKsQ.gif)
+
+
+
+An easy way to get animation into your SwiftUI Views is to place code inside a withAnimation block.
+
+
+
+This is similar to the block used in UIView.animate(withDuration:Animations:) in UIKit, but it does not take a duration by default.
+
+
+
+You can pass in an Animation object such as withAnimation(.linear(duration: 5)) to add greater control over how the animation looks. You even have a choice about whether to pass a duration into .linear.
+
+
+
+For more details on Animation, see the [definition for that](#789a) at the beginning of this section.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/1f251eeb28af70ba8288b8593d866ab0" frameborder=0></iframe>
+
+
+
+Note that adding the .animation(.default) modifier to the Rectangle would have the same effect in this case, although it’s worth pointing out the difference.
+
+
+
+The .animation(.default) modifier is an example of implicit animation. You are basically saying that we expect any changes to the Rectangle to be animated.
+
+
+
+This means that if we added another Button that increased the width, this would also be animated, even if we don’t specify these changes as withAnimation.
+
+
+
+If you want full control over what aspects of a View can be animated, you need to be explicit by specifying exactly which value changes should animate using withAnimation.
+
+
+
+### AnyTransition
+
+
+
+This is similar to AnyView, which allows you to treat a view as generic and an opaque return type.
+
+
+
+When combining multiple transitions, you can use the combined method to add transitions together. You can also add an Animation to a transition, the result of which is an AnyTransition object.
+
+
+
+### InsettableShape
+
+
+
+strokeBorder, which allows you to draw borders that cut into the area of the shape, requires that a Shape conforms to the InsettableShape protocol.
+
+
+
+See this [Hacking With Swift tutorial](https://www.hackingwithswift.com/books/ios-swiftui/adding-strokeborder-support-with-insettableshape) for more information.
+
+
+
+### FillStyle
+
+
+
+FillStyle only has two options, both of which are bools.
+
+
+
+The even-odd rule relates to how SwiftUI decides which parts of a path should be filled. To quote [the specification for SVG](https://www.w3.org/TR/SVG/painting.html#WindingRule):
+
+> “This rule determines the “insideness” of a point on the canvas by drawing a ray from that point to infinity in any direction and counting the number of path segments from the given shape that the ray crosses.
+
+> If this number is odd, the point is inside; if even, the point is outside.”
+
+
+
+In practice, this causes a shape with a fill that is distorted to overlap itself to have no fill on the part that overlaps. There are examples of this effect in the SVG specification, and [the Wikipedia page for the even-odd rule](https://en.wikipedia.org/wiki/Even–odd_rule).
+
+
+
+If you use false for the isEOFilled parameter, the non-zero method is used. This ensures that all enclosed spaces are filled, not just the ones that don’t overlap.
+
+
+
+Anti-aliasing is the process of smoothing jagged edges or ‘[jaggies](https://en.wikipedia.org/wiki/Jaggies)’. When resolutions are low, jaggies result from the fact that raster images are made up of a grid of square pixels.
+
+
+
+Although straight horizontal and vertical lines can be rendered at low resolutions without jaggies, any difference in angle from those axes causes jaggies to appear, due to the “staircase effect” of trying to represent a line that is not perpendicular to one of the axes with a grid of square pixels.
+
+
+
+If you use true for the isAntialiased parameter, some amount of blurring is used to soften the jaggies. Otherwise, jaggies will occur.
+
+
+
+### ShapeStyle
+
+
+
+ShapeStyle is used to create Views from Shapes. The background modifier, which surprisingly has no documentation at the current time, is declared as follows:
+
+
+
+  extension View {
+
+
+
+  @inlinable public func background<Background>(_ background: Background, alignment: Alignment = .center) -> some View where Background : View
+
+
+
+  }
+
+
+
+Since a Color is not a View, it might be surprising that you can pass it to this function that requires a View.
+
+
+
+In fact, you might be surprised to learn that you can create a View that has only a Color as the body, despite the fact that Color doesn’t conform to the View protocol directly.
+
+
+
+Instead, Color conforms to ShapeStyle, which conforms to View itself.
+
+
+
+What seems to be happening is that a Rectangle is being created with the Color, filling it according to ShapeStyle’s default implementation:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/386eef33a90db4ea4f897fa756d5851f" frameborder=0></iframe>
+
+
+
+ImagePaint, Border, Stroke, Fill, and Gradients all seem to use ShapeStyle in some way to create foregrounds and backgrounds.
+
+
+
+### GeometryEffect
+
+
+
+GeometryEffect allows you to create custom animations, many of which give a 3D effect similar to the provided rotation3DEffect modifier.
+
+
+
+[SwiftUI Lab has a great tutorial on using GeometryEffect](https://swiftui-lab.com/swiftui-animations-part2/).
+
+
+
+### Angle
+
+
+
+You can create an Angle with degrees or radians, both of which are required to be a Double.
+
+
+
+Once created, the degrees or radians of your Angle can be accessed as properties. Angles are used in making RadialGradients, adding arcs to Paths, and in RotationEffect and RotationGesture.
+
+
+
+### Edge and EdgeInsets
+
+
+
+Edge is an enum containing the values .bottom, .leading, .top, and .trailing. It seems to only be used in two modifiers: .edgesIgnoringSafeAreas and .padding.
+
+
+
+EdgeInsets is used in places like the .listRowInsets and .resizable modifiers.
+
+
+
+### Rectangle, RoundedRectangle, Circle, Ellipse, and Capsule
+
+
+
+You can create these shapes easily as they are provided as Views in SwiftUI. The image below shows the difference between them.
+
+
+
+Circle seems to be the only one that locks its aspect ratio, so even giving it a frame with more width than height (as I do in the code below) does not stretch the Circle like it does the Ellipse.
+
+
+
+There is no equivalent called Square, so you can only create a square by using a Rectangle and giving it an equal width and height.
+
+
+
+![](https://cdn-images-1.medium.com/max/2000/1*4IC5jsGNnxBOMm0PgJRPQQ.png)
+
+
+
+Hopefully, the side-by-side comparison shows how a Capsule differs from a RoundedRectangle. I provided the RoundedRectangle with a cornerRadius of 15, which is why it has a visible top edge.
+
+
+
+If I set a RoundedRectangle’s cornerRadius to 50% of its width, which is 50 in this case, it has an almost indistinguishable appearance from the Capsule.
+
+
+
+In summary, a Capsule is like a RoundedRectangle with a cornerRadius that is always equal to 50% of its width.
+
+
+
+A Rectangle is also identical to a RoundedRectangle with a cornerRadius of 0.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/cd44f8701098865fa6a367967234cbd9" frameborder=0></iframe>
+
+
+
+### Path
+
+
+
+To repeat what I said in the section on Animatable and AnimatableData:
+
+> “Conforming to *Shape* requires that your shape has a function called *path(in:)* that basically takes the frame rectangle of your shape and requires you to generate a *Path* which SwiftUI can use to draw the shape.”
+
+
+
+The Apple tutorial [*Drawing Paths and Shapes](https://developer.apple.com/tutorials/swiftui/drawing-paths-and-shapes)* uses paths directly in the body property of a View, without conforming to Shape.
+
+
+
+### ScaledShape, RotatedShape, and OffsetShape
+
+
+
+![](https://cdn-images-1.medium.com/max/2000/1*qB719VTn-40CMUgol21UWg.png)
+
+
+
+These transformed Shapes are pretty easy to use, as they merely require that you pass in a Shape and the necessary parameters for the transformation.
+
+
+
+For my scaled Rectangle, I scaled it by 0.5 in both directions. A Rectangle will usually take up all of the available space, so it is noticeable that this one is relatively small and centered in the top third of the VStack.
+
+
+
+The rotated and offset rectangles had to be scaled down using their frame, otherwise they would overlap the others.
+
+
+
+This screenshot was taken in Light Mode, so the default foregroundColor is black. I changed the overlaid Texts for the first two to white, but it should be noted that this would not work in Dark Mode.
+
+
+
+In Dark Mode, the Rectangles will take on the default foregroundColor, which is white. So, this text would be hidden, while the Text for the offset Rectangle would be hidden by the default black background.
+
+
+
+Always think about Light and Dark mode when using default background and foreground colors in SwiftUI.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/09526a1239bcea30c82172f751d2f5cb" frameborder=0></iframe>
+
+
+
+I put the OffsetShape example in a Group which has its own fixed height at 200.
+
+
+
+This is because offsetting a shape does not increase the size of the space it is allocated, so while the space allocated would be 100 due to the height of the OffsetShape, moving it down and to the right would merely move the OffsetShape off of the bottom of the screen.
+
+
+
+RotatedShape, similarly, does not increase the allocated space to account for rotation.
+
+
+
+Note that the overlaid Text doesn’t get offset with the OffsetShape, creating an amusing effect where the Text is left where the OffsetShape should be.
+
+
+
+### TransformedShape
+
+
+
+A TransformedShape is similar to the [ScaledShape, RotatedShape, and OffsetShape examples above](#83d6), except it takes a single parameter of a [CGAffineTransform](https://developer.apple.com/documentation/coregraphics/cgaffinetransform) in its initializer.
+
+
+
+A Core Graphics Affine Transform represents a transformation as a 3 x 3 matrix, meaning it can represent many transformations in a single instance. Since a 3 x 3 matrix always has [0, 0, 1] in the far-right column, all changes made here are in the first two.
+
+
+
+If you don’t know how matrix multiplication works, [check out this zany website](https://www.mathwarehouse.com/algebra/matrix/multiply-matrix.php).
+
+
+
+Although you can construct matrices with the GAffineTransform class, either at initialization or later by adjusting the properties for the individual positions *a*, *b*, *c*, *d*, *t*ₓ, and *t*ᵧ, the easiest way to use the class is to use the constructors and instance methods Apple provides.
+
+
+
+In my example, I use the constructor that takes a translation to try and center the Rectangle in the middle of the screen. Then I scale it and rotate it by 45 degrees.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/a4a0e5bc4c9d04e67fe9c01eb7885d38" frameborder=0></iframe>
+
+
+
+Note that you need to assign the result of the instance methods to the variable itself, which is why I use the awkward syntax affineTransform = affineTransform.scaledBy(x: 0.4, y: 0.4).
+
+
+
+I originally assumed that calling the method directly would work, as Xcode does not warn you in its usual way that:
+
+
+
+  Result of call to scaledBy(x:y:) is unused
+
+
+
+Don’t take the lack of this warning as proof that it is assigning to the variable you called it on as I did!
+
+
+
+### Color
+
+
+
+SwiftUI has its own [Color](https://developer.apple.com/documentation/swiftui/color) class that is cross-platform, meaning it works on macOS, tvOS, iOS, and watchOS. This is in contrast to [NSColor](https://developer.apple.com/documentation/appkit/nscolor), which only works on macOS, and [UIColor](https://developer.apple.com/documentation/uikit/uicolor) which works basically everywhere else.
+
+
+
+Color in SwiftUI can be initialized using NSColor, UIColor, Red/Green/Blue (RGB), Hue/Saturation/Lightness (HSL), or White/Opacity.
+
+
+
+An important distinction with these initializers is that Color labels the transparency parameter as “opacity”, not “alpha” as in the other color classes.
+
+
+
+Unlike UIColor, Color cannot be initialized from [CGColor](https://developer.apple.com/documentation/coregraphics/cgcolor) or [CIColor](https://developer.apple.com/documentation/coreimage/cicolor). To use these, simply pass them into the initializer for NSColor (on macOS) or UIColor (everywhere else) and pass the result into the initializer for Color.
+
+
+
+In the following example, I display three types of color in SwiftUI, or at least, I would if SwiftUI would let me:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/0d531f4ce00fc39c1733ec34ebe4170e" frameborder=0></iframe>
+
+
+
+As you can see, although I can construct CGColor, UIColor, and Color using the same variables, I must convert the first two to Color if they are to be used in my View.
+
+
+
+You might also notice that Color requires these variables to be of type [Double](https://developer.apple.com/documentation/swift/double), not [CGFloat](https://developer.apple.com/documentation/coregraphics/cgfloat).
+
+
+
+It might seem like this signals the beginning of the end for the Core Graphics Float, but SwiftUI still uses it all over the place, perhaps most notably to set the width and height of a View’s frame.
+
+
+
+Perhaps one day, SwiftUI will require a Double to set the frame of a View, and that will surely mark a turning point.
+
+
+
+### ImagePaint
+
+
+
+![](https://cdn-images-1.medium.com/max/2000/1*GojjY2_2cxxnIKfhDOrTbA.gif)
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/57be10f6acc510fd8f9f95f1caadf77a" frameborder=0></iframe>
+
+
+
+### Gradients (Linear/angular/radial)
+
+
+
+![](https://cdn-images-1.medium.com/max/2000/1*bnO-opiIILMkH127k-KSjQ.png)
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/2264d186a8e2427fef98db68848793aa" frameborder=0></iframe>
+
+
+
+### GeometryReader and GeometryProxy
+
+
+
+GeometryReader allows you to capture the geometry of the Views on the screen.
+
+
+
+In the example above, the ZStack in which the entire View is contained is itself embedded in a GeometryReader, a closure which does not affect layout but requires that one argument be passed in.
+
+
+
+[Apple’s tutorial](https://developer.apple.com/tutorials/swiftui/drawing-paths-and-shapes) calls this argument *geometry*, so I have done the same in my example. The object being passed in is a GeometryProxy, which gives us two properties and one method.
+
+
+
+The method, frame(in:), allows you to pass in CoordinateSpace.local or CoordinateSpace.global to get the frame relative to the direct parent (local) or relative to the highest level parent (global).
+
+
+
+![](https://cdn-images-1.medium.com/max/2484/1*R7GQ-ITMq2UoEDHAiWz2xQ.png)
+
+
+
+This example shows two GeometryReaders being used on an iPhone 11 Pro Max. The green area is a VStack which is the first parent of the View.
+
+
+
+The GeometryProxy passed into the GeometryReader closure shows that the first parent has safe area insets of 44 at the top and 34 at the bottom. The top is to avoid placing the view underneath the notch.
+
+
+
+On iPhone 8 and other devices that still have home buttons, the top safe area has a size of 20 to avoid the status bar.
+
+
+
+Only iPhones without home buttons have this bottom safe area of 34, which allows the user to swipe up to go home and switch apps.
+
+
+
+To ignore safe areas with any view, use the .edgesIgnoringSafeArea(.all) modifier. The other options are .bottom, .leading, .top, and .trailing.
+
+
+
+For more information on these options, see [Edge](#9134).
+
+
+
+It’s worth noting that size seems to be the same in most situations. In global and local scope, the parent VStack and the smaller red VStack both have a static size.
+
+
+
+Where they differ is their minX and minY values. When I first put the small red VStack inside an HStack, the minX value in global space didn't change.
+
+
+
+Only when I inserted a Spacer did the VStack move right by eight, creating the situation where both the global position minX and minY are different.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/7b5c36911fb1749dbef05f89d0b7ed18" frameborder=0></iframe>
+
+
+
+### CoordinateSpace
+
+
+
+The coordinate space was covered in more detail in the [GeometryReader and GeometryProxy section](#fa47) above.
+
+
+
+The main difference is that the local origin of a View is (0,0), but due to its position on the screen that View’s global position may differ from this.
+
+
+
+CoordinateSpace is an enum that provides the .local and .global options when using the frame(in:) function of a GeometryProxy object.
+
+
+
+The only other place where the enum seems to be used is in DragGesture. The initializer for DragGesture can take a parameter of minimumDistance, which is the movement required before action is taken, and a case of the coordinateSpace enum.
+
+
+
+With this coordinateSpace set, the Value struct that is passed into the onChanged closure for the gesture will give relative or universal coordinates in its startLocation and location CGPoint properties.
+
+
+
+## [Framework Integration](https://developer.apple.com/documentation/swiftui/framework_integration)
+
+
+
+### UIHostingController
+
+
+
+If you create a new SwiftUI project in Xcode and go to the SceneDelegate Swift file, you’ll notice that the top function is called func scene(_ :, willConnectTo:, options:) and it contains code that initializes an instance of the ContentView struct.
+
+
+
+Next, the function gets the current [UIWindowScene](https://developer.apple.com/documentation/uikit/uiwindowscene), which is basically the manager for [using multiple windows on iPad](https://developer.apple.com/documentation/uikit/app_and_environment/scenes/supporting_multiple_windows_on_ipad). If you have an iPhone, multiple windows are not possible, so you’re merely managing the one window.
+
+
+
+Inside the if let windowScene = scene as? UIWindowScene block, you’ll notice that SceneDelegate immediately gets the current window. This isn’t difficult, because we haven’t set up multiple windows on iPad at this point, so there is only one window.
+
+
+
+Then, somewhat like the initial UIViewController on a Storyboard, we set the rootViewController.
+
+
+
+Creating a new UIHostingController allows us to display our SwiftUI.
+
+
+
+There are tutorials like [SwiftUI Lab’s Dismissing Modals](https://swiftui-lab.com/modal-dismiss-gesture/) that show you the value of creating your own custom UIHostingController.
+
+
+
+I can’t provide a better example than that, but if you don’t have a specific problem to solve like that, you may not ever need to create a custom UIHostingController.
+
+
+
+The main change you’ll need to make in SceneDelegate is to pass an EnvironmentObject into your ContentView. For more on that, see [EnvironmentObject](#7a99).
+
+
+
+### UIViewRepresentable
+
+
+
+UIViewRepresentable allows you to create SwiftUI Views from UIViews in UIKit.
+
+
+
+In this example, I create a multiline TextField which currently isn’t possible in SwiftUI. As there is no equivalent of UITextView, I create this using UIViewRepresentable with a simple ObservableObject that saves the data permanently to UserDefaults.
+
+
+
+If you type into the MultiTextField, your changes are automatically and instantly saved, so the text will be the same next time you launch the app.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/7e0850e1f5ada7eb82e67e2dff0c7c4b" frameborder=0></iframe>
+
+
+
+### UIViewControllerRepresentable
+
+
+
+Instead of representing individual views as in UIViewRepresentable above, you can even represent entire UIViewController instances from UIKit.
+
+
+
+![](https://cdn-images-1.medium.com/max/2450/1*ClFdgoomSji-cmeZ_PMcgA.png)
+
+
+
+To replicate my example, you’ll need to create a Storyboard in your SwiftUI project, and call it the default name of “Storyboard”.
+
+
+
+Add a UIViewController to the Storyboard, and select it in the view hierarchy. Set the Class to ViewController and the Storyboard ID to initialVC.
+
+
+
+Add a UILabel, which I centered using constraints.
+
+
+
+I won’t explain UIKit constraints in this post, but there are many tutorials on it online.
+
+
+
+You don’t need the UILabel I added at the top that says “This is a ViewController from a Storyboard”, that was just to make it obvious when it works.
+
+
+
+You also don’t have to make the background blue, I just thought that would make the distinction more obvious when we mix SwiftUI and the UIViewController.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/559d9d251b3f886c4f470ea62127d24d" frameborder=0></iframe>
+
+
+
+You don’t have to create your ViewController instance from a Storyboard, I just thought this would be a useful example for a lot of people.
+
+
+
+All that you need to include in UIViewConrollerRepresentable is makeUIViewController(context:) which initializes the ViewController and updateUIViewController(_:, context:) which reacts to changes in SwiftUI.
+
+
+
+Notice that I have a @Binding property that is linked to my ContentView struct, meaning that changes I make in a SwiftUI TextField update this property in UIKitVC, while updateUIViewController(_:, context:) passes these changes to the actual UILabel in the ViewController class.
+
+
+
+### DigitalCrownRotationalSensitivity
+
+
+
+This is an enum of sensitivities for the rotating dial on the side of the Apple Watch. It comes in .low, .medium, and .high varieties.
+
+
+
+## [State and Data Flow](https://developer.apple.com/documentation/swiftui/state_and_data_flow)
+
+
+
+### State
+
+
+
+Any variables that you want to store locally in a View struct should be marked with this. If you add a variable and don’t add @State to it, you cannot use it to store the value of a control.
+
+
+
+This is because @State variables can be changed at runtime, and the SwiftUI View will redraw itself on that basis.
+
+
+
+For instance, if you have a Button that changes the value bound to a Slider, that Slider would move to reflect the change you made despite the fact that you didn’t move the Slider itself.
+
+
+
+Here are three of the main SwiftUI controls with their corresponding @State variables, and a reset Button that changes them all:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/64e9ec9eb6d4aad9aa2102a0ac81ff65" frameborder=0></iframe>
+
+
+
+### Binding
+
+
+
+If you want to affect a @State property in the parent of a child View, you’ll need to pass it in and mark it as @Binding. This gives the child View the same direct access to the parent’s @State variable as the parent has.
+
+
+
+In the example below, I use the @State example above to present a sheet containing a child View.
+
+
+
+As the local @Binding properties are uninitialized, you are required to initialize them when you create the PresentedView struct in the sheet modifier.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/42323c6bd64da58762db749422da8297" frameborder=0></iframe>
+
+
+
+If you’re unsure about the following line:
+
+
+
+  Environment(\.presentationMode) var presentationMode
+
+
+
+It’s used for the dismiss button that closes the sheet. For more info on that, go to [Environment](#98ed).
+
+
+
+### ObservedObject
+
+
+
+In my examples for controls such as Toggles and TextFields, I showed a simple way to access data from a Swift class conforming to the ObservableObject protocol.
+
+
+
+I show this in the same code snippet for simplicity, but it should really be in a separate Swift file. Here’s the most basic example of binding a Swift class as an @ObservedObject.
+
+
+
+This means that any changes made to variables marked @Published in your Swift file will notify your SwiftUI file to update its view accordingly.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/88e1192eaf7b934f9fbc91fd84f8b6a6" frameborder=0></iframe>
+
+
+
+### EnvironmentObject
+
+
+
+Adding an EnvironmentObject is pretty similar to adding an ObservedObject.
+
+
+
+The structure of the DataModel class here is exactly the same, but we are marking it as EnvironmentObject inside ContentView and *not* setting it to DataModel.shared.
+
+
+
+Instead, we are merely declaring it with a name and type, and the DataModel.shared is passed in using the SceneDelegate Swift file.
+
+
+
+I have included what needs to be changed in SceneDelegate to pass the EnvironmentObject in. Bear in mind that any subsequent views that you navigate to, such as with a NavigationLink or by presenting a sheet, will need to have the same EnvironmentObject passed to them when they are created.
+
+
+
+I’ve added a sheet to my example which you can present by pressing a button, just to show how the environmentObject is passed (although it’s the same as in SceneDelegate):
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/9a1c8626d968067bf7249747a3805ca6" frameborder=0></iframe>
+
+
+
+### FetchRequest and FetchedResults
+
+
+
+There’s a good [Hacking With Swift tutorial on FetchRequest](https://www.hackingwithswift.com/quick-start/swiftui/how-to-create-a-core-data-fetch-request-using-fetchrequest).
+
+
+
+### DynamicProperty
+
+
+
+For SwiftUI Views to be refreshed when their underlying data changes, we need a protocol to encapsulate this underlying concept.
+
+
+
+At least some of the conforming types [Binding](https://developer.apple.com/documentation/swiftui/binding), [Environment](https://developer.apple.com/documentation/swiftui/environment), [EnvironmentObject](https://developer.apple.com/documentation/swiftui/environmentobject), [FetchRequest](https://developer.apple.com/documentation/swiftui/fetchrequest), [GestureState](https://developer.apple.com/documentation/swiftui/gesturestate), [ObservedObject](https://developer.apple.com/documentation/swiftui/observedobject), and [State](https://developer.apple.com/documentation/swiftui/state) should be familiar to anyone who has worked with data in SwiftUI.
+
+
+
+These properties are set before the body of the View is redrawn.
+
+
+
+### Environment
+
+
+
+Environment gives you access to settings related to your device’s settings. For instance, ColourScheme.dark allows you to preview what your app will look like in the new Dark Mode, and to contrast that side-by-side with the more conventional ColourScheme.light.
+
+
+
+Contrast can be increased in the Accessibility settings, so ColorSchemeContrast.increased or ColorSchemeContrast.standard are the only options.
+
+
+
+The result of selecting bold text in Accessibility settings is shown by LegibilityWeight.bold, otherwise the default is LegibilityWeight.regular.
+
+
+
+Every View has an associated PresentationMode struct that stores one property and has one method. The property is the bool isPresented, which tells you if the View is active.
+
+
+
+The method is dismiss(), which allows you to remove the current View from the screen and return to whatever View presented it.
+
+
+
+I could go on, but it probably makes more sense to give an example that lists how to bind every single Environment value and view the data in a List:
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/4255918c29c2f80a270c95ce240a7b42" frameborder=0></iframe>
+
+
+
+### PreferenceKey
+
+
+
+Any View can use the modifier .preferredColorScheme(.dark) to force its appearance to be that of Dark Mode even if the device is set to Light Mode.
+
+
+
+What this does is set the [PreferredColorSchemeKey](https://developer.apple.com/documentation/swiftui/preferredcolorschemekey) struct’s value property to that of ColorScheme.dark. This can be overridden by forcing a View to use Light Mode with .colorScheme(.light), which is why the first modifier only indicates a preference and not a mandatory state.
+
+
+
+It’s possible to call .preferredColorScheme(nil) to indicate no preference, which causes the default color scheme to be used, whereas .colorScheme(nil) cannot be called.
+
+
+
+Why can’t .colorScheme(nil) be called?
+
+
+
+[PreferredColorSchemeKey](https://developer.apple.com/documentation/swiftui/preferredcolorschemekey) conforms to the PreferenceKey protocol, which requires not just a value but also a defaultValue which can be used when no value was set.
+
+
+
+The .colorScheme(.light) modifier doesn’t set a struct value at all, and merely returns the View with the required color scheme.
+
+
+
+### LocalizedStringKey
+
+
+
+LocalizedStringKey can be created from a string and will attempt to use it to find a corresponding value in Localisable.strings or another file used for [internationalization](https://developer.apple.com/internationalization/).
+
+
+
+If no value is found, the key itself is used instead.
+
+
+
+For an example of using LocalizedStringKey, see [Text](#2307).
+
+
+
+## [Gestures](https://developer.apple.com/documentation/swiftui/gestures)
+
+
+
+### Gestures
+
+
+
+I know this is supposed to be a replacement for their documentation, but [Apple’s tutorial](https://developer.apple.com/documentation/swiftui/gestures/adding_interactivity_with_gestures) covers Gestures pretty well. I don’t want to give examples that are similar to [those provided](https://developer.apple.com/documentation/swiftui/gestures), so I’ll just leave this section as it is.
+
+
+
+When you’ve mastered the basics, Apple has [another tutorial](https://developer.apple.com/documentation/swiftui/gestures/composing_swiftui_gestures) on combining Gestures into more complex interactions. Both of these articles also have a list of standard Gesture types at the bottom, all of which seem to be very well-documented.
+
+
+
+If you find a page of the Gestures documentation that needs further explanation, let me know and I’ll do my best to explain it here.
+
+
+
+## [Previews](https://developer.apple.com/documentation/swiftui/previews)
+
+
+
+### The PreviewProvider protocol
+
+
+
+Creating a struct that conforms to this provider allows you to create a collection of Views. Creating a Group allows you to create multiple previews, each of which can have a different platform.
+
+
+
+You can use VStack, HStack, and ZStack for this, but this produces the bizarre result of displaying multiple previews on a single screen, even if you choose different preview devices.
+
+
+
+<iframe src="https://cors.lizr.workers.dev/?https://betterprogramming.pub/media/abb13fe84c62f43de9207472c538e55d" frameborder=0></iframe>
+
+
+
+As well as specifying devices, you can also specify platforms. The current options for this are iOS, macOS, tvOS, and watchOS.
+
+
+
+By default, the PreviewLayout value is set to .device, which displays what the device looks like and fits the preview inside it. Setting it to .sizeThatFits seems to give a container the size of the device, but without showing the device bezels around the container.
+
+
+
+Finally, setting previewLayout to fixed allows you to set a custom width and height for the container, which may be useful when you aren’t too bothered about what your View will look like on a device.
+
+
+
+Using .environment allows you to preview in Dark Mode and to see how your app works in different localizations.
+
+
+
+Thanks for reading!
