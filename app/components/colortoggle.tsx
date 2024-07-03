@@ -18,7 +18,12 @@ export const ColorToggle = () => {
     // tailwindcss button
     <div
       className="flex items-center justify-center w-10 h-10 p-3 ml-4 rounded-full bg-gray-200 dark:bg-gray-800 cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-700"
-      onClick={(_) => setTheme(other(theme))}
+      onClick={(_) => {
+        // attempting to avoid the initial theme inconsistency
+        setTheme(other(theme));
+        setTheme(other(theme));
+        setTheme(other(theme));
+      }}
       aria-label="toggle theme"
     >
       <DarkLightIcon />
