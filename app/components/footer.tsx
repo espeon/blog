@@ -19,7 +19,7 @@ export default function Footer(props) {
         <div className="flex items-center justify-center w-10 h-10 p-3">
           <PiMusicNoteSimpleFill />
         </div>
-        <div className="w-fit max-w-xl text-xl">
+        <div className="w-fit max-w-xl text-md md:text-xl">
         <LastFm />
         </div>
       </Link>

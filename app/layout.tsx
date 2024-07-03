@@ -28,9 +28,9 @@ export default function RootLayout({
     >
       <body>
         <Providers>
-          <div className="dark:bg-black bg-slate-200 dark:text-slate-300 text-black transition-all min-h-screen flex justify-center">
-            <div className="flex flex-col max-w-prose w-screen">
-              <div className="w-full flex-grow">
+          <div className="dark:bg-black bg-slate-200 dark:text-slate-300 text-black transition-all h-screen overflow-x-hidden flex justify-center">
+            <div className="flex flex-col w-screen max-w-prose px-2">
+              <div className="max-w-prose flex-1">
                 {children}
               </div>
               <div className="w-full">

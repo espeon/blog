@@ -1,6 +1,6 @@
 "use client";
 import { useRef, useState } from "react";
-import { PiEyeClosed, PiWarning } from "react-icons/pi";
+import { PiEyeClosed, PiEye, PiWarning } from "react-icons/pi";
 
 export const NotPublicHover = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -22,13 +22,14 @@ export const NotPublicHover = () => {
       ref={hoverRef}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`inline ml-4 mt-1 relative ${isHovered ? "dark:bg-slate-900 bg-slate-300" : "hover:dark:bg-slate-900 hover:bg-slate-300"} rounded-lg transition-200 transition-colors`}
+      className={`inline mb-2 mt-1 px-1 mr-1 aspect-square relative rounded-full transition-200 transition-colors`}
     >
-      <div className={`absolute bottom-10 right-0 w-56 pl-2 p-1 text-lg dark:bg-red-900 bg-red-400 rounded-lg shadow-lg transition-200 transition-all ${isHovered ? "opacity-100" : "opacity-0"}`}>
+      <div className={`absolute bottom-8 left-0 w-max text-base p-1 font-mono dark:bg-red-900 bg-red-400 rounded-lg shadow-lg transition-200 transition-all ${isHovered ? "opacity-100" : "opacity-0"}`}>
         <PiWarning className="inline text-2xl mb-0.5 mr-1" />
-        This post is not public.
+        This post is not public. Be careful who you share this with.
       </div>
-      <PiEyeClosed className="inline mx-4 mb-1" />
+      {isHovered?<PiEye className="inline px-1 mb-1 h-8 w-8 rounded-full bg-slate-900" />:
+      <PiEyeClosed className="inline px-1 mb-1 h-8 w-8" />}
     </div>
   );
 };

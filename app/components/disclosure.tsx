@@ -5,7 +5,7 @@ import { PiTagChevron } from "react-icons/pi";
 
 const MyDisc = () => {
   return (
-    <div className="w-max max-w-md">
+    <div className="w-full">
       <Disclosure>
         {({ open }) => (
           <>
@@ -34,7 +34,7 @@ const MyDisc = () => {
                 </span>
               </span>
             </Disclosure.Button>
-            <div className="-mt-3 pt-2 text-base font-extralight min-w-full mb-16">
+            <div className="-mt-3 pt-2 text-base font-extralight min-w-full mb-16 duration-150">
               <div
                 className={`transition-all duration-300 pb-2 ${
                   open ? "visible opacity-100 translate-y-3" : "h-0 opacity-0 select-none"
