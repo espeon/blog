@@ -63,9 +63,11 @@ export default function Page({ params }: { params: { slug: string } }) {
         {post.public ? "" : <NotPublicHover />}
         {post.title}
       </h1>
-      <div className="text-md my-2 dark:text-gray-100 text-gray-800">
-        With {post.coAuthors.join(", ")}
-      </div>
+      {post.coAuthors && (
+        <div className="text-md my-2 dark:text-gray-100 text-gray-800">
+          With {post.coAuthors.join(", ")}
+        </div>
+      )}
       <div className="text-sm mb-8 dark:text-gray-100 text-gray-800">
         {format(parseISO(post.datePublished), "MMM. dd, yyyy")}
         <span className="dark:text-gray-400 text-gray-700">
