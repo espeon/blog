@@ -13,8 +13,11 @@ export const Post = defineDocumentType(() => ({
   fields: {
     title: { type: "string", required: true },
     datePublished: { type: "date", required: true },
+    lastUpdated: { type: "date", required: false },
     summary: { type: "string", required: true },
     public: { type: "boolean", required: false, default: true },
+    coAuthors: { type: "list", of: { type: "string" }, required: false },
+    coAuthorPFPs: { type: "list", of: { type: "string" }, required: false },
   },
   computedFields: {
     url: {

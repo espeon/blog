@@ -52,6 +52,18 @@ function PostCard(post: Post) {
         <span className="dark:text-gray-400 text-gray-700">
           <TimeAgo date={post.datePublished} />
         </span>
+        <span className="text-sm mb-8 dark:text-gray-400 text-gray-700">
+          {post.lastUpdated && (
+            <>
+              {" • "}
+              Last updated {format(
+                parseISO(post.lastUpdated),
+                "MMM. dd, yyyy",
+              )}{" "}
+              - <TimeAgo date={post.lastUpdated} parentheses={false} />.
+            </>
+          )}
+        </span>
       </div>
       <div className="text-sm mb-2"> {post.summary} </div>
       <div
@@ -63,9 +75,11 @@ function PostCard(post: Post) {
 }
 
 export default function Home() {
-  const posts = allPosts.filter((post) => post.public).sort((a, b) =>
-    compareDesc(new Date(a.datePublished), new Date(b.datePublished))
-  );
+  const posts = allPosts
+    .filter((post) => post.public)
+    .sort((a, b) =>
+      compareDesc(new Date(a.datePublished), new Date(b.datePublished)),
+    );
 
   return (
     <div className="mx-auto w-full max-w-prose py-8">
