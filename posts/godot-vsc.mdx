@@ -1,14 +1,15 @@
 ---
 title: "Godot and VSCode: How to integrate them together"
 datePublished: "2024-03-12"
+lastUpdated: "2024-08-13"
 summary: "Supercharge your game dev workflow by using VSCode instead of Godot's text editor."
 ---
 
-When I was beginning with Godot, it was fairly daunting. Especially the text editor. 
-It didn't come with a lot of specific features I expect on modern text editors (pseudo IDEs lol). 
+When I was beginning with Godot, it was fairly daunting. Especially the text editor.
+It didn't come with a lot of specific features I expect on modern text editors (pseudo IDEs at this point, let's be serious lol).
 After some time struggling with its internal editor, I finally decided to research ways to use VSCode instead.
 
-I love intellisense. It's the best. so good.
+Mainly because I love Intellisense. It's the best.
 
 Anyways.
 
@@ -34,10 +35,13 @@ brew install godot # or godot-mono
 On Windows, if you have Scoop
 
 ```sh
+# if you don't have git installed
+scoop install git
+# add the extras bucket, where godot is
+scoop bucket add extras
+# finally, install godot
 scoop install godot # or godot-mono
 ```
-
-I have a Mac, so the Windows instruction could be wrong, or there could be a better way to do it. Let me know either way (open an issue or PR)
 
 Either way, if you can run `godot --help` afterwards, you're good to go.
 
@@ -92,4 +96,11 @@ You’ll have intellisense, syntax highlighting, and more in VSCode. You can opt
 
 #### Sources
 I got a large portion of this from [this reddit post by u/Elohssa](https://www.reddit.com/r/godot/comments/16ve6y3/how_to_get_vscode_working_nicely_with_godot_and/) and [this blog post by Morris Morrison](https://morrismorrison.blog/enhancing-your-workflow-setting-up-visual-studio-code-with-godot-and-net).
-Also, the [godot-tools github repo](https://github.com/godotengine/godot-vscode-plugin#godot-tools) helped a lot. 
+Also, the [godot-tools github repo](https://github.com/godotengine/godot-vscode-plugin#godot-tools) helped a lot.
+
+
+## Errata
+
+- **2024-08-13**: Verified and edited Windows instructions to install the 'extras' bucket, and added a note about git.
+
+- If you have any questions or concerns, please feel free to [open an issue](https://github.com/espeon/blog/issues/new/). If you just want to say hi, you can find me on my [Discord server](https://nat.vg/discord).
