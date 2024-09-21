@@ -1,91 +1,119 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
-  @apply dark:bg-black bg-slate-200 dark:text-slate-300 text-black;
+    @apply bg-black dark:text-slate-300 text-black;
+}
+
+@keyframes scrollText {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-1 * var(--text-width)));
+    }
+}
+
+.animate-scroll-text {
+    animation: scrollText;
+}
+
+.ambilight {
+    filter: url(#ambilight);
+}
+
+#gradient-canvas {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    --gradient-color-1: #f0abfc;
+    --gradient-color-2: #c084fc;
+    --gradient-color-3: #a5b4fc;
+    --gradient-color-4: #22d3ee;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    #gradient-canvas {
+        --gradient-color-1: #4a044e;
+        --gradient-color-2: #3b0764;
+        --gradient-color-3: #1e1b4b;
+        --gradient-color-4: #020617;
+    }
+}
 
-    --primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
-    --secondary-glow: linear-gradient(
-      to bottom right,
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0),
-      rgba(1, 65, 255, 0.3)
-    );
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
 
-    --tile-start-rgb: 2, 13, 46;
-    --tile-end-rgb: 2, 5, 19;
-    --tile-border: conic-gradient(
-      #ffffff80,
-      #ffffff40,
-      #ffffff30,
-      #ffffff20,
-      #ffffff10,
-      #ffffff10,
-      #ffffff80
-    );
+        --primary-glow: radial-gradient(
+            rgba(1, 65, 255, 0.4),
+            rgba(1, 65, 255, 0)
+        );
+        --secondary-glow: linear-gradient(
+            to bottom right,
+            rgba(1, 65, 255, 0),
+            rgba(1, 65, 255, 0),
+            rgba(1, 65, 255, 0.3)
+        );
 
-    --callout-rgb: 20, 20, 20;
-    --callout-border-rgb: 108, 108, 108;
-    --card-rgb: 100, 100, 100;
-    --card-border-rgb: 200, 200, 200;
-  }
+        --tile-start-rgb: 2, 13, 46;
+        --tile-end-rgb: 2, 5, 19;
+        --tile-border: conic-gradient(
+            #ffffff80,
+            #ffffff40,
+            #ffffff30,
+            #ffffff20,
+            #ffffff10,
+            #ffffff10,
+            #ffffff80
+        );
+
+        --callout-rgb: 20, 20, 20;
+        --callout-border-rgb: 108, 108, 108;
+        --card-rgb: 100, 100, 100;
+        --card-border-rgb: 200, 200, 200;
+    }
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 @media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+    html {
+        color-scheme: dark;
+    }
 }
 
 .prose blockquote {
-  @apply ml-2 border-l-[1px] font-extralight border-slate-500 not-italic;
+    @apply ml-2 border-l-[1px] font-extralight border-slate-500 not-italic;
 }
 
 .prose a {
-  @apply dark:text-purple-300 text-blue-700 hover:text-purple-500 transition-all dark:decoration-slate-700 decoration-slate-300 decoration-1 underline-offset-2;
+    @apply dark:text-purple-300 text-blue-700 hover:text-purple-500 transition-all dark:decoration-slate-700 decoration-slate-300 decoration-1 underline-offset-2;
 }
 
 .prose p,
 .prose li {
-  @apply dark:text-gray-300 text-gray-700 font-light mt-0;
+    @apply dark:text-gray-300 text-gray-700 font-light mt-0;
 }
 
 .prose strong {
-  @apply font-medium;
+    @apply font-medium;
 }
 
 .prose blockquote strong {
-  @apply font-semibold;
+    @apply font-semibold;
 }
 
 .prose h1,
@@ -94,77 +122,76 @@ a {
 .prose h4,
 .prose h5,
 .prose h6 {
-  @apply font-medium mb-4;
+    @apply font-medium mb-4;
 }
 
 .prose pre {
-  @apply border border-neutral-800 bg-neutral-900;
-  text-wrap: balance;
+    @apply border border-neutral-800 bg-neutral-900;
+    text-wrap: balance;
 }
 
 .prose code {
-  @apply px-1 py-0.5 border border-neutral-100 dark:border-neutral-800 rounded-lg;
+    @apply px-1 py-0.5 border border-neutral-100 dark:border-neutral-800 rounded-lg;
 }
 
 .prose pre code {
-  border: initial;
+    border: initial;
 }
 
 pre {
-  --tw-shadow-color: #0e1d1dc0;
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color),
-    0 8px 10px -6px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    --tw-shadow-color: #0e1d1dc0;
+    --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+        0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color),
+        0 8px 10px -6px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+        var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 
-  
-  --tw-shadow: var(--tw-shadow-colored);
+    --tw-shadow: var(--tw-shadow-colored);
 }
 
 table {
-  display: block;
-  max-width: fit-content;
-  overflow-x: auto;
-  white-space: nowrap;
+    display: block;
+    max-width: fit-content;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .prose > :first-child {
-  /* Override removing top margin, causing layout shift */
-  margin-top: 1.25em !important;
-  margin-bottom: 1.25em !important;
+    /* Override removing top margin, causing layout shift */
+    margin-top: 1.25em !important;
+    margin-bottom: 1.25em !important;
 }
 
 [data-rehype-pretty-code-fragment] code {
-  @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-2 text-sm text-black;
-  counter-reset: line;
-  box-decoration-break: clone;
+    @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-2 text-sm text-black;
+    counter-reset: line;
+    box-decoration-break: clone;
 }
 [data-rehype-pretty-code-fragment] .line {
-  @apply py-2;
+    @apply py-2;
 }
 [data-rehype-pretty-code-fragment] [data-line-numbers] > .line::before {
-  counter-increment: line;
-  content: counter(line);
-  display: inline-block;
-  width: 1rem;
-  margin-right: 1rem;
-  text-align: right;
-  color: gray;
+    counter-increment: line;
+    content: counter(line);
+    display: inline-block;
+    width: 1rem;
+    margin-right: 1rem;
+    text-align: right;
+    color: gray;
 }
 data-highlighted-line {
-  @apply bg-slate-500 bg-opacity-10;
+    @apply bg-slate-500 bg-opacity-10;
 }
 [data-rehype-pretty-code-fragment] .line-highlighted span {
-  @apply relative;
+    @apply relative;
 }
 [data-rehype-pretty-code-fragment] .word--highlighted {
-  @apply rounded-md bg-slate-500 bg-opacity-10 p-1;
+    @apply rounded-md bg-slate-500 bg-opacity-10 p-1;
 }
 [data-rehype-pretty-code-title] {
-  @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
+    @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
 }
 [data-rehype-pretty-code-title] + pre {
-  @apply mt-0 rounded-t-none border-t-0;
+    @apply mt-0 rounded-t-none border-t-0;
 }

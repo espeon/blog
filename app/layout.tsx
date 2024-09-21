@@ -1,7 +1,10 @@
 import "./globals.css";
 import { IBM_Plex_Mono, Figtree } from "next/font/google";
 import { Providers } from "./providers";
-import Footer from "./components/footer";
+import Footer from "@/components/footer";
+import { GradientReact } from "../components/shader/gradient";
+import Header from "@/components/header";
+import { Conditional } from "@/components/shader/conditional";
 
 const mono = IBM_Plex_Mono({
   weight: "300",
@@ -28,14 +31,24 @@ export default function RootLayout({
     >
       <body>
         <Providers>
-          <div className="dark:bg-black bg-slate-200 dark:text-slate-300 text-black transition-all h-screen overflow-x-hidden flex justify-center">
-            <div className="flex flex-col w-screen max-w-prose px-2">
-              <div className="max-w-prose flex-1">
-                {children}
-              </div>
-              <div className="w-full">
-                <Footer />
-              </div>
+          <div className="dark:text-neutral-200 text-black transition-all h-screen overflow-x-hidden flex justify-center">
+            <Conditional
+              paths={["/", "/projects"]}
+              defaultComponent={
+                <div className="fixed left-0 top-0 h-screen w-screen bs-screen is-screen -z-20 isLoaded dark:bg-neutral-900 bg-neutral-200 transition-all duration-250" />
+              }
+            >
+              <GradientReact />
+            </Conditional>
+            <div className="px-4 py-5 mx-2 mb-8 sm:px-6 max-w-full max-h-full md:max-w-screen-xl">
+              <Conditional
+                paths={["/", "/projects"]}
+                defaultComponent={<div className="max-w-prose w-screen"></div>}
+              >
+                <div className="pt-12 md:pt-10 lg:pt-20 xl:pt-32 2xl:pt-40 transition-all duration-1000" />
+              </Conditional>
+              <Header />
+              {children}
             </div>
           </div>
         </Providers>

@@ -1,10 +1,8 @@
-import Header from "../components/header";
-
 // app/page.tsx
 import Link from "next/link";
 import { compareDesc, format, parseISO } from "date-fns";
 import { allPosts, Post } from "contentlayer/generated";
-import TimeAgo from "../components/timeago";
+import TimeAgo from "@/components/timeago";
 
 const REASONABLE_LENGTH = 160;
 
@@ -19,6 +17,8 @@ function PostCard(post: Post) {
     firstParagraph += " " + split[i];
     if (split[i].length > REASONABLE_LENGTH) break;
   }
+  // strip all html tags from first paragraph
+  firstParagraph = firstParagraph.replace(/<[^>]*>?/gm, "");
 
   // strip all markdown formatting from string including links
   firstParagraph = firstParagraph.replace(/[#/\[\]*>]/g, "");
@@ -66,10 +66,9 @@ function PostCard(post: Post) {
         </span>
       </div>
       <div className="text-sm mb-2"> {post.summary} </div>
-      <div
-        className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0"
-        dangerouslySetInnerHTML={{ __html: firstParagraph }}
-      />
+      <div className="text-sm [&>*]:mb-3 [&>*:last-child]:mb-0">
+        {firstParagraph}
+      </div>
     </div>
   );
 }
@@ -83,7 +82,6 @@ export default function Home() {
 
   return (
     <div className="mx-auto w-full max-w-prose py-8">
-      <Header />
       {posts.map((post, idx) => (
         <PostCard key={idx} {...post} />
       ))}

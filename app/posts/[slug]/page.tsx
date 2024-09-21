@@ -1,13 +1,13 @@
 // app/posts/[slug]/page.tsx
-import Header from "app/components/header";
+import Header from "@/components/header";
 import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { notFound } from "next/navigation";
-import MDX from "app/components/mdx";
-import TimeAgo from "app/components/timeago";
+import MDX from "@/components/mdx";
+import TimeAgo from "@/components/timeago";
 import { PiEyeClosed, PiWarning } from "react-icons/pi";
-import { NotPublicHover } from "app/components/notPublicHover";
+import { NotPublicHover } from "@/components/notPublicHover";
 
 export async function generateMetadata({ params }): Promise<any | undefined> {
   const post = allPosts.find((post) => {
@@ -58,7 +58,6 @@ export default function Page({ params }: { params: { slug: string } }) {
   const MDXContent = useMDXComponent(post.body.code);
   return (
     <div className={`mx-auto w-full max-w-prose py-8`}>
-      <Header />
       <h1 className="text-3xl mb-2 max-w-md inline">
         {post.public ? "" : <NotPublicHover />}
         {post.title}
