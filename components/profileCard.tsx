@@ -24,25 +24,25 @@ export default function ProfileCard() {
             you can write anything here!
           </span>
         </div>
+        <div className="text-sm dark:text-neutral-400 text-neutral-700">
+          inquiries? shoot me an email at nat @ natalie dot sh
+        </div>
         <div className="text-3xl dark:text-neutral-400 text-neutral-700 flex gap-2 mt-2">
           <Link href="https://github.com/espeon" target="_blank">
-            <FaGithub />
+            <FaGithub className="hover:text-wisteria-700 dark:hover:text-wisteria-200 transition-colors duration-200" />
           </Link>
           <Link
             href="https://www.linkedin.com/in/nataliebridgers/"
             target="_blank"
           >
-            <FaLinkedin />
+            <FaLinkedin className="hover:text-wisteria-700 dark:hover:text-wisteria-200 transition-colors duration-200" />
           </Link>
           <Link href="https://last.fm/user/kanb" target="_blank">
-            <FaLastfm />
+            <FaLastfm className="hover:text-wisteria-700 dark:hover:text-wisteria-200 transition-colors duration-200" />
           </Link>
           <Link href="https://nat.vg/discord" target="_blank">
-            <FaDiscord />
+            <FaDiscord className="hover:text-wisteria-700 dark:hover:text-wisteria-200 transition-colors duration-200" />
           </Link>
-        </div>
-        <div className="text-sm dark:text-neutral-400 text-neutral-700 mt-0.5">
-          inquiries? shoot me an email at nat @ natalie dot sh
         </div>
       </div>
     </Card>
