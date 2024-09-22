@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useEffect } from "react";
 import Ambilight from "./ambilight";
 import { FaLastfm } from "react-icons/fa";
+import { LuFileWarning } from "react-icons/lu";
 
 interface Track {
   name: string;
@@ -53,11 +54,21 @@ const LastFm: React.FC = () => {
       {data ? (
         <div className="flex flex-row items-center justify-left w-screen h-full max-w-full">
           <Ambilight />
-          <img
-            src={data.imageUrl}
-            alt="cover"
-            className="mr-4 max-w-24 max-h-24 self-center contain-content rounded-lg margin-auto ambilight z-20 border border-gray-300/20 dark:border-neutral-600/30"
-          />
+          <div className="h-24">
+            {data.imageUrl ===
+            "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.png" ? (
+              <div className="flex flex-col items-center justify-center text-center text-sm text-gray-700 dark:text-gray-400 mr-4 w-24 h-24 self-center contain-content rounded-lg margin-auto ambilight bg-pink-500/30 z-20 border border-gray-300/20 dark:border-neutral-600/30">
+                <LuFileWarning className="text-2xl mb-1" />
+                <p>No cover found!</p>
+              </div>
+            ) : (
+              <img
+                src={data.imageUrl}
+                alt="cover"
+                className="mr-4 max-w-24 max-h-24 self-center contain-content rounded-lg margin-auto ambilight z-20 border border-gray-300/20 dark:border-neutral-600/30"
+              />
+            )}
+          </div>
           <div className="flex flex-col items-left justify-center w-min leading-normal max-w-[calc(95%-6rem)]">
             <div className="text-sm dark:text-gray-400 text-gray-600 text-left w-max">
               {data.isCurrent ? "Now Playing" : "Last Played"} on{" "}

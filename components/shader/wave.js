@@ -1,4 +1,3 @@
-"use client";
 /*
  *   Stripe WebGl Gradient Animation
  *   All Credits to Stripe.com
@@ -886,115 +885,7 @@ class Gradient {
   }
 }
 
-import { useRef, useEffect, useState } from "react";
-import { useTheme } from "next-themes"; // or whatever theme solution you're using
-
-const GradientReact = () => {
-  const canvasRef = useRef(null);
-  const overlayRef = useRef(null);
-  const gradientRef = useRef(null);
-  const { theme } = useTheme(); // Get the current theme
-
-  const [isInitialized, setIsInitialized] = useState(false);
-
-  /*
-  #gradient-canvas {
-      display: block;
-      width: 100vw;
-      height: 100vh;
-      --gradient-color-1: #f0abfc;
-      --gradient-color-2: #c084fc;
-      --gradient-color-3: #a5b4fc;
-      --gradient-color-4: #22d3ee;
-  }
-
-  @media (prefers-color-scheme: dark) {
-      #gradient-canvas {
-          --gradient-color-1: #4a044e;
-          --gradient-color-2: #3b0764;
-          --gradient-color-3: #1e1b4b;
-          --gradient-color-4: #020617;
-      }
-  } */
-  const lightColors = ["0xf0abfc", "0xc084fc", "0xa5b4fc", "0x22d3ee"];
-
-  const darkColors = ["0x4a044e", "0x3b0764", "0x1e1b4b", "0x020617"];
-
-  useEffect(() => {
-    if (canvasRef.current && overlayRef.current && !isInitialized) {
-      const gradient = new Gradient();
-      gradient.initGradient("#gradient-canvas");
-      gradient.amp = 360;
-
-      gradientRef.current = gradient;
-      setIsInitialized(true);
-
-      // Fade out the black overlay
-      setTimeout(() => {
-        if (overlayRef.current) {
-          overlayRef.current.style.opacity = "0";
-        }
-
-        // Remove the overlay after the transition
-        setTimeout(() => {
-          if (overlayRef.current) {
-            overlayRef.current.style.display = "none";
-          }
-        }, 1000);
-      }, 500);
-    }
-  }, [isInitialized]);
-
-  useEffect(() => {
-    if (isInitialized && gradientRef.current) {
-      const gradient = gradientRef.current;
-      console.log("detected theme", theme);
-      // check if theme is system, if so, use system theme
-      let targetColors;
-      if (theme === "system") {
-        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
-        if (systemTheme.matches) {
-          targetColors = darkColors;
-        } else {
-          targetColors = lightColors;
-        }
-      } else {
-        targetColors = theme === "dark" ? darkColors : lightColors;
-      }
-      if (gradient?.sectionColors?.length > 0) {
-        targetColors.forEach((targetColor, index) => {
-          const r = ((targetColor >> 16) & 255) / 255;
-          const g = ((targetColor >> 8) & 255) / 255;
-          const b = (targetColor & 255) / 255;
-
-          gradient.sectionColors[index] = [r, g, b];
-        });
-      } else return;
-
-      gradient.uniforms.u_baseColor.value = gradient.sectionColors[0];
-      gradient.uniforms.u_waveLayers.value.forEach((layer, index) => {
-        layer.value.color.value =
-          gradient.sectionColors[index + 1] || gradient.sectionColors[index];
-      });
-    }
-  }, [theme, isInitialized]);
-
-  return (
-    <>
-      <div
-        ref={overlayRef}
-        className={`fixed left-0 top-0 w-screen h-screen dark:bg-black bg-white transition-opacity duration-1000 -z-10`}
-      />
-      <canvas
-        id="gradient-canvas"
-        ref={canvasRef}
-        className="fixed left-0 top-0 bg-gray-500 h-screen w-screen bs-screen is-screen -z-20"
-      />
-    </>
-  );
-};
-
-export default GradientReact;
+export { Gradient };
 
 /*
  *Finally initializing the Gradient class, assigning a canvas to it and calling Gradient.connect() which initializes everything,
@@ -1009,5 +900,3 @@ export default GradientReact;
  * Gradient.toggleColor(index)
  * Gradient.updateFrequency(freq)
  */
-
-export { Gradient, GradientReact };

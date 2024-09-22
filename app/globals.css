@@ -27,19 +27,6 @@ html {
     display: block;
     width: 100vw;
     height: 100vh;
-    --gradient-color-1: #f0abfc;
-    --gradient-color-2: #c084fc;
-    --gradient-color-3: #a5b4fc;
-    --gradient-color-4: #22d3ee;
-}
-
-@media (prefers-color-scheme: dark) {
-    #gradient-canvas {
-        --gradient-color-1: #4a044e;
-        --gradient-color-2: #3b0764;
-        --gradient-color-3: #1e1b4b;
-        --gradient-color-4: #020617;
-    }
 }
 
 * {
