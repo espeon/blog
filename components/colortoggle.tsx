@@ -3,11 +3,16 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { IoMdMoon, IoMdRefreshCircle, IoMdSunny } from "react-icons/io";
 
-const other = (theme) => {
+const other = (theme: string) => {
   if (theme === "dark") {
     return "light";
   } else {
-    return "dark";
+    if (theme === "system") {
+      const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+      return systemTheme.matches ? "light" : "dark";
+    } else {
+      return "dark";
+    }
   }
 };
 
@@ -17,7 +22,13 @@ export const ColorToggle = () => {
   useEffect(() => {
     setMounted(true);
   }, []);
-  const isDark = theme === "dark";
+  let isDark: boolean;
+  if (theme === "system") {
+    const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+    isDark = systemTheme.matches;
+  } else {
+    isDark = theme === "dark";
+  }
   const DarkLightIcon = mounted
     ? isDark
       ? IoMdMoon

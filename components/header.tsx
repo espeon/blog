@@ -22,7 +22,7 @@ export default function Header(props: HTMLAttributes<HTMLDivElement>) {
       <div className="flex flex-row justify-between items-center">
         <div className="flex gap-2">
           {links.map((link) => (
-            <HeaderLink {...link} />
+            <HeaderLink key={link.href} {...link} />
           ))}
         </div>
         <ColorToggle />

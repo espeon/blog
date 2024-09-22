@@ -949,7 +949,18 @@ const GradientReact = () => {
     if (isInitialized && gradientRef.current) {
       const gradient = gradientRef.current;
       console.log("detected theme", theme);
-      const targetColors = theme === "dark" ? darkColors : lightColors;
+      // check if theme is system, if so, use system theme
+      let targetColors;
+      if (theme === "system") {
+        const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
+        if (systemTheme.matches) {
+          targetColors = darkColors;
+        } else {
+          targetColors = lightColors;
+        }
+      } else {
+        targetColors = theme === "dark" ? darkColors : lightColors;
+      }
       if (gradient?.sectionColors?.length > 0) {
         targetColors.forEach((targetColor, index) => {
           const r = ((targetColor >> 16) & 255) / 255;

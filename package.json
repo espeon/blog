@@ -13,6 +13,7 @@
     "clsx": "^2.1.1",
     "contentlayer": "=0.3.4",
     "date-fns": "^2.30.0",
+    "glsl-dither": "^1.0.1",
     "glsl-noise": "^0.0.0",
     "glslify": "^7.1.1",
     "glslify-loader": "^2.0.0",

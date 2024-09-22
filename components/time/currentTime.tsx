@@ -16,19 +16,22 @@ const defaultProps: CurrentTimeProps = {
   msPrecision: 0,
 };
 
+function getDate(timeZone: string) {
+  return new Date(
+    new Date().toLocaleString("en-US", {
+      timeZone,
+    }),
+  );
+}
+
 export default function CurrentTime({ ...props }: CurrentTimeProps) {
-  const [time, setTime] = useState(new Date());
+  const [time, setTime] = useState(getDate("America/Chicago"));
   const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
       // get date in CST
-      const date = new Date(
-        new Date().toLocaleString("en-US", {
-          timeZone: "America/Chicago",
-        }),
-      );
-      setTime(date);
+      setTime(getDate("America/Chicago"));
     }, 1000);
 
     return () => clearInterval(interval);

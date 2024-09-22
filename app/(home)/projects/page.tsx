@@ -4,7 +4,7 @@ import { LuLink } from "react-icons/lu";
 
 export default function Projects() {
   return (
-    <div className="h-full w-screen max-w-full md:col-span-5 md:row-span-4 flex flex-col items-left justify-center md:grid md:grid-cols-4 md:gap-4">
+    <div className="h-full w-screen max-w-full md:col-span-5 md:row-span-4 flex flex-col items-left justify-center md:grid md:grid-cols-4 gap-4">
       <ProjectCard
         title="Natalie's Blog"
         tech="Next.js, TailwindCSS, MDX, React, TypeScript"
