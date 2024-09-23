@@ -18,6 +18,13 @@ type ColorScheme<T extends string[] | number[]> = {
   dark: T;
 };
 
+export function triggerOnIdle(callback: any) {
+  if (window && "requestIdleCallback" in window) {
+    return requestIdleCallback(callback);
+  }
+  return setTimeout(() => callback(), 1);
+}
+
 const GradientReact = () => {
   const canvasRef = useRef(null);
   const overlayRef = useRef(null);
@@ -70,7 +77,7 @@ const GradientReact = () => {
         }
       };
 
-      requestIdleCallback(initGradient);
+      triggerOnIdle(initGradient);
     }
   }, [isInitialized]);
 
