@@ -3,6 +3,8 @@ import { ColorToggle } from "./colortoggle";
 import clsx from "clsx";
 import { HTMLAttributes } from "react";
 import HeaderLink from "./headerLink";
+import { IconButton } from "./ui/iconButton";
+import { LuCommand } from "react-icons/lu";
 
 const links = [
   { href: "/", label: "Home" },
@@ -25,7 +27,10 @@ export default function Header(props: HTMLAttributes<HTMLDivElement>) {
             <HeaderLink key={link.href} {...link} />
           ))}
         </div>
-        <ColorToggle />
+        <div className="flex gap-2">
+          <IconButton Icon={LuCommand} />
+          <ColorToggle />
+        </div>
       </div>
     </div>
   );

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-    @apply bg-black dark:text-slate-300 text-black;
+    @apply bg-neutral-200 dark:bg-black dark:text-slate-300 text-black;
 }
 
 @keyframes scrollText {

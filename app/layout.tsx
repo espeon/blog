@@ -51,7 +51,9 @@ export default function RootLayout({
             <div className="px-4 py-5 mx-2 mb-8 sm:px-6 max-w-full max-h-full md:max-w-screen-xl">
               <Conditional
                 paths={["/", "/projects"]}
-                defaultComponent={<div className="max-w-prose w-screen"></div>}
+                defaultComponent={
+                  <div className="max-w-prose w-screen pt-10 transition-all duration-1000"></div>
+                }
               >
                 <div className="pt-12 md:pt-10 lg:pt-20 xl:pt-32 2xl:pt-40 transition-all duration-1000" />
               </Conditional>

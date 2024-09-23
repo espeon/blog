@@ -2,6 +2,8 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { IoMdMoon, IoMdRefreshCircle, IoMdSunny } from "react-icons/io";
+import { LuMoon, LuSun, LuSunMoon } from "react-icons/lu";
+import { IconButton } from "./ui/iconButton";
 
 const other = (theme: string) => {
   if (theme === "dark") {
@@ -29,21 +31,16 @@ export const ColorToggle = () => {
   } else {
     isDark = theme === "dark";
   }
-  const DarkLightIcon = mounted
-    ? isDark
-      ? IoMdMoon
-      : IoMdSunny
-    : IoMdRefreshCircle;
+  const DarkLightIcon = mounted ? (isDark ? LuMoon : LuSun) : LuSunMoon;
   return (
     // tailwindcss button
-    <div
+    <IconButton
       className="flex items-center justify-center w-10 h-10 p-3 rounded-full bg-gray-200 dark:bg-gray-800 cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-700"
-      onClick={(_) => {
+      aria-label="button"
+      Icon={DarkLightIcon}
+      onClick={() => {
         setTheme(other(theme));
       }}
-      aria-label="toggle theme"
-    >
-      <DarkLightIcon />
-    </div>
+    />
   );
 };
