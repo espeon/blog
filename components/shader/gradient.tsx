@@ -111,7 +111,7 @@ const GradientReact = () => {
     <>
       <div
         ref={overlayRef}
-        className={`fixed left-0 top-0 w-screen h-screen bg-neutral-200 dark:bg-black transition-opacity duration-1000 -z-10`}
+        className={`fixed left-0 top-0 w-screen h-screen bg-neutral-200 dark:bg-neutral-900 transition-opacity duration-1000 -z-10`}
       />
       <canvas
         id="gradient-canvas"
@@ -124,7 +124,7 @@ const GradientReact = () => {
             "--gradient-color-4": initColors[3],
           } as any
         }
-        className="fixed left-0 top-0 bg-gray-500 h-screen w-screen bs-screen is-screen -z-20"
+        className="fixed left-0 top-0 bg-transparent h-screen w-screen bs-screen is-screen -z-20"
       />
     </>
   );
