@@ -28,7 +28,11 @@ export default function Header(props: HTMLAttributes<HTMLDivElement>) {
           ))}
         </div>
         <div className="flex gap-2">
-          <IconButton Icon={LuCommand} />
+          <IconButton
+            Icon={LuCommand}
+            className="hidden text-gray-500 bg-neutral-300 dark:text-gray-500 dark:bg-neutral-700"
+            disabled
+          />
           <ColorToggle />
         </div>
       </div>

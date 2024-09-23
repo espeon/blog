@@ -1,4 +1,5 @@
 import Card from "@/components/ui/card";
+import { FaGithub } from "react-icons/fa";
 import { IconType } from "react-icons/lib";
 import { LuLink } from "react-icons/lu";
 
@@ -9,34 +10,86 @@ export default function Projects() {
         title="Natalie's Blog"
         tech="Next.js, TailwindCSS, MDX, React, TypeScript"
         description="A fast, minimal, MDX-based blog and homepage.\nThis site!"
-        link="https://github.com/espeon/blog"
+        links={[
+          {
+            link: "https://github.com/espeon/blog",
+            linkText: "GitHub",
+            LinkIcon: FaGithub,
+          },
+        ]}
       />
       <ProjectCard
         title="Muse"
         tech="Next.js, React, TypeScript, Bun, Rust"
         description="A fast, beautiful, self-hosted, personal music service."
-        link="https://github.com/espeon/muse"
+        links={[
+          {
+            link: "https://github.com/espeon/muse",
+            linkText: "GitHub",
+            LinkIcon: FaGithub,
+          },
+        ]}
       />
       <ProjectCard
         title="Lupin"
         tech="Remix, React, TypeScript"
         description="A Remix based network Looking Glass (provides routing and network info from the perspective of a remote router or network)"
-        link="https://github.com/espeon/lupin"
+        links={[
+          {
+            link: "https://github.com/espeon/lupin",
+            linkText: "GitHub",
+            LinkIcon: FaGithub,
+          },
+        ]}
       />
       <ProjectCard
         title="Midori"
         tech="Rust, Bento4, SQLite, FFmpeg"
         description="A Rust-based video transcoding and segmenting pipeline"
-        link="https://github.com/espeon/midori"
+        links={[
+          {
+            link: "https://github.com/espeon/midori",
+            linkText: "GitHub",
+            LinkIcon: FaGithub,
+          },
+        ]}
       />
       <ProjectCard
         title="Oshiro"
         tech="Rust, Twilight, Discord (platform)"
         description="A Discord bot built with the Twilight library. Made primarily to experiment with building a flexible and modular bot command handler."
-        link="https://github.com/espeon/oshiro"
+        links={[
+          {
+            link: "https://github.com/espeon/oshiro",
+            linkText: "GitHub",
+            LinkIcon: FaGithub,
+          },
+        ]}
+      />
+      <ProjectCard
+        title="TwPal"
+        tech="React, TypeScript TailwindCSS"
+        description="An easy TailwindCSS palette generator website. Palettes are relatively accurate to Tailwind's defaults."
+        links={[
+          {
+            link: "https://twpal.pages.dev",
+            linkText: "Website",
+          },
+          {
+            link: "https://github.com/espeon/twcss-palettegen",
+            linkText: "GitHub",
+            LinkIcon: FaGithub,
+          },
+        ]}
       />
     </div>
   );
+}
+
+interface ProjectCardLink {
+  link: string;
+  LinkIcon?: IconType;
+  linkText?: string;
 }
 
 interface ProjectCardProps {
@@ -44,9 +97,7 @@ interface ProjectCardProps {
   title: string;
   tech: string;
   description: string;
-  link: string;
-  LinkIcon?: IconType;
-  linkText?: string;
+  links: ProjectCardLink[];
 }
 
 function ProjectCard({
@@ -54,9 +105,7 @@ function ProjectCard({
   title,
   tech,
   description,
-  link,
-  LinkIcon = LuLink,
-  linkText,
+  links,
 }: ProjectCardProps) {
   return (
     <Card className="text-lg w-screen max-w-full dark:bg-wisteria-300/55 flex flex-col items-left justify-between md:col-span-2">
@@ -77,16 +126,27 @@ function ProjectCard({
       </div>
       <div className="text-base h-full mt-2">
         {description.split("\\n").map((line, i) => (
-          <div className="mb-1" key={i}>
+          <div className="mb-1" key={i + line}>
             {line}
           </div>
         ))}
       </div>
       <div>
-        <div className="text-sm dark:text-wisteria-400 text-wisteria-700">
-          <a href={link} target="_blank">
-            <LinkIcon className="inline mb-0.5" /> {linkText ? linkText : link}
-          </a>
+        <div className="text-sm dark:text-wisteria-400 text-wisteria-700 -mb-2 mt-1">
+          {links.map((link, i) => {
+            const LinkIcon = link.LinkIcon ?? LuLink;
+            return (
+              <a
+                href={link.link}
+                target="_blank"
+                className="pr-4 align-text-bottom"
+                key={i + link.link}
+              >
+                <LinkIcon className="inline mb-1 mr-1 text-lg" />{" "}
+                {link.linkText ? link.linkText : link.link}
+              </a>
+            );
+          })}
         </div>
       </div>
     </Card>
