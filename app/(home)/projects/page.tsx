@@ -31,6 +31,18 @@ export default function Projects() {
         ]}
       />
       <ProjectCard
+        title="LyrThing"
+        tech="React, Typescript, LRC, WebSockets, TailwindCSS"
+        description="A lyrics and now playing viewer written for the DeskThing framework, mainly designed for the Car Thing (the discontinued Spotify player)"
+        links={[
+          {
+            link: "https://github.com/espeon/lyrthing",
+            linkText: "GitHub",
+            LinkIcon: FaGithub,
+          },
+        ]}
+      />
+      <ProjectCard
         title="Lupin"
         tech="Remix, React, TypeScript"
         description="A Remix based network Looking Glass (provides routing and network info from the perspective of a remote router or network)"
@@ -68,7 +80,7 @@ export default function Projects() {
       />
       <ProjectCard
         title="TwPal"
-        tech="React, TypeScript TailwindCSS"
+        tech="React, TypeScript, TailwindCSS"
         description="An easy TailwindCSS palette generator website. Palettes are relatively accurate to Tailwind's defaults."
         links={[
           {
