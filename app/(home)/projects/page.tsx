@@ -40,6 +40,10 @@ export default function Projects() {
             linkText: "GitHub",
             LinkIcon: FaGithub,
           },
+          {
+            link: "https://muse.lutea.co",
+            linkText: "Website"
+          }
         ]}
       />
       <ProjectCard
