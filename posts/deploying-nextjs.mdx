@@ -1,0 +1,66 @@
+---
+title: "Getting multi-environment support in Next.js for (mostly) free"
+datePublished: "2023-10-25"
+summary: "Containers can drastically simplify the process of deploying your Next.js app across multiple environments."
+public: false
+---
+
+
+Here to learn how to deploy? Especially to multiple containers? Feel free to [skip to the good part :)](#deploying-nextjs-to-multiple-containers)
+
+Next\.js is a flexible React framework. It provides nice features like server/static rendering, server actions, incremental static rendering, middleware, and more. Vercel, the creators of Next.js, recommend that you deploy with them to get certain features, like ISR, out-of-the-box. While Vercel is a reputable platform that takes pride in its services, users who want to leave their ecosystem may find limited options in regards to certain missing features.
+
+One of the available options here is to deploy your application on your own infrastructure using containers. Containers are standardized units that package software for purposes such as development, testing, and shipping. They include all the necessary components to run the software, providing better consistency during deployment and lower overhead compared to virtual machines. This approach is favored by developers because it abstracts the software away from the host operating system, making it easier to deploy and manage applications. Thanks to the standardized nature of containers, one can be confident that if a solution is working in one’s own container, it should work consistently in any other containerized environment.
+
+### Why host Next.js using containers?
+
+- Better security - Containers are isolated unless you don’t want them to be. This helps prevent conflicts with your host operating system, and ensures that you always have the right dependency versions.
+- Easier management - Containers can be easy to deploy. With Docker, it’s two commands - one to build and one to run the container. 
+- Resource Management - Container managers provide the ability to restrict resource utilization. For instance, you can run Next.js with 256 or 512 MB of RAM and half a vCPU to simulate a constrained environment.
+- Works anywhere* - From AWS Fargate and Azure Container Apps to a Raspberry Pi in your garage, you can run Next.js anywhere you can deploy a container
+
+### Any other options?
+Other than Vercel, if your website can be rendered statically (no serverless/edge functions), it’s better to deploy to a static hosting service, such as [Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) or [GitHub Pages](https://github.com/gregrickaby/nextjs-github-pages). 
+
+You can also use [OpenNext](https://opennext.js.org) to deploy to AWS or Cloudflare.
+
+## Prerequisites
+You will need [Docker Desktop](https://docs.docker.com/desktop/) (or an alternative) and [Node.js](https://nodejs.org/en) installed on your host system.  If you intend to deploy, you will need [Docker Engine](https://docs.docker.com/engine) installed on the system you’re deploying to.
+
+## Basic steps
+1. Install prerequisites mentioned above
+2. Run `npx create-next-app`
+3. In your app’s folder, you’ll want to make a `Dockerfile`. [Next.js recommends one here](https://github.com/vercel/next.js/blob/canary/examples/with-docker/Dockerfile).
+4. You will need to change your `output` to `"Standalone"` in your `next.config.js` (you may need to create `output` if it’s not there)
+5. Run `docker build -t ghcr.io/espeon/your-nextjs/app .` to build the container
+	1. If you plan on using a registry that’s not Docker Hub, you’ll need to name your image based on the registry’s base url. See your registry’s docs for more info.
+	2. In this example, and further on, I’ll use `ghcr.io/espeon/your-nextjs/app` as an example tag.
+6. Run `docker run -p 3000:3000 ghcr.io/espeon/your-nextjs/app` to run the container, passing through port 3000 to the host.
+7. Upload your container to a container registry like Docker Hub, GitHub Container Registry, or your own self-hosted registry.
+
+Please note that if you use Bun, that currently Bun hasn’t implemented certain Node APIs that Next.js uses for App Router. If you are using App Router, you can build and install dependencies with Bun, but you have to deploy with Node.js. [See more here](https://bun.sh/guides/ecosystem/nextjs).
+
+
+## Deploying Next.js 
+There are several methods for deploying your Next.js container. You can deploy to managed services, such as AWS Fargate or Azure Container Apps, but I feel it is more advantageous to focus on deploying to bare metal here.
+
+### Deploying with Docker
+Once you’ve SSHed into the server and installed docker, running your container is as easy as logging in (if necessary), pulling your container from the registry, and running it.
+
+```sh
+docker login -u name # the password is entered interactively
+docker start ghcr.io/espeon/your-nextjs/app
+```
+## Deploying Next.js to multiple containers
+Sometimes your Next.js apps will be deployed between multiple containers (for example, with a round robin proxy or similar). In this case, the default Next.js cache is local-to-container and will not be shared between instances. This can cause issues such as diverging data and pages generating multiple times.
+
+To fix this by having a cache between containers, you can use [`@neshca/cache-handler`](https://github.com/caching-tools/next-shared-cache), which is a extensible, specialized, ISR and data cache made for Next.
+
+In this example, we’ll be using the [`redis-stack` handler](https://caching-tools.github.io/next-shared-cache/handlers/redis-stack).
+
+TODO: how to use it
+
+### Deploying with Swarm
+TODO lol
+### Deploying with k8s
+TODO this as well

@@ -9,9 +9,7 @@ export default function HeaderLink(props: {
 }) {
   const pathname = usePathname();
   const match = () => {
-    console.log(pathname, props.href);
     if (props.href == "/") {
-      console.log("match");
       return props.href === pathname;
     }
     if (props.alsoMatch)
@@ -21,7 +19,6 @@ export default function HeaderLink(props: {
     return pathname.startsWith(props.href) || props.href === pathname;
   };
   const isActive = match();
-  console.log(pathname, props.href, isActive);
   return (
     <Link
       href={props.href}

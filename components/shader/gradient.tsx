@@ -40,12 +40,12 @@ const GradientReact = () => {
     let targetColors: T;
 
     if (theme === "system") {
-      console.log("Theme is system!");
+      //console.log("Theme is system!");
       const systemTheme = window.matchMedia("(prefers-color-scheme: dark)");
       targetColors = systemTheme.matches ? col.dark : col.light;
     } else {
       targetColors = theme === "dark" ? col.dark : col.light;
-      console.log("Setting colors to", theme === "dark" ? "dark" : "light");
+      //console.log("Setting colors to", theme === "dark" ? "dark" : "light");
     }
 
     return targetColors;

@@ -38,12 +38,10 @@ export default function RootLayout({
       <body>
         <Providers>
           <div className="dark:text-neutral-200 text-black transition-all h-screen overflow-x-hidden flex justify-center">
-            <Conditional
-              paths={["/", "/projects"]}
-              defaultComponent={
-                <div className="fixed left-0 top-0 h-screen w-screen bs-screen is-screen -z-20 isLoaded dark:bg-neutral-900 bg-neutral-200 transition-all duration-250" />
-              }
-            >
+            <div
+              className={`fixed left-0 top-0 w-screen h-screen bg-neutral-200 dark:bg-neutral-900 transition-opacity duration-1000 -z-30`}
+            />
+            <Conditional paths={["/", "/projects"]} defaultComponent={<></>}>
               <Suspense>
                 <GradientReact />
               </Suspense>
