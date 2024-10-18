@@ -1,7 +1,7 @@
 ---
-title: "Getting multi-environment support in Next.js for (mostly) free"
+title: "Deploy Next.js Anywhere with Docker"
 datePublished: "2023-10-25"
-summary: "Containers can drastically simplify the process of deploying your Next.js app across multiple environments."
+summary: "Containers can drastically simplify the process of deploying your Next.js app across various environments."
 public: false
 ---
 
@@ -17,7 +17,7 @@ One of the available options here is to deploy your application on your own infr
 - Better security - Containers are isolated unless you don’t want them to be. This helps prevent conflicts with your host operating system, and ensures that you always have the right dependency versions.
 - Easier management - Containers can be easy to deploy. With Docker, it’s two commands - one to build and one to run the container. 
 - Resource Management - Container managers provide the ability to restrict resource utilization. For instance, you can run Next.js with 256 or 512 MB of RAM and half a vCPU to simulate a constrained environment.
-- Works anywhere* - From AWS Fargate and Azure Container Apps to a Raspberry Pi in your garage, you can run Next.js anywhere you can deploy a container
+- Works anywhere* - From AWS Fargate and Azure Container Apps, to a Raspberry Pi in your garage, you can run Next.js anywhere you can deploy a container,
 
 ### Any other options?
 Other than Vercel, if your website can be rendered statically (no serverless/edge functions), it’s better to deploy to a static hosting service, such as [Cloudflare Pages](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/) or [GitHub Pages](https://github.com/gregrickaby/nextjs-github-pages). 
@@ -48,7 +48,7 @@ There are several methods for deploying your Next.js container. You can deploy t
 Once you’ve SSHed into the server and installed docker, running your container is as easy as logging in (if necessary), pulling your container from the registry, and running it.
 
 ```sh
-docker login -u name # the password is entered interactively
+docker login -u name # optional; the password is entered interactively
 docker start ghcr.io/espeon/your-nextjs/app
 ```
 ## Deploying Next.js to multiple containers
