@@ -41,7 +41,10 @@ export default function RootLayout({
             <div
               className={`fixed left-0 top-0 w-screen h-screen bg-neutral-200 dark:bg-neutral-900 transition-opacity duration-1000 -z-30`}
             />
-            <Conditional paths={["/", "/projects"]} defaultComponent={<></>}>
+            <Conditional
+              paths={["/", "/projects", "/guestbook"]}
+              defaultComponent={<></>}
+            >
               <Suspense>
                 <GradientReact />
               </Suspense>

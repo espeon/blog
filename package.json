@@ -1,11 +1,14 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start"
   },
   "dependencies": {
+    "@atcute/bluesky": "^1.0.9",
+    "@atcute/lex-cli": "^1.0.3",
     "@headlessui/react": "^1.7.19",
     "@next/mdx": "latest",
     "@react-three/drei": "^9.112.1",
