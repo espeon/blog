@@ -7,6 +7,7 @@ import {
 } from "@atcute/client/lexicons";
 import Link from "next/link";
 import { LuHeart, LuRecycle, LuRedo, LuReply } from "react-icons/lu";
+import BlueskyEmbed from "./BlueskyEmbed";
 
 type ThreadView = Brand.Union<AppBskyFeedDefs.ThreadViewPost>;
 type BlueskyPost = AppBskyFeedPost.Record;
@@ -21,6 +22,10 @@ export interface BlueskyReplyProps {
 }
 
 const BlueskyReply = ({ thread, depth = 0 }: BlueskyReplyProps) => {
+  if (thread.$type !== "app.bsky.feed.defs#threadViewPost") {
+    return null;
+  }
+
   const { post, replies } = thread;
   const { author, embed, replyCount, repostCount, likeCount, record } = post;
   let bskyPost: BlueskyPost;
@@ -63,26 +68,12 @@ const BlueskyReply = ({ thread, depth = 0 }: BlueskyReplyProps) => {
         {/* Content Section */}
         <div className="mb-3">
           <div className="flex gap-2 items-center">
-            <span>{bskyPost.text}</span>
+            <span>{bskyPost?.text}</span>
           </div>
         </div>
 
         {/* Embed Section */}
-        {embed && (embed as any).external && (
-          <div className="border rounded-lg p-3 mb-3 max-w-96">
-            {(embed as any).external.thumb && (
-              <img
-                src={(embed as any).external.thumb}
-                alt={(embed as any).external.title}
-                className="w-full h-full object-cover rounded-lg mb-2"
-              />
-            )}
-            <h3 className="font-bold">{(embed as any).external.title}</h3>
-            <p className="text-gray-600 text-sm">
-              {(embed as any).external.description}
-            </p>
-          </div>
-        )}
+        {embed && <BlueskyEmbed embed={bskyPost.embed} />}
 
         {/* Engagement Stats */}
         <div className="flex gap-4 text-gray-700 dark:text-gray-400 text-sm">
@@ -106,8 +97,8 @@ const BlueskyReply = ({ thread, depth = 0 }: BlueskyReplyProps) => {
             .filter((r) => r.$type === "app.bsky.feed.defs#threadViewPost")
             .map((nestedReply, index) => (
               <BlueskyReply
-                key={`${nestedReply.post.uri}-${index}`}
-                thread={nestedReply}
+                key={`${(nestedReply as any).post?.uri}-${index}`}
+                thread={nestedReply as ThreadView}
                 depth={depth + 1}
               />
             ))}

@@ -7,6 +7,7 @@ import {
 } from "@atcute/client/lexicons";
 
 type BlueskyPost = AppBskyFeedPost.Record;
+type BlueskyEmbed = AppBskyEmbedRecord.Main;
 
 // type that has a $type field
 type Records = { $type: string };
