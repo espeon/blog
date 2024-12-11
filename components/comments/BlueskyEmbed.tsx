@@ -31,13 +31,15 @@ const BlueskyEmbed = ({ embed }: { embed: BlueskyPost["embed"] }) => {
     <div className="border rounded-lg p-3 mb-3 max-w-64">
       {(embed as any).external.thumb && (
         <img
-          src={embed.external.thumb}
-          alt={embed.external.title}
+          src={(embed as any).external.thumb}
+          alt={(embed as any).external.title}
           className="w-full h-40 object-cover rounded-lg mb-2"
         />
       )}
-      <h3 className="font-bold">{embed.external.title}</h3>
-      <p className="text-gray-600 text-sm">{embed.external.description}</p>
+      <h3 className="font-bold">{(embed as any).external.title}</h3>
+      <p className="text-gray-600 text-sm">
+        {(embed as any).external.description}
+      </p>
     </div>
   );
 };
