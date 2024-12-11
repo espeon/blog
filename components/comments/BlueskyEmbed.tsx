@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  AppBskyEmbedRecord
+  AppBskyEmbedRecord,
   AppBskyFeedPost,
   AppBskyEmbedExternal,
   Brand,
