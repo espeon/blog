@@ -28,9 +28,14 @@ const BlueskyEmbed = ({ embed }: { embed: BlueskyPost["embed"] }) => {
   if (!embed) {
     return null;
   }
+  if ((embed as any).external === undefined || (embed as any).external.title) {
+    return <div className="border rounded-lg p-3 mb-3 max-w-64">
+      There was an image here, but it didn't load.
+    </div>
+  }
   return (
     <div className="border rounded-lg p-3 mb-3 max-w-64">
-      {embed && (embed as any).external && (embed as any).external.thumb && (
+      {embed && (embed as any).external !== undefined && (embed as any).external.thumb && (
         <img
           src={(embed as any).external.thumb}
           alt={(embed as any).external.title}
