@@ -30,7 +30,7 @@ const BlueskyEmbed = ({ embed }: { embed: BlueskyPost["embed"] }) => {
   }
   return (
     <div className="border rounded-lg p-3 mb-3 max-w-64">
-      {(embed as any).external.thumb && (
+      {embed && (embed as any).external && (embed as any).external.thumb && (
         <img
           src={(embed as any).external.thumb}
           alt={(embed as any).external.title}
