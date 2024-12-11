@@ -68,18 +68,18 @@ const BlueskyReply = ({ thread, depth = 0 }: BlueskyReplyProps) => {
         </div>
 
         {/* Embed Section */}
-        {embed && embed.external && (
+        {embed && (embed as any).external && (
           <div className="border rounded-lg p-3 mb-3 max-w-96">
-            {embed.external.thumb && (
+            {(embed as any).external.thumb && (
               <img
-                src={embed.external.thumb}
-                alt={embed.external.title}
+                src={(embed as any).external.thumb}
+                alt={(embed as any).external.title}
                 className="w-full h-full object-cover rounded-lg mb-2"
               />
             )}
-            <h3 className="font-bold">{embed.external.title}</h3>
+            <h3 className="font-bold">{(embed as any).external.title}</h3>
             <p className="text-gray-600 text-sm">
-              {embed.external.description}
+              {(embed as any).external.description}
             </p>
           </div>
         )}
