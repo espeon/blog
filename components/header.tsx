@@ -10,7 +10,15 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog", alsoMatch: ["/posts"] },
-  { href: "/guestbook", label: "Guestbook" },
+  {
+    href: "/guestbook",
+    label: (
+      <>
+        <div className="hidden md:block">Guestbook</div>
+        <div className="md:hidden">🪶</div>
+      </>
+    ),
+  },
 ];
 
 export default function Header(props: HTMLAttributes<HTMLDivElement>) {

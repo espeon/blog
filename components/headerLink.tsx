@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 export default function HeaderLink(props: {
   href: string;
-  label: string;
+  label: string | JSX.Element;
   alsoMatch?: string[];
 }) {
   const pathname = usePathname();
