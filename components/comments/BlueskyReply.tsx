@@ -4,9 +4,11 @@ import {
   AppBskyFeedDefs,
   Brand,
   AppBskyFeedPost,
+  AppBskyEmbedRecord,
 } from "@atcute/client/lexicons";
 import Link from "next/link";
 import { LuHeart, LuRecycle, LuRedo, LuReply } from "react-icons/lu";
+
 import BlueskyEmbed from "./BlueskyEmbed";
 
 type ThreadView = Brand.Union<AppBskyFeedDefs.ThreadViewPost>;

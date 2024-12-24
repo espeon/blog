@@ -8,14 +8,31 @@ import { LuCommand } from "react-icons/lu";
 
 const links = [
   { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog", alsoMatch: ["/posts"] },
+  {
+    href: "/projects",
+    label: (
+      <>
+        <div className="hidden md:block">Projects</div>
+        <div className="md:hidden">🏗</div>
+      </>
+    ),
+  },
   {
     href: "/guestbook",
     label: (
       <>
         <div className="hidden md:block">Guestbook</div>
         <div className="md:hidden">🪶</div>
+      </>
+    ),
+  },
+  {
+    href: "/uses",
+    label: (
+      <>
+        <div className="hidden md:block">/uses</div>
+        <div className="md:hidden">💻</div>
       </>
     ),
   },
@@ -31,7 +48,7 @@ export default function Header(props: HTMLAttributes<HTMLDivElement>) {
       {...props}
     >
       <div className="flex flex-row justify-between items-center">
-        <div className="flex gap-2">
+        <div className="flex gap-0.5 sm:gap-2">
           {links.map((link) => (
             <HeaderLink key={link.href} {...link} />
           ))}
