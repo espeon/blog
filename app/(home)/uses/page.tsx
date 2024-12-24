@@ -298,7 +298,7 @@ export default function Projects() {
                 <a
                   target="_blank"
                   className="text-wisteria-500 dark:text-wisteria-300 underline"
-                  href="https://www.symphonium.com/products/meteor"
+                  href="https://www.symphoniumaudio.com/products/meteor"
                 >
                   Symphonium Meteors
                 </a>
