@@ -213,9 +213,9 @@ export default function Projects() {
                 <a
                   target="_blank"
                   className="text-wisteria-500 dark:text-wisteria-300 underline"
-                  href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4060-ti-super/"
+                  href="https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4070-family/"
                 >
-                  RTX 4060ti Super (16GB)
+                  RTX 4070ti Super (16GB)
                 </a>{" "}
                 with the{" "}
                 <a
