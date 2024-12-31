@@ -7,9 +7,19 @@ import {
   AppBskyEmbedRecord,
 } from "@atcute/client/lexicons";
 import Link from "next/link";
-import { LuHeart, LuRecycle, LuRedo, LuReply } from "react-icons/lu";
+import {
+  LuArrowLeft,
+  LuArrowRight,
+  LuHeart,
+  LuRecycle,
+  LuRedo,
+  LuReply,
+} from "react-icons/lu";
+
+import {} from "react-icons/fa6";
 
 import BlueskyEmbed from "./BlueskyEmbed";
+import { PiButterfly, PiButterflyFill } from "react-icons/pi";
 
 type ThreadView = Brand.Union<AppBskyFeedDefs.ThreadViewPost>;
 type BlueskyPost = AppBskyFeedPost.Record;
@@ -75,7 +85,7 @@ const BlueskyReply = ({ thread, depth = 0 }: BlueskyReplyProps) => {
         </div>
 
         {/* Embed Section */}
-        {embed && <BlueskyEmbed embed={bskyPost.embed} />}
+        {embed && <BlueskyEmbed embed={bskyPost.embed} did={author.did} />}
 
         {/* Engagement Stats */}
         <div className="flex gap-4 text-gray-700 dark:text-gray-400 text-sm">
@@ -88,6 +98,13 @@ const BlueskyReply = ({ thread, depth = 0 }: BlueskyReplyProps) => {
           <div className="flex gap-2 items-center">
             <span>{repostCount}</span> <LuRecycle />
           </div>
+          <Link
+            href={`https://bsky.app/profile/${author.did}/post/${post.uri.split("/").pop()}`}
+            className="flex gap-2 items-center"
+          >
+            Go to post
+            <LuArrowRight />
+          </Link>
         </div>
       </div>
 

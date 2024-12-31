@@ -7,12 +7,12 @@
     "start": "next start"
   },
   "dependencies": {
-    "@atcute/bluesky": "^1.0.9",
-    "@atcute/lex-cli": "^1.0.3",
+    "@atcute/bluesky": "^1.0.11",
+    "@atcute/lex-cli": "^1.0.4",
     "@headlessui/react": "^1.7.19",
     "@next/mdx": "latest",
-    "@react-three/drei": "^9.112.1",
-    "@react-three/fiber": "^8.17.7",
+    "@react-three/drei": "^9.120.4",
+    "@react-three/fiber": "^8.17.10",
     "clsx": "^2.1.1",
     "contentlayer": "=0.3.4",
     "date-fns": "^2.30.0",
@@ -20,7 +20,7 @@
     "glsl-noise": "^0.0.0",
     "glslify": "^7.1.1",
     "glslify-loader": "^2.0.0",
-    "next": "^14.2.13",
+    "next": "^14.2.22",
     "next-contentlayer": "^0.3.4",
     "next-themes": "^0.2.1",
     "raw-loader": "^4.0.2",
@@ -33,7 +33,7 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "3.0.1",
     "shiki": "^0.14.7",
-    "swr": "^2.2.5",
+    "swr": "^2.3.0",
     "three": "^0.168.0"
   },
   "devDependencies": {
@@ -43,7 +43,7 @@
     "@types/react": "18.2.38",
     "@types/react-dom": "18.2.17",
     "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
+    "postcss": "^8.4.49",
     "tailwindcss": "latest",
     "typescript": "5.3.2"
   }

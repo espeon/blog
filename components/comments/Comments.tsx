@@ -53,9 +53,9 @@ export default function Comments({ did, postCid }: CommentsProps) {
     return (
       <div className="text-2xl ml-4">
         Loading...
-        <div className="ml-4 text-xl text-neutral-800 dark:text-neutral-300">
+        <noscript className="ml-4 text-xl text-neutral-800 dark:text-neutral-300">
           You may need to enable JavaScript.
-        </div>
+        </noscript>
       </div>
     );
   }

@@ -24,7 +24,7 @@ export default function HeaderLink(props: {
       href={props.href}
       className={clsx(
         isActive && "bg-neutral-400/75 dark:bg-neutral-900/55",
-        "relative overflow-hidden bg-neutral-300/55 dark:bg-neutral-800/55 border border-neutral-400/75 dark:border-neutral-700/75 py-1 px-4 rounded-full",
+        "relative overflow-hidden bg-neutral-300/55 dark:bg-neutral-800/55 border border-neutral-400/75 dark:border-neutral-700/75 py-1 px-2 md:px-4 rounded-full",
         "hover:bg-neutral-300 dark:hover:bg-neutral-900",
         "transition-colors duration-300 hover:text-black dark:hover:text-white z-0",
         "group", // Add this to create a parent group for hover effects

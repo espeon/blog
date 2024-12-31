@@ -30,8 +30,19 @@ export default function Projects() {
           },
           {
             link: "https://muse.lutea.co",
-            linkText: "Website"
-          }
+            linkText: "Website",
+          },
+        ]}
+      />
+      <ProjectCard
+        title="ATProto Tools"
+        tech="React, TypeScript, TailwindCSS, TanStack Router"
+        description="A website for my ATProto tools and utilities. Currently includes a record navigator."
+        links={[
+          {
+            link: "https://atp.tools",
+            linkText: "Website",
+          },
         ]}
       />
       <ProjectCard
