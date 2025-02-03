@@ -48,7 +48,7 @@ export default function Header(props: HTMLAttributes<HTMLDivElement>) {
       {...props}
     >
       <div className="flex flex-row justify-between items-center">
-        <div className="flex gap-0.5 sm:gap-2">
+        <div className="flex gap-1 sm:gap-2">
           {links.map((link) => (
             <HeaderLink key={link.href} {...link} />
           ))}
