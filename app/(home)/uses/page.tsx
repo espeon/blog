@@ -146,8 +146,8 @@ export default function Projects() {
               </li>
               <li>
                 I have a little KVM switcher setup for my MacBook Pro and
-                Windows Desktop computers, so I can switch my whole setup
-                between them instantly.
+                Desktop computers, so I can switch my whole setup between them
+                instantly.
               </li>
               <li>
                 I use{" "}
@@ -187,8 +187,29 @@ export default function Projects() {
                 </a>
                 .
               </li>
+              <li>
+                For my desk, I have an{" "}
+                <a
+                  target="_blank"
+                  className="text-wisteria-500 dark:text-wisteria-300 underline"
+                  href="https://www.ikea.com/us/en/p/bekant-desk-sit-stand-white-s69022537/"
+                >
+                  IKEA Bekant
+                </a>{" "}
+                standing desk base, with the{" "}
+                <a
+                  target="_blank"
+                  className="text-wisteria-500 dark:text-wisteria-300 underline"
+                  href="https://www.ikea.com/us/en/p/uppspel-tabletop-black-70511347/"
+                >
+                  Uppspel
+                </a>{" "}
+                top (yes, the Republic of Gamers one) on backwards (I swear it's better). I wouldn't recommend
+                either - they're expensive and made with poorer quality
+                materials, but I like them enough to not throw them out.
+              </li>
             </ul>
-            <h2 className="text-3xl mt-4">Computer</h2>
+            <h2 className="text-xl mt-4">Computer</h2>
             <ul className="space-y-1 list-disc list-outside ml-4  dark:text-gray-200 mt-2">
               <li>
                 My laptop is a{" "}
@@ -198,7 +219,8 @@ export default function Projects() {
                   href="https://www.apple.com/macbook-pro-14-and-16/"
                 >
                   MacBook Pro 14" M1 Pro (8+2 core)
-                </a>
+                </a> {" "}
+                running MacOS.
               </li>
               <li>
                 My desktop currently is a{" "}
@@ -225,7 +247,15 @@ export default function Projects() {
                 >
                   NZXT H440 (USB-C)
                 </a>
-                .
+                , running{" "}
+                <a
+                  target="_blank"
+                  className="text-wisteria-500 dark:text-wisteria-300 underline"
+                  href="https://cachyos.org"
+                >
+                  CachyOS
+                </a>{" "}
+                (more later).
               </li>
               <li>
                 My homelab PCs are a pair of{" "}
@@ -242,6 +272,30 @@ export default function Projects() {
               <li>
                 I dockerize everything I can, homelab-wise. Routing is done with
                 docker-compose tags with Traefik.
+              </li>
+            </ul>
+            <h2 className="text-xl mt-4">Linux</h2>
+            <ul className="space-y-1 list-disc list-outside ml-4 dark:text-gray-200 mt-2">
+              <li>
+                I use{" "}
+                <a
+                  href="https://cachyos.org"
+                  target="_blank"
+                  className="text-wisteria-500 dark:text-wisteria-300 underline"
+                >
+                  CachyOS
+                </a>{" "}
+                on my desktop, which is a lightweight Linux distribution that is
+                focused on performance and security.
+              </li>
+              <li>
+                {" "}
+                My daily driver WM currently is Hyprland (looking for other
+                options if you have them!) with dotfiles based off{" "}
+                <a href="https://github.com/JaKooLit/Arch-Hyprland">
+                  JaKooLit's Arch-Hyprland
+                </a>{" "}
+                dotfiles.
               </li>
             </ul>
             <h2 className="text-3xl mt-4">Audio</h2>
