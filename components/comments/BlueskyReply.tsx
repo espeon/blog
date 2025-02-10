@@ -58,7 +58,7 @@ const BlueskyReply = ({
     depth > 1 ? "border-l border-gray-400 dark:border-gray-800" : "";
 
   return (
-    <div className={`bluesky-reply-chain`} style={{ marginLeft: depth * 8 }}>
+    <div className={`bluesky-reply-chain`} style={{ marginLeft: 12 }}>
       {!skipFirst && (
         <div className={`bluesky-reply my-4 px-4 mb-1 ${connectorClass}`}>
           {/* Author Section */}
