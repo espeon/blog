@@ -17,7 +17,11 @@ export default function CommentsTest() {
           .
         </div>
         <div className="text-base">
-          <Comments did="natalie.sh" postCid="3lcyqskf5rk2j" />
+          <Comments
+            did="natalie.sh"
+            postCid="3lcyqskf5rk2j"
+            skipFirst={false}
+          />
         </div>
       </Card>
     </div>
