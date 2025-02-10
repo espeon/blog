@@ -22,14 +22,18 @@ const BlueskyEmbed = ({
   did: string;
 }) => {
   return (
-    <div className="rounded-lg border border-neutral-500/50 mb-3 max-w-64">
+    <div className="rounded-lg border border-neutral-500/50 mb-3 max-w-96">
       {embed.$type === "app.bsky.embed.external" ? (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-left justify-center p-2">
           {embed.external.thumb && (
             <img
-              src={embed.external.thumb.ref.$link}
+              src={getBlueskyCdnLink(
+                did,
+                embed.external.thumb.ref.$link,
+                "jpeg",
+              )}
               alt={embed.external.title}
-              className="w-full h-40 object-cover rounded-lg mb-2"
+              className="rounded-lg mb-2"
             />
           )}
           <h3 className="font-bold">{embed.external.title}</h3>

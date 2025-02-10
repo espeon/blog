@@ -31,9 +31,14 @@ function isPost(post: any): post is BlueskyPost {
 export interface BlueskyReplyProps {
   thread: ThreadView;
   depth?: number;
+  skipFirst?: boolean;
 }
 
-const BlueskyReply = ({ thread, depth = 0 }: BlueskyReplyProps) => {
+const BlueskyReply = ({
+  thread,
+  depth = 0,
+  skipFirst = false,
+}: BlueskyReplyProps) => {
   if (thread.$type !== "app.bsky.feed.defs#threadViewPost") {
     return null;
   }
@@ -54,59 +59,61 @@ const BlueskyReply = ({ thread, depth = 0 }: BlueskyReplyProps) => {
 
   return (
     <div className={`bluesky-reply-chain`} style={{ marginLeft: depth * 16 }}>
-      <div className={`bluesky-reply my-4 px-4 mb-1 ${connectorClass}`}>
-        {/* Author Section */}
-        <div className="flex items-center mb-2">
-          <img
-            src={author.avatar}
-            alt={author.displayName}
-            className="w-10 h-10 rounded-full mr-3"
-          />
-          <div>
-            <Link
-              className="font-bold"
-              href={`https://bsky.app/profile/${author.did}`}
-            >
-              {author.displayName}
-            </Link>
-            <div className="text-gray-700 dark:text-gray-400">
-              <Link href={`https://bsky.app/profile/${author.did}`}>
-                @{author.handle}
+      {!skipFirst && (
+        <div className={`bluesky-reply my-4 px-4 mb-1 ${connectorClass}`}>
+          {/* Author Section */}
+          <div className="flex items-center mb-2">
+            <img
+              src={author.avatar}
+              alt={author.displayName}
+              className="w-10 h-10 rounded-full mr-3"
+            />
+            <div>
+              <Link
+                className="font-bold"
+                href={`https://bsky.app/profile/${author.did}`}
+              >
+                {author.displayName}
               </Link>
+              <div className="text-gray-700 dark:text-gray-400">
+                <Link href={`https://bsky.app/profile/${author.did}`}>
+                  @{author.handle}
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Content Section */}
-        <div className="mb-3">
-          <div className="flex gap-2 items-center">
-            <span>{bskyPost?.text}</span>
+          {/* Content Section */}
+          <div className="mb-3">
+            <div className="flex gap-2 items-center">
+              <span>{bskyPost?.text}</span>
+            </div>
+          </div>
+
+          {/* Embed Section */}
+          {embed && <BlueskyEmbed embed={bskyPost.embed} did={author.did} />}
+
+          {/* Engagement Stats */}
+          <div className="flex gap-4 text-gray-700 dark:text-gray-400 text-sm">
+            <div className="flex gap-2 items-center">
+              <span>{likeCount}</span> <LuHeart />
+            </div>
+            <div className="flex gap-2 items-center">
+              <span>{replyCount}</span> <LuReply />
+            </div>
+            <div className="flex gap-2 items-center">
+              <span>{repostCount}</span> <LuRecycle />
+            </div>
+            <Link
+              href={`https://bsky.app/profile/${author.did}/post/${post.uri.split("/").pop()}`}
+              className="flex gap-2 items-center"
+            >
+              Go to post
+              <LuArrowRight />
+            </Link>
           </div>
         </div>
-
-        {/* Embed Section */}
-        {embed && <BlueskyEmbed embed={bskyPost.embed} did={author.did} />}
-
-        {/* Engagement Stats */}
-        <div className="flex gap-4 text-gray-700 dark:text-gray-400 text-sm">
-          <div className="flex gap-2 items-center">
-            <span>{likeCount}</span> <LuHeart />
-          </div>
-          <div className="flex gap-2 items-center">
-            <span>{replyCount}</span> <LuReply />
-          </div>
-          <div className="flex gap-2 items-center">
-            <span>{repostCount}</span> <LuRecycle />
-          </div>
-          <Link
-            href={`https://bsky.app/profile/${author.did}/post/${post.uri.split("/").pop()}`}
-            className="flex gap-2 items-center"
-          >
-            Go to post
-            <LuArrowRight />
-          </Link>
-        </div>
-      </div>
+      )}
 
       {/* Nested Replies */}
       {depth < MAX_DEPTH && replies && replies.length > 0 && (

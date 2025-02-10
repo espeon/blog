@@ -12,6 +12,7 @@ export interface CommentsProps {
   did: string;
   // The CID of the app.bsky.feed.post
   postCid: string;
+  skipFirst: boolean;
 }
 
 type ThreadView = Brand.Union<AppBskyFeedDefs.ThreadViewPost>;
@@ -20,7 +21,7 @@ function isThreadView(thread: unknown): thread is ThreadView {
   return (thread as ThreadView)?.$type === "app.bsky.feed.defs#threadViewPost";
 }
 
-export default function Comments({ did, postCid }: CommentsProps) {
+export default function Comments({ did, postCid, skipFirst }: CommentsProps) {
   const [comments, setComments] =
     useState<AppBskyFeedGetPostThread.Output | null>(null);
 
@@ -67,8 +68,8 @@ export default function Comments({ did, postCid }: CommentsProps) {
 
   if (isThreadView(comments.thread)) {
     return (
-      <div className="w-full min-w-full">
-        <BlueskyReply thread={comments.thread} />{" "}
+      <div className="w-full min-w-full not-prose">
+        <BlueskyReply thread={comments.thread} skipFirst={skipFirst} />{" "}
       </div>
     );
   }
