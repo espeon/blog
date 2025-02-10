@@ -41,7 +41,9 @@ export function PrettyImage({
       />
       {caption && (
         <div className="dark:bg-[rgb(28,28,28)] text-wrap border-[rgb(51,51,51)] border-[1px] mx-0 pt-1 pb-4 px-4 rounded-b-lg shadow-xl dark:shadow-[rgb(22,22,22)]">
-          <figcaption className="text-gray-200">{caption}</figcaption>
+          <figcaption className="text-neutral-800 dark:text-neutral-200">
+            {caption}
+          </figcaption>
         </div>
       )}
     </figure>
