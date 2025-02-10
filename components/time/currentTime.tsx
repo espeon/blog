@@ -46,7 +46,7 @@ export default function CurrentTime({ ...props }: CurrentTimeProps) {
     >
       <AnimatedCounter
         value={time.getHours()}
-        className="font-mono inline"
+        className="font-mono"
         decimalPrecision={0}
         padNumber={2}
         showColorsWhenValueChanges={false}
@@ -54,7 +54,7 @@ export default function CurrentTime({ ...props }: CurrentTimeProps) {
       :
       <AnimatedCounter
         value={time.getMinutes()}
-        className="font-mono inline"
+        className="font-mono"
         decimalPrecision={0}
         padNumber={2}
         showColorsWhenValueChanges={false}
@@ -62,7 +62,7 @@ export default function CurrentTime({ ...props }: CurrentTimeProps) {
       :
       <AnimatedCounter
         value={time.getSeconds()}
-        className="font-mono inline"
+        className="font-mono"
         decimalPrecision={0}
         padNumber={2}
         showColorsWhenValueChanges={false}

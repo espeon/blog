@@ -37,7 +37,7 @@ export async function generateMetadata({ params }) {
       url: `blog.natalie.sh/posts/${post._raw.flattenedPath}`,
       images: [
         {
-          url: `https://ogimage-workers.kanbaru.workers.dev/?title=${title}&liner=${description}&date=${format(parseISO(post.datePublished), "MMM. dd, yyyy")}`,
+          url: `https://ogimage-workers.kanbaru.workers.dev/?title=${encodeURIComponent(title)}&liner=${encodeURIComponent(description)}&date=${format(parseISO(post.datePublished), "MMM. dd, yyyy")}`,
           width: 1200,
           height: 630,
         },

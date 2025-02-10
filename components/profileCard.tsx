@@ -6,14 +6,16 @@ import { FaGithub, FaLinkedin, FaLastfm, FaDiscord } from "react-icons/fa";
 export default function ProfileCard() {
   return (
     <Card className="text-xl md:row-span-3 md:col-span-3 md:p-8">
-      <div className="flex flex-col items-left justify-center">
-        <PrettyImage
-          src="/tinies.webp"
-          alt="profile image"
-          width="100"
-          height="100"
-          round={true}
-        />
+      <div className="flex flex-col items-start">
+        <div className="">
+          <PrettyImage
+            src="/tinies.webp"
+            alt="profile image"
+            width="100"
+            height="100"
+            round={true}
+          />
+        </div>
         <div className="text-2xl mt-2 text-wisteria-700 dark:text-wisteria-200">
           Hey, I'm <span className="font-semibold">Natalie.</span>
         </div>
