@@ -17,14 +17,14 @@ export default function ProfileCard() {
         <div className="text-2xl mt-2 text-wisteria-700 dark:text-wisteria-200">
           Hey, I'm <span className="font-semibold">Natalie.</span>
         </div>
-        <div className="text-base dark:text-neutral-300 text-neutral-700">
+        <div className="text-base dark:text-neutral-200 text-neutral-700">
           Software engineer. Designer. Amateur chef.
           <br />{" "}
-          <span className="text-sm dark:text-neutral-400 text-neutral-700">
+          <span className="text-sm dark:text-neutral-300 text-neutral-700">
             you can write anything here!
           </span>
         </div>
-        <div className="text-sm dark:text-neutral-400 text-neutral-700">
+        <div className="text-sm dark:text-neutral-300 text-neutral-700">
           inquiries? shoot me an email at nat @ natalie dot sh
         </div>
         <div className="text-3xl dark:text-neutral-400 text-neutral-700 flex gap-2 mt-2">

@@ -1,5 +1,6 @@
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent } from "next-contentlayer2/hooks";
 import Link from "next/link";
+import Comments from "./comments/Comments";
 
 /// pretty img wrapper with rounded edges and an optional caption
 export function PrettyImage({
@@ -23,9 +24,8 @@ export function PrettyImage({
 }) {
   return (
     <figure
-      className={`${
-        !caption ?? "shadow-sm dark:shadow-slate-800 shadow-slate-200"
-      }`}
+      className={`${caption && "shadow-sm dark:shadow-slate-800 shadow-slate-200"} place-self-center w-max`}
+      style={{ width: width + "px" }}
     >
       <img
         src={src}
@@ -40,8 +40,8 @@ export function PrettyImage({
         width={width}
       />
       {caption && (
-        <div className="dark:bg-[rgb(28,28,28)] border-[rgb(51,51,51)] border-[1px] mx-0 pt-1 pb-4 px-4 rounded-b-lg shadow-xl dark:shadow-[rgb(22,22,22)]">
-          <figcaption className="text- text-gray-200">{caption}</figcaption>
+        <div className="dark:bg-[rgb(28,28,28)] text-wrap border-[rgb(51,51,51)] border-[1px] mx-0 pt-1 pb-4 px-4 rounded-b-lg shadow-xl dark:shadow-[rgb(22,22,22)]">
+          <figcaption className="text-gray-200">{caption}</figcaption>
         </div>
       )}
     </figure>
@@ -91,6 +91,7 @@ export function EmbedCard({
 const components = {
   Image: PrettyImage,
   Card: EmbedCard,
+  Comments,
 };
 
 export default function MDX({ code }: { code: string }) {

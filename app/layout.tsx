@@ -5,15 +5,10 @@ import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { Conditional } from "@/components/shader/conditional";
 import { Suspense } from "react";
-import dynamic from "next/dynamic";
-
-// do not ssr gradientreact
-const GradientReact = dynamic(() => import("../components/shader/gradient"), {
-  ssr: false,
-});
+import Gradient from "@/components/shader/gradient-importer";
 
 const mono = IBM_Plex_Mono({
-  weight: "300",
+  weight: "400",
   style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-ibm-plex-mono",
@@ -39,14 +34,14 @@ export default function RootLayout({
         <Providers>
           <div className="dark:text-neutral-200 text-black transition-all h-screen overflow-x-hidden flex justify-center">
             <div
-              className={`fixed left-0 top-0 w-screen h-screen bg-neutral-200 dark:bg-neutral-900 transition-opacity duration-1000 -z-30`}
+              className={`fixed left-0 top-0 w-screen h-screen bg-pink-100 dark:bg-neutral-900 transition-opacity duration-1000 -z-30`}
             />
             <Conditional
               paths={["/", "/projects", "/guestbook", "/uses"]}
               defaultComponent={<></>}
             >
               <Suspense>
-                <GradientReact />
+                <Gradient />
               </Suspense>
             </Conditional>
             <div className="px-4 py-5 mx-2 mb-8 sm:px-6 max-w-full max-h-full md:max-w-screen-xl">

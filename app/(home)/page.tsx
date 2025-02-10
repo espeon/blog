@@ -12,8 +12,8 @@ import ProfileCard from "@/components/profileCard";
 export default function Page() {
   return (
     <div className="h-full md:col-span-5 md:row-span-3 flex flex-col md:grid md:grid-cols-5 gap-4 items-left justify-center">
-      <Card className="max-w-full max-h-full w-screen dark:text-neutral-400 text-neutral-700 md:col-span-5 md:row-span-2">
-        <div className="text-xl mb-1 font-semibold text-wisteria-800 dark:text-wisteria-200">
+      <Card className="max-w-full max-h-full w-screen dark:text-neutral-300 text-neutral-700 md:col-span-5 md:row-span-2">
+        <div className="text-xl mb-1 font-semibold text-wisteria-900 dark:text-wisteria-200">
           Who am I?
         </div>
         <p className="mb-2 leading-snug">
@@ -30,7 +30,7 @@ export default function Page() {
       <Card className="text-lg max-w-full py-2 w-screen md:col-span-3 md:row-span-1">
         <LastFm />
       </Card>
-      <Card className="p-0 text-lg w-screen max-w-full dark:bg-wisteria-300/55 flex flex-col justify-center items-center md:col-span-2 md:row-span-1">
+      <Card className="p-0 text-lg w-screen max-w-full dark:bg-wisteria-800/55 hover:dark:bg-wisteria-500/40 hover:bg-wisteria-900/30 flex flex-col justify-center items-center md:col-span-2 md:row-span-1">
         <div className="flex flex-col h-full justify-center items-center text-wisteria-700 dark:text-wisteria-200 text-base">
           <noscript>
             <div className="text-xs text-gray-400">

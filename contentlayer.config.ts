@@ -1,4 +1,7 @@
-import { defineDocumentType, makeSource } from "contentlayer/source-files";
+import { defineDocumentType, makeSource } from "contentlayer2/source-files";
+
+import latte from "@catppuccin/vscode/themes/latte.json" with { type: "json" };
+import mocha from "@catppuccin/vscode/themes/mocha.json" with { type: "json" };
 
 import remarkGfm from "remark-gfm";
 import rehypePrettyCode from "rehype-pretty-code";
@@ -18,6 +21,7 @@ export const Post = defineDocumentType(() => ({
     public: { type: "boolean", required: false, default: true },
     coAuthors: { type: "list", of: { type: "string" }, required: false },
     coAuthorPFPs: { type: "list", of: { type: "string" }, required: false },
+    isWeekly: { type: "boolean", required: false },
   },
   computedFields: {
     url: {
@@ -38,7 +42,8 @@ export default makeSource({
         rehypePrettyCode,
         {
           theme: {
-            dark: JSON.parse(readFileSync("./assets/mocha.json", "utf-8")),
+            dark: mocha,
+            light: latte,
           },
           onVisitLine(node) {
             // Prevent lines from collapsing in `display: grid` mode, and allow empty

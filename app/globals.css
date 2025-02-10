@@ -1,9 +1,26 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@plugin "@tailwindcss/typography";
+@theme {
+    --font-sans: "Figtree";
+    --font-mono: "IBM Plex Mono";
+    --color-wisteria-50: oklch(0.955 0.012 314.384);
+    --color-wisteria-100: oklch(0.91 0.05 314.384);
+    --color-wisteria-200: oklch(0.82 0.1 314.384);
+    --color-wisteria-300: oklch(0.73 0.105 314.384);
+    --color-wisteria-400: oklch(0.64 0.12 314.384);
+    --color-wisteria-500: oklch(0.55 0.1 314.384);
+    --color-wisteria-600: oklch(0.445 0.084 314.384);
+    --color-wisteria-700: oklch(0.334 0.081 314.384);
+    --color-wisteria-800: oklch(0.223 0.078 314.384);
+    --color-wisteria-900: oklch(0.111 0.076 314.384);
+    --color-wisteria-950: oklch(0.056 0.074 314.384);
+}
 
 html {
-    @apply bg-neutral-200 dark:bg-black dark:text-slate-300 text-black transition-colors duration-75 -z-50;
+    @apply bg-pink-100 dark:bg-black dark:text-slate-300 text-black transition-colors duration-75 -z-50;
 }
 
 @keyframes scrollText {
@@ -29,23 +46,6 @@ html {
     height: 100vh;
 }
 
-* {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-    html {
-        color-scheme: dark;
-    }
-}
-
 /* prose */
 
 .prose blockquote {
@@ -53,7 +53,11 @@ a {
 }
 
 .prose a {
-    @apply dark:text-purple-300 text-blue-700 hover:text-purple-500 transition-all dark:decoration-slate-700 decoration-slate-300 decoration-1 underline-offset-2;
+    @apply dark:text-purple-300 text-blue-800 hover:text-blue-600 transition-all dark:decoration-slate-700 decoration-slate-300 decoration-1 underline-offset-2;
+}
+
+.a {
+    @apply dark:text-purple-300 text-blue-800 hover:text-blue-600 transition-all dark:decoration-slate-700 decoration-slate-300 decoration-1 underline-offset-2;
 }
 
 .prose p,
@@ -79,12 +83,20 @@ a {
 }
 
 .prose pre {
-    @apply border border-neutral-800 bg-neutral-900;
+    @apply border-0 p-0 m-0 rounded-lg bg-transparent;
     text-wrap: balance;
 }
 
+.prose figcaption + pre {
+    @apply rounded-t-none;
+}
+
+.prose figure code {
+    @apply px-4 py-3 border-2 border-neutral-100 dark:border-neutral-800;
+}
+
 .prose code {
-    @apply px-1 py-0.5 border border-neutral-100 dark:border-neutral-800 rounded-lg;
+    @apply border-2 border-neutral-100 dark:border-neutral-800 rounded-md px-0.5;
 }
 
 .prose pre code {
@@ -93,14 +105,15 @@ a {
 
 pre {
     --tw-shadow-color: #0e1d1dc0;
-    --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
+    --tw-shadow: 0 2px 2px -0px rgb(0 0 0 / 0.1),
         0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color),
+    --tw-shadow-colored: 0 2px 2px -0px var(--tw-shadow-color),
         0 8px 10px -6px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
         var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 
     --tw-shadow: var(--tw-shadow-colored);
+    @apply shadow-neutral-400/50 dark:shadow-black/50;
 }
 
 table {
@@ -116,11 +129,6 @@ table {
     margin-bottom: 1.25em !important;
 }
 
-[data-rehype-pretty-code-fragment] code {
-    @apply grid min-w-full break-words rounded-none border-0 bg-transparent p-2 text-sm text-black;
-    counter-reset: line;
-    box-decoration-break: clone;
-}
 [data-rehype-pretty-code-fragment] .line {
     @apply py-2;
 }
@@ -133,20 +141,15 @@ table {
     text-align: right;
     color: gray;
 }
-data-highlighted-line {
-    @apply bg-slate-500 bg-opacity-10;
-}
+
 [data-rehype-pretty-code-fragment] .line-highlighted span {
     @apply relative;
 }
 [data-rehype-pretty-code-fragment] .word--highlighted {
-    @apply rounded-md bg-slate-500 bg-opacity-10 p-1;
+    @apply rounded-md bg-slate-500/10 p-1;
 }
 [data-rehype-pretty-code-title] {
-    @apply px-4 py-3 font-mono text-xs font-medium border rounded-t-lg text-neutral-200 border-[#333333] bg-[#1c1c1c];
-}
-[data-rehype-pretty-code-title] + pre {
-    @apply mt-0 rounded-t-none border-t-0;
+    @apply px-4 py-3 font-mono text-xs font-medium border rounded-lg rounded-b-none dark:text-neutral-200 dark:border-[#333333] dark:bg-[#1c1c1c];
 }
 
 /* Light mode styles (default) */

@@ -1,17 +1,25 @@
+import { use } from "react";
 // app/posts/[slug]/page.tsx
 import Header from "@/components/header";
 import { allPosts } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent } from "next-contentlayer2/hooks";
 import { notFound } from "next/navigation";
 import MDX from "@/components/mdx";
 import TimeAgo from "@/components/timeago";
 import { PiEyeClosed, PiWarning } from "react-icons/pi";
 import { NotPublicHover } from "@/components/notPublicHover";
 
-export async function generateMetadata({ params }): Promise<any | undefined> {
+import "../../page.module.css";
+
+export async function generateStaticParams() {
+  return allPosts.map((post) => ({ slug: post._raw.flattenedPath }));
+}
+
+export async function generateMetadata({ params }) {
+  const p = await params;
   const post = allPosts.find((post) => {
-    return post._raw.flattenedPath === params.slug;
+    return post._raw.flattenedPath === p.slug;
   });
   if (!post) {
     return;
@@ -38,13 +46,8 @@ export async function generateMetadata({ params }): Promise<any | undefined> {
   };
 }
 
-export async function generateStaticParams() {
-  return allPosts.map((post) => ({
-    slug: post._raw.flattenedPath,
-  }));
-}
-
-export default function Page({ params }: { params: { slug: string } }) {
+export default function Page(props: { params: Promise<{ slug: string }> }) {
+  const params = use(props.params);
   // Find the post for the current page.
   const post = allPosts.find((post) => {
     console.log(post._raw.flattenedPath);

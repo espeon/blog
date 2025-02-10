@@ -1,4 +1,4 @@
-import { withContentlayer } from "next-contentlayer";
+import { withContentlayer } from "next-contentlayer2";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -12,7 +12,23 @@ const nextConfig = {
       use: ["raw-loader", "glslify-loader"],
     });
 
-    return config;
+    return {
+      ...config,
+      optimization: {
+        // weird error with cssnanosimple
+        minimize: false,
+      },
+    };
+  },
+  experimental: {
+    turbo: {
+      rules: {
+        "*.glsl": {
+          loaders: ["raw-loader"],
+          as: "*.js",
+        },
+      },
+    },
   },
 };
 

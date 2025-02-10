@@ -53,7 +53,7 @@ function PostCard(post: Post) {
           <TimeAgo date={post.datePublished} />
         </span>
         <span className="text-sm mb-8 dark:text-gray-400 text-gray-700">
-          {post.lastUpdated && (
+          {post.lastUpdated && post.isWeekly && (
             <>
               {" • "}
               Last updated {format(
@@ -74,31 +74,45 @@ function PostCard(post: Post) {
 }
 
 export default function Home() {
-  // filter out weeklies and non-public posts
+  // filter out non-public posts and non-weeklies
   const posts = allPosts
     .filter((post) => post.public)
-    .filter((p) => !p.isWeekly)
+    .filter((p) => p.isWeekly)
     .sort((a, b) =>
       compareDesc(new Date(a.datePublished), new Date(b.datePublished)),
     );
 
   return (
     <div className="py-8">
-      <div className="flex flex-row gap-2 text-xl mb-4">
-        <a
-          href="#"
-          className="bg-neutral-400 hover:bg-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-800 px-2 rounded-lg a"
-        >
-          Main
-        </a>
-        <a
-          href="/blog/weeklies"
-          className="bg-neutral-300 hover:bg-slate-400 dark:bg-neutral-700 dark:hover:bg-neutral-800 px-2 rounded-lg a"
-        >
-          Weeklies
-        </a>
+      <div>
+        <div className="flex flex-row gap-2 text-xl mb-4">
+          <a
+            href="/blog"
+            className="bg-neutral-300 hover:bg-slate-400 dark:bg-neutral-700 dark:hover:bg-neutral-800 px-2 rounded-lg a"
+          >
+            Main
+          </a>
+          <a
+            href="/blog/weeklies"
+            className="bg-neutral-400 hover:bg-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-800 px-2 rounded-lg a"
+          >
+            Weeklies
+          </a>
+        </div>
+        <h2 className="text-2xl">Weeklies</h2>
+        <div>
+          <Link href="https://indieweb.org/week_note" className="a">
+            Weeknote
+          </Link>
+          -style posts, every week-ish.
+          <br />
+          An effort to cultivate a habit of regular writing and reflection via
+          journaling.
+          <br />
+          Nothing too serious.
+        </div>
       </div>
-      <div className="mx-auto w-full max-w-prose">
+      <div className="mx-auto w-full max-w-prose py-4">
         {posts.map((post, idx) => (
           <PostCard key={idx} {...post} />
         ))}

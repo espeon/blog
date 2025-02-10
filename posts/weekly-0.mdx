@@ -1,0 +1,103 @@
+---
+title: "Weekly #1: Week of 2025-02-02"
+datePublished: "2025-02-09"
+summary: "Adding weeknotes to my website"
+isWeekly: true
+---
+
+## Hello!
+
+I've wanted to do this for a while. I found out about weeknotes from [a friend](https://ovyerus.com) - who does her own every week(ish) on sundays.
+If you don't know, weeknotes are blog posts or weekly summaries published once a week that summarises the week's
+accomplishments/events/posts, or anything else that happened that week.
+
+I've been thinking about doing structured writing in hopes that it would help me focus, solidify weekly tasks,
+and be more disciplined in certain aspects.
+Plus, it's just something I can do to just get whatever I have in my brain down and run with it. No regrets and stuff.
+This will be my own work as well. No AI here, as stakes aren't nearly as high.
+
+I'm going to try to force myself to get one of these out during the weekend, most likely on sundays. These 'weeklies' will either
+feature something I've done every single day of the week (listicle style), or just a highlight of stuff I've done throughout the week.
+
+## What did I do this week
+...you may be asking. Well, this past week was pretty interesting to me. I was terribly sick with some kind of sore throat and bad fever/headache.
+Luckily, though, I'm on the cusp of recovering right now.
+
+Other than that, though, I did a lot this week! I made two rust services, gizo and geranium. I also finalised the teal.fm stamping flow and
+did a few small things to atptools towards my goal of implementing custom views for every important lexicon! I'll go in order:
+
+### Gizo (as in 偽造カード/counterfeit card 🃏)
+
+Gizo is a link card generator service. I made it because I was worried about using cardyb (Bluesky's card generator service) in my app.
+So, I made my own. In Rust. It should be mostly API compatible with cardyb, plus it has lru + ttl based memory caching!
+
+Sort of related, did you know that oembeds are handled separately in the Bluesky app? They build them in manually so they can control
+the dimensions so there's no crazy layout shift! My plan for gizo is to have clients do the same, so they can handle oembeds how they wish
+instead of me dictating everything via gizo.
+
+### Geranium
+
+Have you ever felt guilty that you were abusing others' resources? I have, and while there's no way around it sometimes, when there is I tend
+to take it. That's what initially got me thinking - I could build my own ATProto image proxy instead of using Bluesky's!
+When [Sam](https://mozzius.dev) mentioned making an image proxy as a first step to a high quality Instagram clone, I knew exactly what to do.
+I dove in and ended up making one. In doing so, it was my first time using the Hyper http server library, which has surprisingly good
+devex for such a low level library. Very pleased.
+
+I put up a demo server, and it looks like it's been operating perfectly fine so far. Here's an image served from said server:
+<Image
+  src="https://at.uwu.wang/did:plc:p2cp5gopk7mgjegy6wadk3ep/bafkreidjwjidj2dydp3uxwiqk35znldgea3l3dkjzkgetft2bfezhuae2a@png,300"
+  caption="A grainy image of the profile picture of samuel.bsky.team."
+  height="300"
+  width="300"
+/>
+It's really grainy, but that's only because it's the demo server. I've set the jpeg compression to max in this case, but if you
+deploy it you can set it to whatever you want!
+Hopefully people only use it for testing, but if someone somehow wants to use such low quality images, please go for it but also please
+let me know first.
+
+### teal.fm updates
+Teal.fm is an ATProto-based music scrobbling service. Well, that's what it's supposed to be. Most of the team has prior obligations and thus
+can't spend as much time on it, so development has all but stalled. But, that's where I come in! I don't really have prior obligations and
+hiring is pretty slow currently, so I can devote some time to it in between all my other stuff.
+
+#### State of teal.fm
+Currently, we have done:
+- manual scrobbling
+- jetstream ingest
+- all the xrpc routes we have lexicons for
+- docs (inc'l auto documenting of all the lexicons we use in teal.fm)
+
+What's to come (when one of us can work on it), ordered by priority:
+- track matching api
+- ingester rewrite (in rust)
+- move from sqlite to postgres/clickhouse
+- last.fm import
+- more xrpc routes
+- your teal.fm profile/separate social graph
+- and more!
+
+I've recently laid out and finalized the manual scrobbling feature, and hopefully we can get that out to a few users soon here.
+
+### atp.tools updates
+I've added a few more views in pursuit of having all important lexicons be 'view'able. These ones were easy - the bluesky actor
+profile, and feed repost/like. I've also made a few layout changes, so there's no scrollbar on the right when there doesn't need to be.
+
+
+## What did I listen to this week?
+I've been hooked on my [sad songs playlist](https://tidal.com/browse/playlist/808392ca-2b2e-4e1d-aa47-319470cc95ff) recently.
+Also lots of alt/rock. Think My Chemical Romance, Paramore, The 1975. Surprisingly nice to listen to while getting stuff done.
+
+## What did I play this week?
+[Metaphor Refantazio](https://store.steampowered.com/app/2679460/Metaphor_ReFantazio/)! It feels like I'm almost done with it -
+I'm at the part right before the last two dungeons, when that lil twist happens!
+
+I've also been getting into [Satisfactory](https://store.steampowered.com/app/526870/Satisfactory/), I like it so far but I can't
+play more than like two hours of it before my brain turns to mush.
+
+## Um, anyways
+That should be it! Hopefully you enjoyed reading my first Weekly as much as I did writing it. This format is really nice to get my ideas out
+when I have them, so expect something similar next week.
+
+p.s. I'm really glad I made the comments component for my guestbook, so I can just use it here!
+
+TODO comments

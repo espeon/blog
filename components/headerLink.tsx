@@ -2,6 +2,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import type { JSX } from "react";
 export default function HeaderLink(props: {
   href: string;
   label: string | JSX.Element;
@@ -12,10 +13,12 @@ export default function HeaderLink(props: {
     if (props.href == "/") {
       return props.href === pathname;
     }
-    if (props.alsoMatch)
-      return props.alsoMatch.some((alsoMatch) =>
+    if (props.alsoMatch) {
+      let res = props.alsoMatch.some((alsoMatch) =>
         pathname.startsWith(alsoMatch),
       );
+      if (res) return true;
+    }
     return pathname.startsWith(props.href) || props.href === pathname;
   };
   const isActive = match();
