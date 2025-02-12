@@ -85,18 +85,18 @@ export default function Home() {
   return (
     <div className="py-8">
       <div className="flex flex-row gap-2 text-xl mb-4">
-        <a
+        <Link
           href="#"
           className="bg-neutral-400 hover:bg-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-800 px-2 rounded-lg a"
         >
           Main
-        </a>
-        <a
+        </Link>
+        <Link
           href="/blog/weeklies"
           className="bg-neutral-300 hover:bg-slate-400 dark:bg-neutral-700 dark:hover:bg-neutral-800 px-2 rounded-lg a"
         >
           Weeklies
-        </a>
+        </Link>
       </div>
       <div className="mx-auto w-full max-w-prose">
         {posts.map((post, idx) => (

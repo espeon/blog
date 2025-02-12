@@ -86,18 +86,18 @@ export default function Home() {
     <div className="py-8">
       <div>
         <div className="flex flex-row gap-2 text-xl mb-4">
-          <a
+          <Link
             href="/blog"
             className="bg-neutral-300 hover:bg-slate-400 dark:bg-neutral-700 dark:hover:bg-neutral-800 px-2 rounded-lg a"
           >
             Main
-          </a>
-          <a
+          </Link>
+          <Link
             href="/blog/weeklies"
             className="bg-neutral-400 hover:bg-neutral-400 dark:bg-neutral-800 dark:hover:bg-neutral-800 px-2 rounded-lg a"
           >
             Weeklies
-          </a>
+          </Link>
         </div>
         <h2 className="text-2xl">Weeklies</h2>
         <div>
