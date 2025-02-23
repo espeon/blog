@@ -135,7 +135,7 @@ function ProjectCard({
   links,
 }: ProjectCardProps) {
   return (
-    <Card className="text-lg w-screen max-w-full dark:bg-wisteria-300/55 flex flex-col items-left justify-between md:col-span-2">
+    <Card className="text-lg w-screen max-w-full dark:bg-wisteria-800/45 flex flex-col items-left justify-between md:col-span-2">
       <div className="flex flex-row h-min justify-left gap-2">
         {imageUrl && (
           <img

@@ -7,7 +7,7 @@ import { LuClock, LuLink } from "react-icons/lu";
 export default function Projects() {
   return (
     <div className="h-full w-screen max-w-full md:col-span-5 md:row-span-4 flex flex-col items-left justify-center md:grid md:grid-cols-2 gap-4 pb-16">
-      <Card className="text-lg w-screen max-w-full dark:bg-wisteria-300/55 flex flex-col items-left justify-between md:col-span-2">
+      <Card className="text-lg w-screen max-w-full dark:bg-wisteria-800/45 flex flex-col items-left justify-between md:col-span-2">
         <div className="p-4">
           <h1 className="text-4xl">/uses</h1>
           <div className="mt-2 text-sm text-gray-600 dark:text-gray-300">
@@ -204,9 +204,10 @@ export default function Projects() {
                 >
                   Uppspel
                 </a>{" "}
-                top (yes, the Republic of Gamers one) on backwards (I swear it's better). I wouldn't recommend
-                either - they're expensive and made with poorer quality
-                materials, but I like them enough to not throw them out.
+                top (yes, the Republic of Gamers one) on backwards (I swear it's
+                better). I wouldn't recommend either - they're expensive and
+                made with poorer quality materials, but I like them enough to
+                not throw them out.
               </li>
             </ul>
             <h2 className="text-xl mt-4">Computer</h2>
@@ -219,7 +220,7 @@ export default function Projects() {
                   href="https://www.apple.com/macbook-pro-14-and-16/"
                 >
                   MacBook Pro 14" M1 Pro (8+2 core)
-                </a> {" "}
+                </a>{" "}
                 running MacOS.
               </li>
               <li>
