@@ -1,0 +1,41 @@
+---
+title: "Weekly #2: Week of 2025-03-25"
+datePublished: "2025-03-25"
+summary: "ATMosphere Conf and more!"
+isWeekly: true
+---
+
+## Hello!
+
+I haven't done one of these for a bit (oops). Lots of stuff happening in life and also in my head (bad). Have made some good progress on a lot of stuff though, and had some fun with friends and builders from around the US.
+
+## ATMosphere Conf
+
+As you may know, I went to Seattle this last weekend for the ATmosphere Conf, put on by the unofficial [ATProtocol Community](https://atprotocol.dev/). I had a very fun time meeting online friends IRL, making new friends and learning about the latest developments in the ATProtocol ecosystem.
+
+One thing really stuck with me from [Rudy's](https://bsky.app/profile/rudyfraser.com), and that was the idea of building for your community and not the wider world. It's easy to get caught up in the hype, excitement, and pressure of making something big, but it's important to remember who you're building for. For example, I'm building teal.fm for the community of music lovers on Bluesky. I'd need to keep focused on features they like and UX that they understand, instead of just putting in random features that won't help or be used at all.
+
+Sort of related: I fall into the pit sometimes of overdesigning and overengineering things without prior experience or consulting with others, and, at least for me, that ends up being a waste of time and resources. You don't need to design for hyperscale if the only people who will use it are your close friends, and you can't make a slow, huge monolithic postgres-based app if you're doing hyperscale development.
+
+[Paul's](https://bsky.app/profile/pfrazee.com) talk was really interesting as well. It was about why and how Bluesky was made, and what they thought about when making it. He talked about enshittification and how Bluesky has taken steps to mitigate it, such as viewing themselves as a future adversary and building with that in mind. Plus, prioritizing UX and UI is crucial if you want to build something even people without development experience can use and enjoy.
+
+## Teal.fm
+
+I've done a bit of work on teal.fm over the past few weeks. I've rewrote the jetstream listener in Rust for better performance, scalability, and usability, and released the library it's built on on crates.io. It's called [rocketman](https://crates.io/crates/rocketman) and I hope it will be useful to others.
+
+I've also been working on the profiles system. It's designed to be separate from Bluesky, including, in the future, the whole social graph. Right now, I have a basic profile page with a 'change user info' modal, API routes to get other profiles, and currently I'm working on profile search.
+
+Profile search, right now, is built on Trigram similarity in postgresql. Eventually I'll migrate it to a more scalable solution, such as a graph database or using software like meilisearch.
+
+## Music
+
+Right now, I've fallen back into the sad indie folk trap! Have re-found [Medium Build](https://tidal.com/browse/artist/7190362?u) and [Tiny Habits](https://tidal.com/browse/artist/34295024?u). Super comfy music, and I'd recommend both to anyone looking for indie pop/folk music.
+
+## Anyways,
+
+That's all for now! I'll hopefully be back next week with more things to share and talk about.
+
+## Comments
+
+Thoughts? Questions? Feedback? Let me know [on Bluesky](https://bsky.app/profile/natalie.sh/post/3liebm4lgoc2g)!
+<Comments did="natalie.sh" postCid="3liebm4lgoc2g" skipFirst={true} />
